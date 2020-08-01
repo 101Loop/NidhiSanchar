@@ -7,6 +7,7 @@ const history = createBrowserHistory({ forceRefresh: true });
 export const login = (e, data) => {
     e.preventDefault();
     const URL = API.BASE_PATH + API.LOGIN;
+    console.log("URL: ", URL);
     console.log("BASE PATH: ", API.BASE_PATH);
     axios(`${URL}`, {
         method: "POST",
