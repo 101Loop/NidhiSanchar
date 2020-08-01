@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     # local
     "drf_user",
     "userprofile",
+    "department",
 ]
 
 # MIDDLEWARE
