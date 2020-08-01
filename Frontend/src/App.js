@@ -1,15 +1,23 @@
-import React from 'react'
-import './App.css'
+import React from "react";
+import "./App.css";
+import { Route, Switch } from "react-router-dom";
+import AppBar from "./components/app_bar";
+// import AuthenticatedView from "./views/AuthenticatedView";
+// import { isAuthenticated } from "./services/auth";
+import LandingPage from "./views/LandingPage";
+// import Signin from "./views/Signin";
+// import ForgotPassword from "./views/ForgotPasswordForm";
 
-function App () {
+function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <h1>Nidhi Sanchar</h1>
-        <h3>Making funds management seamless, transparent and secure</h3>
-      </header>
+    <div className="App">
+      <div>
+        <AppBar />
+
+        <LandingPage />
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
