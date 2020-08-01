@@ -64,7 +64,7 @@ class CentreDepartment(TimeStampedModel):
     )
 
     def __str__(self):
-        return f"CENTER-{self.dept_name.name}"
+        return f"CENTRE-{self.dept_name.name}"
 
     def clean_fields(self, exclude=None):
         super().clean_fields(exclude=exclude)
