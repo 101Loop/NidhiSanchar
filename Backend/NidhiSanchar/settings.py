@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "localflavor",
     # local
     "drf_user",
+    "userprofile",
 ]
 
 # MIDDLEWARE
