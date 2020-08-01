@@ -85,7 +85,7 @@ class TestCentreDepartment(TestCase):
     
     def test_str(self):
         centre_dept = CentreDepartment.objects.get(dept_name=self.deptname)
-        self.assertEqual(str(centre_dept), "CENTRE-Test CentreDepartment")
+        self.assertEqual(str(centre_dept), "Centre-Test CentreDepartment")
 
 class TestStateDepartment(TestCase):
     """StateDepartment Model"""
@@ -122,4 +122,4 @@ class TestStateDepartment(TestCase):
     
     def test_str(self):
         state_dept = StateDepartment.objects.get(dept_name=self.deptname)
-        self.assertEqual(str(state_dept), "Uttar Pradesh-Test StateDepartment")
+        self.assertEqual(str(state_dept), "Uttar Pradesh - Test StateDepartment Department")
