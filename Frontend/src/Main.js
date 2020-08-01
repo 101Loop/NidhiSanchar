@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./services/PrivateRoutes";
 import Signin from "./views/Signin";
 import { createBrowserHistory } from "history";
+import SchemeCentral from "./views/Schemes/Scheme";
 import SchemeView from "./views/Schemes/SchemeView";
 import Contact from "./views/contact";
 
@@ -16,6 +17,7 @@ const Main = () => {
                 <Route path="/signin" component={Signin} />{" "}
                 <PrivateRoute path="/contact" component={Contact} />{" "}
                 <Route path="/schemes" component={SchemeView} />
+                <Route path="/scheme-details/:slug" component={SchemeCentral} />{" "}
             </Switch>{" "}
         </div>
     );
