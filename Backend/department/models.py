@@ -64,7 +64,7 @@ class CentreDepartment(TimeStampedModel):
     )
 
     def __str__(self):
-        return f"CENTER-{self.dept_name.name}"
+        return f"Center - {self.dept_name.name} Department"
 
     def clean_fields(self, exclude=None):
         super().clean_fields(exclude=exclude)
@@ -119,7 +119,7 @@ class StateDepartment(TimeStampedModel):
     )
 
     def __str__(self):
-        return f"{str(self.state)}-{self.dept_name.name}"
+        return f"{str(self.state)} - {self.dept_name.name} Department"
 
     def clean_fields(self, exclude=None):
         super().clean_fields(exclude=exclude)
