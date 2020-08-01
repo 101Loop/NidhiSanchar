@@ -42,6 +42,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/user/", include("drf_user.urls")),
     path("api/userprofile/", include("userprofile.urls")),
+    path("api/department/", include("department.urls")),
     re_path(
         r"^swagger(?P<format>\.json|\.yaml)$",
         schema_view.without_ui(cache_timeout=0),
