@@ -1,7 +1,7 @@
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.text import gettext_lazy as _, slugify
-from schemes.validators import validate_file_extension
+from schemes.validators import validate_file_extension, file_size
 
 from department.models import CentreDepartment, StateDepartment
 from userprofile.models import TimeStampedModel
@@ -82,7 +82,7 @@ class FundRequest(TimeStampedModel):
     document = models.FileField(
         verbose_name=_("Proposal Document"),
         upload_to="proposals/",
-        validators=[validate_file_extension],
+        validators=[validate_file_extension, file_size],
         blank=True,
         null=True,
     )
