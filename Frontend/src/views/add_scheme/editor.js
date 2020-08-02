@@ -14,7 +14,7 @@ class MyEditor extends Component {
       <ReactQuill
         theme="snow"
         className="add-new-post__editor mb-1"
-        value={this.props.description}
+        defaultValue=""
         onChange={this.props.onDescriptionChange}
       />
     );

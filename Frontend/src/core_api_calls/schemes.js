@@ -59,15 +59,16 @@ export const createScheme = (data) => {
 
 export const updateScheme = (slug, data) => {
   let URL = API.BASE_PATH + API.UPDATE_SCHEMES + `${slug}/`;
-  const headers = { Authorization: `Bearer ${key}` };
   const key = localStorage.getItem("jwt");
+  const headers = { Authorization: `Bearer ${key}` };
+
   return axios(`${URL}`, { method: "PUT", data: data, headers: headers })
     .then((response) => {
       console.log("response: ", response);
       if (response.status > 300) {
         throw new Error("An error occured");
       }
-      return response.json();
+      return response;
     })
     .catch((err) => {
       console.log("error: ", err);
