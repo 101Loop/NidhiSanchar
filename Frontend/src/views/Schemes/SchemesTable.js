@@ -71,8 +71,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowRight />
         ) : (
-            <KeyboardArrowLeft />
-          )}
+          <KeyboardArrowLeft />
+        )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
@@ -82,8 +82,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowLeft />
         ) : (
-            <KeyboardArrowRight />
-          )}
+          <KeyboardArrowRight />
+        )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
@@ -213,7 +213,7 @@ const SchemeTable = (props) => {
         All Schemes
       </Typography>
 
-      <div style={{ padding: "0rem 5rem 1rem 5rem" }}>
+      <div style={{}}>
         <div
           className="scheme-search"
           style={{
@@ -273,9 +273,9 @@ const SchemeTable = (props) => {
             <TableBody>
               {(rowsPerPage > 0
                 ? sortedData.slice(
-                  page * rowsPerPage,
-                  page * rowsPerPage + rowsPerPage
-                )
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
                 : sortedData
               ).map(
                 (scheme) =>
@@ -302,7 +302,6 @@ const SchemeTable = (props) => {
                         {moment(scheme.date_updated).format("YYYY-MM-DD")}
                       </TableCell>
                       <TableCell align="right">{scheme.id}</TableCell>
-                      
                     </TableRow>
                   )
               )}
