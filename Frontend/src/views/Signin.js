@@ -6,127 +6,155 @@ import createBrowserHistory from "history/createBrowserHistory";
 import Eyecon from "@material-ui/icons/Visibility";
 import EyeClosecon from "@material-ui/icons/VisibilityOff";
 import registerImage from "../assets/register_atmanirbhar.png";
+import Recaptcha from "react-recaptcha";
 
 class Signin extends Component {
-    state = {
-        username: "",
-        password: "",
-        error: "",
-        err: "",
-        passwordIsMasked: true,
-    };
+  state = {
+    username: "",
+    password: "",
+    error: "",
+    err: "",
+    passwordIsMasked: true,
+    captcha: false,
+  };
 
-    onValueChange = (e) => {
-        this.setState({
-            ...this.state,
-            error: false,
-            [e.target.name]: e.target.value,
-        });
-    };
+  recaptchaLoaded = () => {
+    console.log("recaptcha");
+  };
 
-    togglePasswordMask = () => {
-        this.setState((prevState) => ({
-            passwordIsMasked: !prevState.passwordIsMasked,
-        }));
-    };
+  verifyCallback = (response) => {
+    if (response) {
+      this.setState({
+        captcha: true,
+      });
+    }
+  };
 
-    togglePasswordMask = () => {
-        this.setState((prevState) => ({
-            passwordIsMasked: !prevState.passwordIsMasked,
-        }));
-    };
+  onValueChange = (e) => {
+    this.setState({
+      ...this.state,
+      error: false,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    history = createBrowserHistory({ forceRefresh: true });
+  togglePasswordMask = () => {
+    this.setState((prevState) => ({
+      passwordIsMasked: !prevState.passwordIsMasked,
+    }));
+  };
 
-    onSubmit = (event) => {
-        event.preventDefault();
-        login(event, this.state);
-    };
+  togglePasswordMask = () => {
+    this.setState((prevState) => ({
+      passwordIsMasked: !prevState.passwordIsMasked,
+    }));
+  };
 
-    render() {
-        return (
-            <Fragment>
-                <section>
-                    <div id="container">
-                        <Row>
-                            <Col
-                                xs={0}
-                                md={6}
-                                style={{ marginTop: "2rem" }}
-                                className="back-img"
-                            >
-                                <div>
-                                    <img src={registerImage} alt="cover-img"></img>
-                                </div>
-                            </Col>
+  history = createBrowserHistory({ forceRefresh: true });
 
-                            <Col xs={12} md={6}>
-                                <div id="form">
-                                    <h3>Sign In</h3>
-                                    <Form onSubmit={this.onSubmit}>
-                                        <Form.Group controlId="formBasicusername">
-                                            <Form.Label className="label">Username</Form.Label>
-                                            <Form.Control
-                                                type="username"
-                                                placeholder="Enter username"
-                                                name="username"
-                                                value={this.state.username}
-                                                onChange={this.onValueChange}
-                                            />
-                                        </Form.Group>
+  onSubmit = (event) => {
+    event.preventDefault();
+    if (this.state.captcha) {
+      login(event, this.state);
+    } else {
+      alert("Please verify that you are a human");
+    }
+  };
 
-                                        <Form.Group
-                                            className="password-field"
-                                            controlId="formBasicPassword"
-                                        >
-                                            <Form.Label className="label">Password</Form.Label>
-                                            <InputGroup>
-                                                <Form.Control
-                                                    type={
-                                                        this.state.passwordIsMasked ? "password" : "text"
-                                                    }
-                                                    placeholder="Password"
-                                                    name="password"
-                                                    value={this.state.password}
-                                                    onChange={this.onValueChange}
-                                                />
+  render() {
+    return (
+      <Fragment>
+        <section>
+          <div id="container">
+            <Row>
+              <Col
+                xs={0}
+                md={6}
+                style={{ marginTop: "2rem" }}
+                className="back-img"
+              >
+                <div>
+                  <img src={registerImage} alt="cover-img"></img>
+                </div>
+              </Col>
 
-                                                <InputGroup.Append>
-                                                    <InputGroup.Text
-                                                        style={{
-                                                            color: "#E76829",
-                                                            border: "none",
-                                                        }}
-                                                    >
-                                                        {!this.state.passwordIsMasked ? (
-                                                            <Eyecon onClick={this.togglePasswordMask} />
-                                                        ) : (
-                                                                <EyeClosecon onClick={this.togglePasswordMask} />
-                                                            )}
-                                                    </InputGroup.Text>
-                                                </InputGroup.Append>
-                                            </InputGroup>
-                                        </Form.Group>
+              <Col xs={12} md={6}>
+                <div id="form">
+                  <h3>Sign In</h3>
+                  <Form onSubmit={this.onSubmit}>
+                    <Form.Group controlId="formBasicusername">
+                      <Form.Label className="label">Username</Form.Label>
+                      <Form.Control
+                        type="username"
+                        placeholder="Enter username"
+                        name="username"
+                        value={this.state.username}
+                        onChange={this.onValueChange}
+                      />
+                    </Form.Group>
 
-                                        {/* #448aff */}
+                    <Form.Group
+                      className="password-field"
+                      controlId="formBasicPassword"
+                    >
+                      <Form.Label className="label">Password</Form.Label>
+                      <InputGroup>
+                        <Form.Control
+                          type={
+                            this.state.passwordIsMasked ? "password" : "text"
+                          }
+                          placeholder="Password"
+                          name="password"
+                          value={this.state.password}
+                          onChange={this.onValueChange}
+                        />
 
-                                        <Button variant="primary" type="submit" id="btn">
-                                            Signin
+                        <InputGroup.Append>
+                          <InputGroup.Text
+                            style={{
+                              color: "#E76829",
+                              border: "none",
+                            }}
+                          >
+                            {!this.state.passwordIsMasked ? (
+                              <Eyecon onClick={this.togglePasswordMask} />
+                            ) : (
+                              <EyeClosecon onClick={this.togglePasswordMask} />
+                            )}
+                          </InputGroup.Text>
+                        </InputGroup.Append>
+                        <div
+                          style={{ paddingLeft: "1.7rem", paddingTop: "1rem" }}
+                        >
+                          <Recaptcha
+                            sitekey="6LfKSLkZAAAAAPcHdfBuLFTTYNmbEXPp2naM9CAA"
+                            render="explicit"
+                            onloadCallback={this.recaptchaLoaded}
+                            verifyCallback={this.verifyCallback}
+                          />
+                        </div>
+                      </InputGroup>
+                    </Form.Group>
+
+                    {/* #448aff */}
+
+                    <Button variant="primary" type="submit" id="btn">
+                      Signin
                     </Button>
 
-                                        <div>
-                                            <p id="signup-para">
-                                                Forgot Password?
+                    <div>
+                      <p id="signup-para">
+                        Forgot Password?
                         <a href="/forgot-password"> Contact Us</a>
-                                            </p>
-                                        </div>
-                                    </Form>
-                                </div>
-                            </Col>
-                        </Row>
+                      </p>
+                    </div>
+                  </Form>
+                </div>
+              </Col>
+            </Row>
 
-                        <style>
-                            {`
+            <style>
+              {`
                 #container{
                     height: 100vh;
                 }
@@ -197,12 +225,12 @@ class Signin extends Component {
                     padding-top: 2rem;
                 }
             `}
-                        </style>
-                    </div>
-                </section>
-            </Fragment>
-        );
-    }
+            </style>
+          </div>
+        </section>
+      </Fragment>
+    );
+  }
 }
 
 export default Signin;
