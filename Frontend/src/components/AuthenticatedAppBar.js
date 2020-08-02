@@ -163,12 +163,12 @@ function ResponsiveDrawer(props) {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>
-                <a href="/to-profile">My account</a>
+                <a href="/myprofile">My account</a>
               </MenuItem>
 
               <MenuItem
                 onClick={() => {
-                  signout(() => { });
+                  signout(() => {});
                 }}
               >
                 Logout
