@@ -72,8 +72,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowRight />
         ) : (
-          <KeyboardArrowLeft />
-        )}
+            <KeyboardArrowLeft />
+          )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
@@ -83,8 +83,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowLeft />
         ) : (
-          <KeyboardArrowRight />
-        )}
+            <KeyboardArrowRight />
+          )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
@@ -291,9 +291,9 @@ const SchemeRequestTable = (props) => {
               <TableBody>
                 {(rowsPerPage > 0
                   ? sortedData.slice(
-                      page * rowsPerPage,
-                      page * rowsPerPage + rowsPerPage
-                    )
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
                   : sortedData
                 ).map(
                   (scheme) =>
@@ -320,7 +320,7 @@ const SchemeRequestTable = (props) => {
                           {moment(scheme.date_updated).format("YYYY-MM-DD")}
                         </TableCell>
                         <TableCell align="center">
-                          <b>{scheme.scheme_code}</b>
+                          <b>{scheme.id}</b>
                         </TableCell>
                       </TableRow>
                     )
