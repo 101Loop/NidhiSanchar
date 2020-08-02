@@ -15,11 +15,11 @@ import SpecificHelp from "./views/help";
 import SingleSchemeRequestsView from "./views/fund_req/SingleSchemeRequestsView";
 import DiscussionSchemeTableContainer from "./views/discussions/DiscussionSchemeTableContainer.js";
 import Discussions from "./views/discussions/DicussionsPage";
+import ProfilePage from "./views/ProfilePage";
 
 const history = createBrowserHistory();
 
 const Main = () => {
-
   return (
     <div>
       <Switch history={history}>
@@ -28,10 +28,11 @@ const Main = () => {
         <PrivateRoute path="/help" component={Help} />{" "}
         <PrivateRoute path="/dashboard" component={Dashboard} />{" "}
         <PrivateRoute path="/request-list" component={RequestView} />{" "}
+        <PrivateRoute path="/myprofile" component={ProfilePage} />{" "}
         <PrivateRoute
           path="/discussions"
           component={DiscussionSchemeTableContainer}
-        />{" "}
+        />
         <Route path="/schemes" component={SchemeView} />
         <Route path="/shelp/" component={SpecificHelp} />
         <Route path="/scheme-details/:slug" component={SchemeCentral} />{" "}

@@ -93,39 +93,39 @@ const useStyles = makeStyles((theme) => ({
 const tiers = [
   {
     description: ["Create Scheme Issue"],
-    icon: "CreateIcon",
+    icon: <CreateIcon />,
   },
   {
     description: ["Connection Problem"],
-    icon: "WifiTetheringIcon",
+    icon: <WifiTetheringIcon />,
   },
   {
     description: ["Fund Approval Issue"],
-    icon: "CancelScheduleSendIcon",
+    icon: <CancelScheduleSendIcon />,
   },
   {
     description: ["Feed Refresh "],
-    icon: { RefreshIcon },
+    icon: <RefreshIcon />,
   },
   {
     description: ["Comment Issue"],
-    icon: { SmsFailedIcon },
+    icon: <SmsFailedIcon />,
   },
   {
     description: ["Report Spam"],
-    icon: { ReportIcon },
+    icon: <ReportIcon />,
   },
   {
     description: ["Authentication Issues"],
-    icon: { PermIdentityIcon },
+    icon: <PermIdentityIcon />,
   },
   {
     description: ["Account info problem"],
-    icon: { AccountCircleIcon },
+    icon: <AccountCircleIcon />,
   },
   {
     description: ["Nidhi sanchar Extensions"],
-    icon: { ExtensionIcon },
+    icon: <ExtensionIcon />,
   },
 ];
 
@@ -204,10 +204,19 @@ export default function Support() {
                     onClick={() => handleRoute(tier.description)}
                   >
                     <CardContent className="classes.my_card_">
-                      <div style={{ paddingBottom: "1rem", fontSize: "17px" }}>
+                      <div style={{ color: "#586069 ", paddingTop: "1rem" }}>
+                        {tier.icon}
+                      </div>
+                      <div
+                        style={{
+                          color: "#586069 ",
+                          paddingTop: "0.9rem",
+                          // paddingBottom: "0.5rem",
+                          fontSize: "15px",
+                        }}
+                      >
                         {tier.description}
                       </div>
-                      <LiveHelpIcon />
                     </CardContent>
                   </Card>
                 </Grid>

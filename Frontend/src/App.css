@@ -376,3 +376,9 @@ ul > li > a > i {
   border-bottom: 1px solid #eaecef;
   padding: 0.5rem 0;
 }
+
+/* Profile Page  */
+
+.profile-page {
+  margin: 4rem 0;
+}
