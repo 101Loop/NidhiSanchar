@@ -5,6 +5,8 @@ from drf_user.models import User
 from department.models import DepartmentName, CentreDepartment, StateDepartment
 from department.serializers import CentreDepartmentSerializer, StateDepartmentSerializer
 
+from schemes.models import Scheme
+
 USER_CREDENTIALS = {"username":"testuser", "password":"TestPassword123"}
 USER_RELATEDS = {
     "username":"testuser",
@@ -13,13 +15,23 @@ USER_RELATEDS = {
     "email":"te1st@gmail.com",
     "mobile":"1323456890"
       }
-     
+DUMMY_SCHEME ={
+  "name":"string",
+  "scheme_code":"string",
+  "date_of_launching":"2020-08-02",
+  "description":"string",
+  "slug":"string",
+  "scheme_budget":"4",
+  "created_by":""
+}   
 REGISTER_URL = "/api/user/register/"
 LOGIN_URL = "/api/user/login/"
 GET_USER_URL =  "/api/user/account/"
 LOGOUT_URL = "/api/user/logout/"
 GET_CENTRE_DEPARTMENT_URL = '/api/department/v1/center-department/'
 GET_STATE_DEPARTMENT_URL = '/api/department/v1/state-department/'
+CREATE_SCHEME_URL = '/api/schemes/v1/create-schemes/'
+
 #drf_user
 class TestUser(TestCase):
 
@@ -108,3 +120,37 @@ class TestStateDepartment(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data[0]['dept_name'], serializer.data['dept_name'])
 
+
+class TestSchemes(TestCase):
+
+    def setUp(self):
+        self.poc = User.objects.create_user(
+            username="testuser",
+            name="Test User",
+            password="TestPassword123",
+            email="test@gmail.com",
+            mobile="1234567890",
+        )
+        self.dept_name = DepartmentName.objects.create(name="Test Department")
+        self.centre_dept = CentreDepartment.objects.create(
+            dept_name=self.dept_name,
+            dept_poc=self.poc,
+            about="testing",
+        )
+        
+    def test_create_scheme(self):
+        department = CentreDepartment.objects.get(dept_name=self.dept_name)
+        serializer = CentreDepartmentSerializer(department)
+        DUMMY_SCHEME['created_by'] = serializer.data
+
+        login_response = self.client.post(LOGIN_URL, USER_CREDENTIALS)
+        auth = "Bearer {}".format(login_response.data['token'])
+        response = self.client.post(CREATE_SCHEME_URL, DUMMY_SCHEME, HTTP_AUTHORIZATION=auth)
+
+        self.assertEqual(response.status_code, 201)
+    #To check schemes can be created simuntanously by same department
+'''
+        DUMMY_SCHEME['name'] = "Happy Scheme"
+        response = self.client.post(CREATE_SCHEME_URL, DUMMY_SCHEME, HTTP_AUTHORIZATION=auth)
+        self.assertEqual(response.status_code, 201)
+'''
