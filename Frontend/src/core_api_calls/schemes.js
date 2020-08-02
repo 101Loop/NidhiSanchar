@@ -40,6 +40,7 @@ export const getSchemeBySlug = (slug) => {
 };
 
 export const createScheme = (data) => {
+  console.log("data: ", data);
   const URL = API.BASE_PATH + API.CREATE_SCHEME;
   const key = localStorage.getItem("jwt");
   const headers = { Authorization: `Bearer ${key}` };

@@ -150,7 +150,6 @@ export default function FullScreenDialog() {
 
   const requiredData = {
     name: schemeName,
-    id: schemeId,
     date_of_launching: launchDate,
     description: description,
     scheme_budget: schemeBudget,
@@ -223,22 +222,6 @@ export default function FullScreenDialog() {
                       size="small"
                       name="schemeName"
                       value={schemeName}
-                      onChange={onValueChange}
-                    />
-                  </div>
-
-                  <h6 className={classes.heading}>Scheme ID</h6>
-                  <div className={classes.my_form}>
-                    <TextField
-                      className="form-box"
-                      label=""
-                      id="outlined-size-small"
-                      placeholder="Enter Unique Id"
-                      defaultValue=""
-                      variant="outlined"
-                      size="small"
-                      name="schemeId"
-                      value={schemeId}
                       onChange={onValueChange}
                     />
                   </div>
