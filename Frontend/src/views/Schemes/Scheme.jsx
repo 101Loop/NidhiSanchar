@@ -131,7 +131,7 @@ const SchemeCentral = (props) => {
                 color="primary"
                 onClick={() => {
                   history.push({
-                    pathname: `/raise-req`,
+                    pathname: `/raise-request/${scheme.slug}`,
                   });
                 }}
               >

@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./services/PrivateRoutes";
 import Signin from "./views/Signin";
-import RaiseRequest from "./views/fund_req/fund_req";
+import RaiseRequest from "./views/fund_req/fund_req1";
 import Dashboard from "./views/Dashboard";
 import { createBrowserHistory } from "history";
 import SelectScheme from "./views/select_scheme/selectedScheme";
@@ -30,7 +30,7 @@ const Main = () => {
                 <Route path="/shelp/" component={SpecificHelp} />
                 <Route path="/scheme-details/:slug" component={SchemeCentral} />{" "}
                 <Route path="/edit-scheme/:slug" component={SelectScheme} />{" "}
-                <Route path="/raise-req" component={RaiseRequest} />{" "}
+                <Route path="/raise-request/:slug" component={RaiseRequest} />{" "}
                 <Route
                     path="/all-requests/:slug"
                     component={SingleSchemeRequestsView}
