@@ -123,17 +123,17 @@ class Signin extends Component {
                             )}
                           </InputGroup.Text>
                         </InputGroup.Append>
-                        <div
-                          style={{ paddingLeft: "1.7rem", paddingTop: "1rem" }}
-                        >
-                          <Recaptcha
-                            sitekey="6LfKSLkZAAAAAPcHdfBuLFTTYNmbEXPp2naM9CAA"
-                            render="explicit"
-                            onloadCallback={this.recaptchaLoaded}
-                            verifyCallback={this.verifyCallback}
-                          />
-                        </div>
                       </InputGroup>
+                      <div
+                        style={{ paddingLeft: "1.7rem", paddingTop: "1rem" }}
+                      >
+                        <Recaptcha
+                          sitekey="6LfKSLkZAAAAAPcHdfBuLFTTYNmbEXPp2naM9CAA"
+                          render="explicit"
+                          onloadCallback={this.recaptchaLoaded}
+                          verifyCallback={this.verifyCallback}
+                        />
+                      </div>
                     </Form.Group>
 
                     {/* #448aff */}
