@@ -123,17 +123,21 @@ class Signin extends Component {
                             )}
                           </InputGroup.Text>
                         </InputGroup.Append>
-                        <div
-                          style={{ paddingLeft: "1.7rem", paddingTop: "1rem" }}
-                        >
-                          <Recaptcha
-                            sitekey="6LfKSLkZAAAAAPcHdfBuLFTTYNmbEXPp2naM9CAA"
-                            render="explicit"
-                            onloadCallback={this.recaptchaLoaded}
-                            verifyCallback={this.verifyCallback}
-                          />
-                        </div>
                       </InputGroup>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          marginTop: "1.5rem",
+                        }}
+                      >
+                        <Recaptcha
+                          sitekey="6LfKSLkZAAAAAPcHdfBuLFTTYNmbEXPp2naM9CAA"
+                          render="explicit"
+                          onloadCallback={this.recaptchaLoaded}
+                          verifyCallback={this.verifyCallback}
+                        />
+                      </div>
                     </Form.Group>
 
                     {/* #448aff */}
@@ -180,15 +184,9 @@ class Signin extends Component {
                     color: white;
                     background: #E76829;
                     border: 1px solid;
-                    margin-top: 5%;
                 }
 
-               .eye-icon {
-                                position: absolute;
-                                right: 34%;
-                                top: 50%;
-                                z-index: 9999; 
-                              }
+              
 
                 #signup-para{
                     margin-top: 1rem;
