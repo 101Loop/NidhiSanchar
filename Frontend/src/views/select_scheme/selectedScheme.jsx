@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,6 +11,7 @@ import { green } from "@material-ui/core/colors";
 import CalenderDatePicker from "../Schemes/DatePicker";
 import moment from "moment";
 import { getSchemeBySlug, updateScheme } from "../../core_api_calls/schemes";
+import ReactQuill from 'react-quill';
 
 const theme = createMuiTheme({
   palette: {
@@ -18,132 +19,124 @@ const theme = createMuiTheme({
   },
 });
 
-const useStyles = makeStyles((theme) => ({
-  "@global": {
-    ul: {
-      margin: 0,
-      padding: 0,
-      listStyle: "none",
-    },
-  },
-  heading: {
-    color: "#E76829",
-    fontWeight: "600",
-    display: "flex",
-    justifyItems: "left",
-    paddingTop: "1rem",
-  },
-  myeditor: {
-    height: "70%",
-    border: "1px solid black",
-    margin: "2px",
-    display: "flex",
-    flexDirection: "column",
-  },
-  input: {
-    display: "none",
-  },
-  margin: {
-    margin: theme.spacing(1),
-  },
-  my_button: {
-    margin: theme.spacing(1, 1.5),
-    float: "right",
-  },
-  my_form: {
-    display: "flex",
-    flexDirection: "row",
-    justifyItems: "left",
-    paddingBottom: "10px",
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//     "@global": {
+//         ul: {
+//             margin: 0,
+//             padding: 0,
+//             listStyle: "none",
+//         },
+//     },
+//     heading: {
+//         color: "#E76829",
+//         fontWeight: "600",
+//         display: "flex",
+//         justifyItems: "left",
+//         paddingTop: "1rem",
+//     },
+//     myeditor: {
+//         height: "70%",
+//         border: "1px solid black",
+//         margin: "2px",
+//         display: "flex",
+//         flexDirection: "column",
+//     },
+//     input: {
+//         display: "none",
+//     },
+//     margin: {
+//         margin: theme.spacing(1),
+//     },
+//     my_button: {
+//         margin: theme.spacing(1, 1.5),
+//         float: "right",
+//     },
+//     my_form: {
+//         display: "flex",
+//         flexDirection: "row",
+//         justifyItems: "left",
+//         paddingBottom: "10px",
+//     },
+// }));
 
-export default function SelectScheme(props) {
-  const [scheme, setScheme] = useState();
-  const [values, setValues] = useState({
-    open: false,
-    error: false,
-    schemeName: "",
-    schemeId: "",
-    schemeBudget: "",
-    launchDate: moment().format("YYYY-MM-DD"),
-    description: "",
-  });
+export class SelectScheme extends Component {
 
-  async function preload(slug) {
-    const response = await getSchemeBySlug(slug);
-    const data = await response.data;
-    await setScheme(data);
-    let scheme_check = data;
-    if (scheme) {
-      setValues({
-        open: false,
-        error: false,
-        schemeName: scheme.name,
-        schemeId: scheme.scheme_code,
-        schemeBudget: scheme.scheme_budget,
-        launchDate: scheme.date_of_launching,
-        description: scheme.description,
-      });
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      error: false,
+      schemeName: "",
+      schemeId: "",
+      schemeBudget: "",
+      launchDate: moment().format("YYYY-MM-DD"),
+      description: "",
+      scheme: {}
     }
   }
 
-  useEffect(() => {
-    preload(props.match.params.slug);
-  }, []);
+  componentDidMount() {
+    this.preload(this.props.match.params.slug);
+  }
 
-  const onValueChange = (e) => {
-    setValues({
-      ...values,
+  async preload(slug) {
+    const response = await getSchemeBySlug(slug);
+    const data = response.data;
+    console.log("data: ", data);
+    this.setState({
+      scheme: data,
+      open: false,
+      error: false,
+      schemeName: data.name,
+      schemeId: data.id,
+      schemeBudget: data.scheme_budget,
+      launchDate: data.date_of_launching,
+      description: data.description,
+    })
+    console.log("this.state.scheme: ", this.state.scheme);
+
+  }
+
+  onValueChange = (e) => {
+    this.setState({
       [e.target.name]: e.target.value,
     });
   };
 
-  const onDescriptionChange = (e) => {
-    setValues({
-      ...values,
+  onDescriptionChange = (e) => {
+    console.log("e:", e);
+    this.setState({
       description: e,
     });
   };
 
-  const handleDateChange = (date) => {
+  handleDateChange = (date) => {
     const formattedDate = moment(date).format("YYYY-MM-DD");
 
     if (formattedDate < moment().format("YYYY-MM-DD")) {
-      setValues({
-        ...values,
+      this.setState({
         launchDate: moment().format("YYYY-MM-DD"),
       });
     } else {
-      setValues({
-        ...values,
+      this.setState({
         launchDate: formattedDate,
       });
     }
   };
 
-  const {
-    open,
-    schemeBudget,
-    schemeId,
-    schemeName,
-    launchDate,
-    description,
-    selectedDate,
-  } = values;
 
-  const requiredData = {
-    name: schemeName,
-    scheme_code: schemeId,
-    date_of_launching: launchDate,
-    description: description,
-    scheme_budget: schemeBudget,
-  };
 
-  const onSubmitData = () => {
-    const { slug } = scheme;
+
+  onSubmitData = () => {
+    const { slug } = this.state.scheme;
+    const requiredData = {
+      name: this.state.schemeName,
+      date_of_launching: this.state.launchDate,
+      description: this.state.description,
+      scheme_budget: this.state.schemeBudget,
+    };
     updateScheme(slug, requiredData);
-    setValues({
+    this.setState({
       open: false,
       error: false,
       schemeName: "",
@@ -154,128 +147,165 @@ export default function SelectScheme(props) {
     });
   };
 
-  const classes = useStyles();
+  theme = createMuiTheme({
+    palette: {
+      primary: green,
+    },
+  });
+  //const classes = useStyles();
 
-  return (
-    <React.Fragment>
-      <div style={{ paddingTop: "2rem" }}>
-        <CssBaseline />
-        <section style={{ paddingLeft: "10%" }}>
-          {/* Hero unit */}
-          <Container>
-            <div>
-              <Typography
-                component="div"
-                style={{
-                  fontWeight: "600",
-                  marginTop: "2rem",
-                  width: "90vh",
-                  height: "5vh",
-                  color: "black",
-                  borderBottom: `1px solid ${theme.palette.divider}`,
-                  marginBottom: "1rem",
-                }}
-                variant="h4"
-                align="left"
-                gutterBottom
-              >
-                <h2>Modify scheme</h2>
-              </Typography>
 
-              <form>
-                <div className={classes.my_form}></div>
-                <h6 className={classes.heading}>Scheme Name</h6>
-                <div className={classes.my_form}>
-                  <TextField
-                    className="form-box"
-                    label=""
-                    value={props.location.customNameData}
-                    id="outlined-size-small"
-                    placeholder="Enter scheme name"
-                    defaultValue=""
-                    variant="outlined"
-                    size="small"
-                    name="schemeName"
-                    value={schemeName}
-                    onChange={onValueChange}
-                  />
-                </div>
-
-                <h6 className={classes.heading}>Scheme ID</h6>
-                <div className={classes.my_form}>
-                  <TextField
-                    className="form-box"
-                    label=""
-                    id="outlined-size-small"
-                    placeholder="Enter Unique Id"
-                    defaultValue=""
-                    variant="outlined"
-                    size="small"
-                    name="schemeId"
-                    value={schemeId}
-                    onChange={onValueChange}
-                  />
-                </div>
-
-                <h6 className={classes.heading}>Scheme Budget</h6>
-                <div className={classes.my_form}>
-                  <TextField
-                    className="form-box"
-                    label=""
-                    placeholder="Enter Budget in crores"
-                    id="outlined-size-small"
-                    defaultValue=""
-                    variant="outlined"
-                    size="small"
-                    name="schemeBudget"
-                    value={schemeBudget}
-                    onChange={onValueChange}
-                  />
-                </div>
-
-                <h6 className={classes.heading}>Launch Date</h6>
-                <div>
-                  <CalenderDatePicker
-                    handleDateChange={handleDateChange}
-                    selectedDate={launchDate}
-                  />
-                </div>
-
-                <h6 className={classes.heading}>Description</h6>
-
-                <div>
-                  <MyEditor
-                    onDescriptionChange={onDescriptionChange}
-                    description={description}
-                    values={values}
-                  />
-                </div>
-
-                <div
+  render() {
+    console.log("this.state: ", this.state);
+    return (
+      <React.Fragment>
+        <div style={{ paddingTop: "2rem" }}>
+          <CssBaseline />
+          <section style={{ paddingLeft: "10%" }}>
+            {/* Hero unit */}
+            <Container>
+              <div>
+                <Typography
+                  component="div"
                   style={{
-                    padding: "15px 0",
+                    fontWeight: "600",
+                    marginTop: "2rem",
+                    width: "90vh",
+                    height: "5vh",
+                    color: "black",
+                    borderBottom: `1px solid ${this.theme.palette.divider}`,
+                    marginBottom: "1rem",
                   }}
+                  variant="h4"
+                  align="left"
+                  gutterBottom
                 >
-                  <Button
+                  <h2>Modify scheme</h2>
+                </Typography>
+
+                <form>
+                  <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyItems: "left",
+                    paddingBottom: "10px",
+                  }}></div>
+                  <h6 style={{
+                    color: "#E76829",
+                    fontWeight: "600",
+                    display: "flex",
+                    justifyItems: "left",
+                    paddingTop: "1rem",
+                  }}>Scheme Name</h6>
+                  <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyItems: "left",
+                    paddingBottom: "10px",
+                  }}>
+                    <TextField
+                      className="form-box"
+                      label=""
+                      value={this.props.location.customNameData}
+                      id="outlined-size-small"
+                      placeholder="Enter scheme name"
+                      defaultValue=""
+                      variant="outlined"
+                      size="small"
+                      name="schemeName"
+                      value={this.state.schemeName}
+                      onChange={this.onValueChange}
+                    />
+                  </div>
+
+
+
+                  <h6 style={{
+                    color: "#E76829",
+                    fontWeight: "600",
+                    display: "flex",
+                    justifyItems: "left",
+                    paddingTop: "1rem",
+                  }}>Scheme Budget (Cr)</h6>
+                  <div style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyItems: "left",
+                    paddingBottom: "10px",
+                  }}>
+                    <TextField
+                      className="form-box"
+                      label=""
+                      placeholder="Enter Budget in crores"
+                      id="outlined-size-small"
+                      defaultValue=""
+                      variant="outlined"
+                      size="small"
+                      name="schemeBudget"
+                      value={this.state.schemeBudget}
+                      onChange={this.onValueChange}
+                    />
+                  </div>
+
+                  <h6 style={{
+                    color: "#E76829",
+                    fontWeight: "600",
+                    display: "flex",
+                    justifyItems: "left",
+                    paddingTop: "1rem",
+                  }}>Launch Date</h6>
+                  <div>
+                    <CalenderDatePicker
+                      handleDateChange={this.handleDateChange}
+                      selectedDate={this.state.launchDate}
+                    />
+                  </div>
+
+                  <h6
                     style={{
+                      color: "#E76829",
+                      fontWeight: "600",
                       display: "flex",
-                      flexDirection: "row",
                       justifyItems: "left",
-                      backgroundColor: "#E76829",
-                      color: "white",
+                      paddingTop: "1rem",
+                    }}>Description</h6>
+
+                  <div>
+
+                    <ReactQuill value={this.state.description}
+                      onChange={this.onDescriptionChange}
+                    />
+                  </div>
+
+                  <div
+                    style={{
+                      padding: "15px 0",
                     }}
-                    variant="contained"
-                    className={classes.button}
-                    onClick={onSubmitData}
                   >
-                    Modify
-                  </Button>
-                </div>
-              </form>
-            </div>
-          </Container>
-        </section>
-      </div>
-    </React.Fragment>
-  );
+                    <Button
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyItems: "left",
+                        backgroundColor: "#E76829",
+                        color: "white",
+                      }}
+                      variant="contained"
+
+                      onClick={this.onSubmitData}
+                    >
+                      Modify
+                      </Button>
+                  </div>
+                </form>
+              </div>
+            </Container>
+          </section>
+        </div>
+      </React.Fragment>
+    );
+  }
+
 }
+
+export default SelectScheme;

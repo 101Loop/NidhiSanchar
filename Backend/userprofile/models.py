@@ -44,6 +44,37 @@ class UserProfile(TimeStampedModel):
         verbose_name=_("Profile Image"), null=True, blank=True, upload_to="users/"
     )
 
+    @property
+    def is_centre_user(self):
+        from department.models import CentreDepartment
+
+        return CentreDepartment.objects.filter(dept_poc=self.created_by).count() == 1
+
+    @property
+    def is_state_user(self):
+        from department.models import StateDepartment
+
+        return StateDepartment.objects.filter(dept_poc=self.created_by).count() == 1
+
+    @property
+    def dept_name(self):
+        from department.models import StateDepartment, CentreDepartment
+
+        if self.is_centre_user:
+            dept = (
+                CentreDepartment.objects.values_list("dept_name__name", flat=True)
+                .filter(dept_poc=self.created_by)
+                .first()
+            )
+            return dept
+        elif self.is_state_user:
+            dept = (
+                StateDepartment.objects.values_list("dept_name__name", flat=True)
+                .filter(dept_poc=self.created_by)
+                .first()
+            )
+            return dept
+
     def __str__(self) -> str:
         return self.created_by.name
 
