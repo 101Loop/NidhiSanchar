@@ -258,7 +258,7 @@ const SchemeTable = (props) => {
                         </TableCell>
 
                         <TableCell align="center">
-                          <image src={greendot} />
+                          <div style={{ color: "green" }}>active</div>
                         </TableCell>
                       </TableRow>
                     )
