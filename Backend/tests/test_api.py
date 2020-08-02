@@ -1,4 +1,9 @@
 from django.test import TestCase
+from mixer.backend.django import mixer
+
+from drf_user.models import User
+from department.models import DepartmentName, CentreDepartment, StateDepartment
+from department.serializers import CentreDepartmentSerializer, StateDepartmentSerializer
 
 USER_CREDENTIALS = {"username":"testuser", "password":"TestPassword123"}
 USER_RELATEDS = {
@@ -13,7 +18,8 @@ REGISTER_URL = "/api/user/register/"
 LOGIN_URL = "/api/user/login/"
 GET_USER_URL =  "/api/user/account/"
 LOGOUT_URL = "/api/user/logout/"
-
+GET_CENTRE_DEPARTMENT_URL = '/api/department/v1/center-department/'
+GET_STATE_DEPARTMENT_URL = '/api/department/v1/state-department/'
 #drf_user
 class TestUser(TestCase):
 
@@ -43,3 +49,62 @@ class TestUser(TestCase):
 
        self.assertEqual(logout_response.status_code, 200)
        self.assertEqual(logout_response.data['user'][0], 'Logout successfully.')
+
+#department
+class TestCentralDepartment(TestCase):
+
+    def setUp(self):
+        self.poc = User.objects.create_user(
+            username="testuser",
+            name="Test User",
+            password="TestPassword123",
+            email="test@gmail.com",
+            mobile="1234567890",
+        )
+        self.dept_name = DepartmentName.objects.create(name="Test Department")
+        self.centre_dept = CentreDepartment.objects.create(
+            dept_name=self.dept_name,
+            dept_poc=self.poc,
+            about="testing",
+        )
+
+    def test_get_dept_details(self):
+        login_response = self.client.post(LOGIN_URL, USER_CREDENTIALS)
+        auth = "Bearer {}".format(login_response.data['token'])
+        response = self.client.get(GET_CENTRE_DEPARTMENT_URL, HTTP_AUTHORIZATION=auth)
+        
+        department = CentreDepartment.objects.get(dept_name=self.dept_name)
+        serializer = CentreDepartmentSerializer(department)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data[0]['dept_name'], serializer.data['dept_name'])
+
+class TestStateDepartment(TestCase):
+
+    def setUp(self):
+        self.poc = User.objects.create_user(
+            username="testuser",
+            name="Test User",
+            password="TestPassword123",
+            email="test@gmail.com",
+            mobile="1234567890",
+        )
+        self.dept_name = DepartmentName.objects.create(name="Test Department")
+        self.centre_dept = StateDepartment.objects.create(
+            state='Uttar Pradesh',
+            dept_name=self.dept_name,
+            dept_poc=self.poc,
+            about="testing",
+        )
+
+    def test_get_dept_details(self):
+        login_response = self.client.post(LOGIN_URL, USER_CREDENTIALS)
+        auth = "Bearer {}".format(login_response.data['token'])
+        response = self.client.get(GET_STATE_DEPARTMENT_URL, HTTP_AUTHORIZATION=auth)
+        
+        department = StateDepartment.objects.get(dept_name=self.dept_name)
+        serializer = StateDepartmentSerializer(department)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data[0]['dept_name'], serializer.data['dept_name'])
+
