@@ -270,6 +270,7 @@ const SchemeTable = (props) => {
                 <TableCell align="right">Scheme ID</TableCell>
               </TableRow>
             </TableHead>
+
             <TableBody>
               {(rowsPerPage > 0
                 ? sortedData.slice(
