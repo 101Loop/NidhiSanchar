@@ -26,6 +26,10 @@ class CentreDepartmentSerializer(serializers.ModelSerializer):
             "name",
             "email",
             "mobile",
+            "total_schemes_created",
+            "total_fund_requests",
+            "total_scheme_discussions",
+            "total_requests_processed",
             "date_created",
             "date_updated",
         )
@@ -34,6 +38,10 @@ class CentreDepartmentSerializer(serializers.ModelSerializer):
             "dept_id",
             "dept_name",
             "about",
+            "total_schemes_created",
+            "total_fund_requests",
+            "total_scheme_discussions",
+            "total_requests_processed",
             "date_created",
             "date_updated",
         )
@@ -63,6 +71,10 @@ class StateDepartmentSerializer(serializers.ModelSerializer):
             "name",
             "email",
             "mobile",
+            "total_fund_requests_created",
+            "total_request_processed",
+            "total_requests_pending",
+            "total_scheme_discussions",
             "date_created",
             "date_updated",
         )
@@ -72,6 +84,10 @@ class StateDepartmentSerializer(serializers.ModelSerializer):
             "dept_name",
             "about",
             "state",
+            "total_fund_requests_created",
+            "total_request_processed",
+            "total_requests_pending",
+            "total_scheme_discussions",
             "date_created",
             "date_updated",
         )
