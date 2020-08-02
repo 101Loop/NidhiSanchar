@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "userprofile",
     "department",
     "schemes",
+    "discussions",
 ]
 
 # MIDDLEWARE
