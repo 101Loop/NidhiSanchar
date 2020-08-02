@@ -37,7 +37,7 @@ class RequestView extends Component {
   render() {
     const { schemes } = this.state;
     return (
-      <>{schemes ? <RequestList schemes={schemes} /> : <div>Loading</div>}</>
+      <div>{schemes.length !== 0 ? <RequestList schemes={schemes} /> : <div>Loading</div>}</div>
     );
   }
 }

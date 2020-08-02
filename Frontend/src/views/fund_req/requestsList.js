@@ -290,40 +290,41 @@ const SchemeRequestTable = (props) => {
               </TableHead>
               <TableBody>
                 {(rowsPerPage > 0
-                  ? sortedData.slice(
+                  ? schemes.slice(
                     page * rowsPerPage,
                     page * rowsPerPage + rowsPerPage
                   )
-                  : sortedData
+                  : schemes
                 ).map(
-                  (scheme) =>
-                    sortedData[scheme.id - 1].name
+                  (scheme) => {
+                    return scheme.name
                       .toLowerCase()
                       .includes(search.toLowerCase()) && (
-                      <TableRow key={scheme.name}>
-                        <TableCell align="left">{scheme.id}</TableCell>
-                        <TableCell align="left" component="th" scope="row">
-                          <div
-                            style={{ cursor: "pointer" }}
-                            onClick={() => handleSelectScheme(scheme)}
-                          >
-                            {scheme.name}
-                          </div>
-                        </TableCell>
-                        <TableCell align="left">
-                          {scheme.scheme_budget}
-                        </TableCell>
-                        <TableCell align="right">
-                          {scheme.date_of_launching}
-                        </TableCell>
-                        <TableCell align="right">
-                          {moment(scheme.date_updated).format("YYYY-MM-DD")}
-                        </TableCell>
-                        <TableCell align="center">
-                          <b>{scheme.id}</b>
-                        </TableCell>
-                      </TableRow>
-                    )
+                        <TableRow key={scheme.name}>
+                          <TableCell align="left">{scheme.id}</TableCell>
+                          <TableCell align="left" component="th" scope="row">
+                            <div
+                              style={{ cursor: "pointer" }}
+                              onClick={() => handleSelectScheme(scheme)}
+                            >
+                              {scheme.name}
+                            </div>
+                          </TableCell>
+                          <TableCell align="left">
+                            {scheme.scheme_budget}
+                          </TableCell>
+                          <TableCell align="right">
+                            {scheme.date_of_launching}
+                          </TableCell>
+                          <TableCell align="right">
+                            {moment(scheme.date_updated).format("YYYY-MM-DD")}
+                          </TableCell>
+                          <TableCell align="center">
+                            <b>{scheme.id}</b>
+                          </TableCell>
+                        </TableRow>
+                      )
+                  }
                 )}
                 {emptyRows > 0 && (
                   <TableRow style={{ height: 53 * emptyRows }}>
