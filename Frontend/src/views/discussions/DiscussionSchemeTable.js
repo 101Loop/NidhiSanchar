@@ -71,8 +71,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowRight />
         ) : (
-          <KeyboardArrowLeft />
-        )}
+            <KeyboardArrowLeft />
+          )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
@@ -82,8 +82,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowLeft />
         ) : (
-          <KeyboardArrowRight />
-        )}
+            <KeyboardArrowRight />
+          )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
@@ -120,6 +120,7 @@ const useStylesButton = makeStyles((theme) => ({
 }));
 
 const SchemeTable = (props) => {
+  console.log("props: ", props);
   const { schemes } = props;
   const [title, setTitle] = useState("title");
   const classes = useStyles2();
@@ -287,9 +288,9 @@ const SchemeTable = (props) => {
             <TableBody>
               {(rowsPerPage > 0
                 ? sortedData.slice(
-                    page * rowsPerPage,
-                    page * rowsPerPage + rowsPerPage
-                  )
+                  page * rowsPerPage,
+                  page * rowsPerPage + rowsPerPage
+                )
                 : sortedData
               ).map(
                 (scheme) =>
@@ -315,7 +316,7 @@ const SchemeTable = (props) => {
                       <TableCell align="right">
                         {moment(scheme.date_updated).format("YYYY-MM-DD")}
                       </TableCell>
-                      <TableCell align="right">{scheme.scheme_code}</TableCell>
+                      <TableCell align="right">{scheme.id}</TableCell>
                     </TableRow>
                   )
               )}
