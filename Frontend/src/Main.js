@@ -12,6 +12,8 @@ import Contact from "./views/contact";
 import Help from "./views/community";
 import RequestView from "./views/fund_req/RequestView";
 import SpecificHelp from "./views/help";
+import SingleSchemeRequestsView from "./views/fund_req/SingleSchemeRequestsView";
+
 
 const history = createBrowserHistory();
 
@@ -29,6 +31,10 @@ const Main = () => {
                 <Route path="/scheme-details/:slug" component={SchemeCentral} />{" "}
                 <Route path="/edit-scheme/:slug" component={SelectScheme} />{" "}
                 <Route path="/raise-req" component={RaiseRequest} />{" "}
+                <Route
+                    path="/all-requests/:slug"
+                    component={SingleSchemeRequestsView}
+                />{" "}
             </Switch>{" "}
         </div>
     );
