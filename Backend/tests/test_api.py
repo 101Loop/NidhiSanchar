@@ -1,6 +1,4 @@
-from django.test import TestCase, Client
-from rest_framework.test import APIClient
-from drf_user.models import User
+from django.test import TestCase
 
 USER_CREDENTIALS = {"username":"testuser", "password":"TestPassword123"}
 USER_RELATEDS = {
