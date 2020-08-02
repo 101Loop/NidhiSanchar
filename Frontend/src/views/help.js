@@ -8,6 +8,7 @@ import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 
 import { green } from "@material-ui/core/colors";
+import SchemeByState from "./scheme_by_state/scheme_by_state";
 
 const theme = createMuiTheme({
   palette: {
@@ -65,180 +66,188 @@ export default function SpecificHelp(props) {
   const classes = useStyles();
   const [currency, setCurrency] = React.useState("EUR");
   const [value, setValue] = React.useState("Controlled");
-  console.log("daata", props.location.customNameData);
+  console.log("daata", props.location.state.customNameData);
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
   };
 
-  return (
-    <React.Fragment>
-      <CssBaseline />
+  if (props.location.state.customNameData[0] !== "Propose a Scheme") {
+    return (
+      <React.Fragment>
+        <CssBaseline />
 
-      <section
-        style={{
-          paddingLeft: "10%",
-          paddingTop: "3rem",
-          paddingBottom: "2rem",
-        }}
-      >
-        {/* Hero unit */}
-        <Container>
-          <div>
-            <Typography
-              component="div"
-              style={{
-                fontWeight: "600",
-                marginTop: "3rem",
-                width: "90vh",
-                height: "7vh",
-                color: "black",
-                borderBottom: `1px solid ${theme.palette.divider}`,
-                marginBottom: "1rem",
-              }}
-              variant="h4"
-              align="left"
-              gutterBottom
-            >
-              Get help with Nidhi Sanchar
-            </Typography>
-
-            <form>
-              <h6 className={classes.heading}>From</h6>
-              <div className={classes.my_form}>
-                <TextField
-                  className="form-box"
-                  id="outlined-select-currency-native-size-small"
-                  select
-                  label=""
-                  value={currency}
-                  onChange={handleChange}
-                  size="small"
-                  SelectProps={{
-                    native: true,
-                  }}
-                  align="left"
-                  variant="outlined"
-                >
-                  {currencies.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </TextField>
-              </div>
-              <h6 className={classes.heading}>Account or Organization</h6>
-              <div className={classes.my_form}>
-                <TextField
-                  className="form-box"
-                  id="outlined-select-currency-native-size-small"
-                  select
-                  label=""
-                  size="small"
-                  value={currency}
-                  onChange={handleChange}
-                  SelectProps={{
-                    native: true,
-                  }}
-                  variant="outlined"
-                >
-                  {currencies.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </TextField>
-              </div>
-              <h6 className={classes.heading}>Subject</h6>
-              <div className={classes.my_form}>
-                <TextField
-                  className="form-box"
-                  label=""
-                  placeholder="Subject"
-                  value={props.location.customNameData}
-                  id="outlined-size-small"
-                  defaultValue=""
-                  variant="outlined"
-                  size="small"
-                />
-              </div>
-
-              <h6 className={classes.heading}>How Can we help ?</h6>
-
-              <div className={classes.my_form}>
-                <TextField
-                  className="form-box"
-                  style={{
-                    width: "70%",
-                  }}
-                  id="outlined-multiline-static"
-                  multiline
-                  rows={8}
-                  placeholder="Please tell us what exactly you want to accomplish"
-                  variant="outlined"
-                />
-              </div>
-
-              <div
+        <section
+          style={{
+            paddingLeft: "10%",
+            paddingTop: "3rem",
+            paddingBottom: "2rem",
+          }}
+        >
+          {/* Hero unit */}
+          <Container>
+            <div>
+              <Typography
+                component="div"
                 style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyItems: "left",
-                  paddingTop: "20px",
+                  fontWeight: "600",
+                  marginTop: "3rem",
+                  width: "90vh",
+                  height: "7vh",
+                  color: "black",
+                  borderBottom: `1px solid ${theme.palette.divider}`,
+                  marginBottom: "1rem",
                 }}
+                variant="h4"
+                align="left"
+                gutterBottom
               >
-                <div style={{ paddingRight: "20px" }}>
-                  <label htmlFor="contained-button-file">
-                    <Button
-                      variant="contained"
-                      color="default"
-                      component="span"
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyItems: "left",
-                      }}
-                    >
-                      Upload a screenshot or Doc
-                    </Button>
-                  </label>
-                </div>
-                <div>
-                  <input
-                    style={{
-                      display: "flex",
-                      height: "5vh",
+                Get help with Nidhi Sanchar
+              </Typography>
+
+              <form>
+                <h6 className={classes.heading}>From</h6>
+                <div className={classes.my_form}>
+                  <TextField
+                    className="form-box"
+                    id="outlined-select-currency-native-size-small"
+                    select
+                    label=""
+                    value={currency}
+                    onChange={handleChange}
+                    size="small"
+                    SelectProps={{
+                      native: true,
                     }}
-                    accept="image/file*"
-                    id="contained-button-file"
-                    multiple
-                    type="file"
+                    align="left"
+                    variant="outlined"
+                  >
+                    {currencies.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </TextField>
+                </div>
+                <h6 className={classes.heading}>Account or Organization</h6>
+                <div className={classes.my_form}>
+                  <TextField
+                    className="form-box"
+                    id="outlined-select-currency-native-size-small"
+                    select
+                    label=""
+                    size="small"
+                    value={currency}
+                    onChange={handleChange}
+                    SelectProps={{
+                      native: true,
+                    }}
+                    variant="outlined"
+                  >
+                    {currencies.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </TextField>
+                </div>
+                <h6 className={classes.heading}>Subject</h6>
+                <div className={classes.my_form}>
+                  <TextField
+                    className="form-box"
+                    label=""
+                    placeholder="Subject"
+                    value={props.location.customNameData}
+                    id="outlined-size-small"
+                    defaultValue=""
+                    variant="outlined"
+                    size="small"
                   />
                 </div>
-              </div>
-              <div
-                style={{
-                  paddingTop: "25px",
-                }}
-              >
-                <Button
+
+                <h6 className={classes.heading}>How Can we help ?</h6>
+
+                <div className={classes.my_form}>
+                  <TextField
+                    className="form-box"
+                    style={{
+                      width: "70%",
+                    }}
+                    id="outlined-multiline-static"
+                    multiline
+                    rows={8}
+                    placeholder="Please tell us what exactly you want to accomplish"
+                    variant="outlined"
+                  />
+                </div>
+
+                <div
                   style={{
                     display: "flex",
                     flexDirection: "row",
                     justifyItems: "left",
-                    backgroundColor: "#E76829",
-                    color: "white",
+                    paddingTop: "20px",
                   }}
-                  variant="contained"
-                  className={classes.button}
                 >
-                  Send Request
-                </Button>
-              </div>
-            </form>
-          </div>
-        </Container>
-      </section>
-    </React.Fragment>
-  );
+                  <div style={{ paddingRight: "20px" }}>
+                    <label htmlFor="contained-button-file">
+                      <Button
+                        variant="contained"
+                        color="default"
+                        component="span"
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyItems: "left",
+                        }}
+                      >
+                        Upload a screenshot or Doc
+                      </Button>
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      style={{
+                        display: "flex",
+                        height: "5vh",
+                      }}
+                      accept="image/file*"
+                      id="contained-button-file"
+                      multiple
+                      type="file"
+                    />
+                  </div>
+                </div>
+                <div
+                  style={{
+                    paddingTop: "25px",
+                  }}
+                >
+                  <Button
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyItems: "left",
+                      backgroundColor: "#E76829",
+                      color: "white",
+                    }}
+                    variant="contained"
+                    className={classes.button}
+                  >
+                    Send Request
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </Container>
+        </section>
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <div style={{ padding: "5rem" }}>
+        <SchemeByState />
+      </div>
+    );
+  }
 }
