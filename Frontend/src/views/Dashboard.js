@@ -13,41 +13,33 @@ class Dashboard extends Component {
       {
         department: "Agriculture",
         date: "27/05/2021",
+        description: `Provision for reduction of education cost of farmers who fall below poverty line`,
+        name: "Krishi Vikas ",
+      },
+      {
+        department: "Education",
+        date: "27/05/2021",
+        description: `coverage of larger area in the plan of providing free mid-day meal`,
+        name: "Mid Day Meal",
+      },
+      {
+        department: "Digitally Empowered Nation",
+        date: "04/05/2021",
+        description: `Promotion of Online Education and Interviews, cross-platform knowledge sharing and practical project building`,
+        name: "Green revolution",
+      },
+      {
+        department: "Agriculture",
+        date: "15/08/2021",
         description: `Adding to its digital troubles is Japan's vertically structured
           bureaucracy: each ministry as well as local governments, for instance,
         have developed`,
         name: "Green revolution",
       },
       {
-        department: "Agriculture",
-        date: "27/05/2021",
-        description: `Adding to its digital troubles is Japan's vertically structured
-          bureaucracy: each ministry as well as local governments, for instance,
-        have developed`,
-        name: "Green revolution",
-      },
-      {
-        department: "Agriculture",
-        date: "27/05/2021",
-        description: `Adding to its digital troubles is Japan's vertically structured
-          bureaucracy: each ministry as well as local governments, for instance,
-        have developed`,
-        name: "Green revolution",
-      },
-      {
-        department: "Agriculture",
-        date: "27/05/2021",
-        description: `Adding to its digital troubles is Japan's vertically structured
-          bureaucracy: each ministry as well as local governments, for instance,
-        have developed`,
-        name: "Green revolution",
-      },
-      {
-        department: "Agriculture",
-        date: "27/05/2021",
-        description: `Adding to its digital troubles is Japan's vertically structured
-          bureaucracy: each ministry as well as local governments, for instance,
-        have developed`,
+        department: "Infrastructure",
+        date: "26/05/2021",
+        description: `More employement for Government affiliated Universities construction`,
         name: "Green revolution",
       },
       {

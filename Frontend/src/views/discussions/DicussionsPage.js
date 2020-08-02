@@ -155,7 +155,7 @@ class Discussions extends React.Component {
             variant="h4"
             align="left"
           >
-            {}
+            Sukanya Samriddhi Yojana (SSY)
             <span style={{ color: "grey" }}>#21</span>
           </Typography>
           <div className="container p-0 m-0">
