@@ -13,7 +13,7 @@ class Dashboard extends Component {
       {
         department: "Agriculture",
         date: "27/05/2021",
-        description: `Provision for reduction of education cost of farmers who fall below poverty line`,
+        description: `Provision for reduction of education cost of farmers who fall below poverty line.This provision may be contibued to avail in case of the farmer's children as well with certain criteria taken care of`,
         name: "Krishi Vikas ",
       },
       {

@@ -10,7 +10,9 @@ const useStyles = makeStyles({
   root: {
     margin: "1rem 2rem 0rem 2rem ",
     padding: "1rem",
+    minWidth: "94%",
     maxWidth: "100%",
+
     textAlign: "initial",
     borderRadius: "11px",
     background: "#F7F8F9",
