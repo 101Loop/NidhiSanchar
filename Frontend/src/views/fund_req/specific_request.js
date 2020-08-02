@@ -27,6 +27,8 @@ import { Typography } from "@material-ui/core";
 import { Collapse } from "react-bootstrap";
 import Container from "@material-ui/core/Container";
 import moment from "moment";
+import greendot from "../../assets/greendot.png";
+import reddot from "../../assets/reddot.png";
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -256,14 +258,7 @@ const SchemeTable = (props) => {
                         </TableCell>
 
                         <TableCell align="center">
-                          <a
-                            onClick={() => {
-                              //handleRoute3(row.name);
-                            }}
-                            style={{ color: "blue", cursor: "pointer" }}
-                          >
-                            Check Status
-                          </a>
+                          <image src={greendot} />
                         </TableCell>
                       </TableRow>
                     )

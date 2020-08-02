@@ -120,7 +120,6 @@ const useStylesButton = makeStyles((theme) => ({
 }));
 
 const SchemeTable = (props) => {
-  console.log("props: ", props);
   const { schemes } = props;
   const [title, setTitle] = useState("title");
   const classes = useStyles2();
@@ -143,7 +142,7 @@ const SchemeTable = (props) => {
   const handleRoute = (scheme) => {
     const { slug } = scheme;
     history.push({
-      pathname: `scheme-details/${slug}`,
+      pathname: `discussion/${slug}`,
       scheme: scheme,
     });
   };
@@ -210,8 +209,23 @@ const SchemeTable = (props) => {
         variant="h3"
         align="center"
       >
-        All Schemes
+        Discussions
       </Typography>
+      <Container
+        style={{ paddingTop: "1rem" }}
+        maxWidth="lg"
+        component="main"
+        className={classes.heroContent}
+      >
+        <Typography
+          style={{ color: "#24292e" }}
+          component="h6"
+          variant="h5"
+          align="center"
+        >
+          Select a scheme to see all the Discussions
+        </Typography>
+      </Container>
 
       <div style={{}}>
         <div
@@ -249,7 +263,7 @@ const SchemeTable = (props) => {
                   }}
                   align="right"
                 >
-                  <div style={{ cursor: "pointer" }}>Budget (Cr.)</div>
+                  <div style={{ cursor: "pointer" }}>Budget (Rs.)</div>
                 </TableCell>
                 <TableCell
                   onClick={() => {
@@ -270,7 +284,6 @@ const SchemeTable = (props) => {
                 <TableCell align="right">Scheme ID</TableCell>
               </TableRow>
             </TableHead>
-
             <TableBody>
               {(rowsPerPage > 0
                 ? sortedData.slice(
@@ -302,7 +315,7 @@ const SchemeTable = (props) => {
                       <TableCell align="right">
                         {moment(scheme.date_updated).format("YYYY-MM-DD")}
                       </TableCell>
-                      <TableCell align="right">{scheme.id}</TableCell>
+                      <TableCell align="right">{scheme.scheme_code}</TableCell>
                     </TableRow>
                   )
               )}

@@ -38,12 +38,8 @@ class SchemeView extends Component {
   render() {
     const { schemes } = this.state;
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            {schemes ? <SchemeTable schemes={schemes} /> : <div>Loading</div>}
-          </div>
-        </div>
+      <div style={{ paddingLeft: "5rem", paddingRight: "5rem" }}>
+        {schemes ? <SchemeTable schemes={schemes} /> : <div>Loading</div>}
 
         <AddSchemeModal />
       </div>

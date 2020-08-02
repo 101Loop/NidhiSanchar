@@ -160,13 +160,14 @@ class FundRequestCreateAPIView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         user = self.request.user
-        try:
-            dept = StateDepartment.objects.get(dept_poc=user)
-        except StateDepartment.DoesNotExist:
-            raise ValidationError("You are not authorized to perform this action.")
 
         if is_state_user(user):
-            serializer.save(created_by=dept)
+            try:
+                dept = StateDepartment.objects.get(dept_poc=user)
+            except StateDepartment.DoesNotExist:
+                raise ValidationError("You are not authorized to perform this action.")
+            else:
+                serializer.save(created_by=dept)
         else:
             raise ValidationError("You are not authorized to perform this action.")
 

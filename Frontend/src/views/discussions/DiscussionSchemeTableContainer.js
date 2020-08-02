@@ -3,15 +3,14 @@ import Fab from "@material-ui/core/Fab";
 import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
 import React, { Component, useEffect, useState } from "react";
-import RequestList from "./requestsList";
-import { getFundRequests } from "../../core_api_calls/requests";
-import SpecificRequest from "./specific_request";
+import DiscussionSchemeTable from "./DiscussionSchemeTable";
+import { getSchemes } from "../../core_api_calls/schemes";
 
-class SingleSchemeRequestView extends Component {
+class SchemeView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fundRequests: [],
+      schemes: [],
     };
   }
 
@@ -19,14 +18,14 @@ class SingleSchemeRequestView extends Component {
     this.preload();
   }
 
-  preload = () => {
-    getFundRequests()
+  preload = (pageNo) => {
+    getSchemes(pageNo)
       .then((response) => {
         if (response.status > 300) {
           throw new Error("An error occured");
         } else {
           this.setState({
-            fundRequests: response.data,
+            schemes: response.data,
           });
         }
       })
@@ -36,11 +35,11 @@ class SingleSchemeRequestView extends Component {
   };
 
   render() {
-    const { fundRequests } = this.state;
+    const { schemes } = this.state;
     return (
-      <div>
-        {fundRequests ? (
-          <SpecificRequest fundRequests={fundRequests} />
+      <div style={{ paddingLeft: "5rem", paddingRight: "5rem" }}>
+        {schemes ? (
+          <DiscussionSchemeTable schemes={schemes} />
         ) : (
           <div>Loading</div>
         )}
@@ -49,4 +48,4 @@ class SingleSchemeRequestView extends Component {
   }
 }
 
-export default SingleSchemeRequestView;
+export default SchemeView;

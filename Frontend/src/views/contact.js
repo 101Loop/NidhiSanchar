@@ -12,7 +12,16 @@ import { withStyles } from "@material-ui/core/styles";
 import { blue, blueGrey, lightBlue } from "@material-ui/core/colors";
 import LiveHelpIcon from "@material-ui/icons/LiveHelp";
 import { Redirect, useHistory, Link } from "react-router-dom";
-
+import CreateIcon from "@material-ui/icons/Create";
+import WifiTetheringIcon from "@material-ui/icons/WifiTethering";
+import RefreshIcon from "@material-ui/icons/Refresh";
+import ReportIcon from "@material-ui/icons/Report";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import PermIdentityIcon from "@material-ui/icons/PermIdentity";
+import CancelScheduleSendIcon from "@material-ui/icons/CancelScheduleSend";
+import SmsFailedIcon from "@material-ui/icons/SmsFailed";
+import ExtensionIcon from "@material-ui/icons/Extension";
+import { Icon } from "@material-ui/core";
 
 const ColorButton = withStyles((theme) => ({
   root: {
@@ -83,31 +92,40 @@ const useStyles = makeStyles((theme) => ({
 
 const tiers = [
   {
-    description: ["Payment Issue"],
+    description: ["Create Scheme Issue"],
+    icon: "CreateIcon",
   },
   {
     description: ["Connection Problem"],
+    icon: "WifiTetheringIcon",
   },
   {
-    description: ["Suggestion Post failure"],
+    description: ["Fund Approval Issue"],
+    icon: "CancelScheduleSendIcon",
   },
   {
     description: ["Feed Refresh "],
+    icon: { RefreshIcon },
   },
   {
-    description: ["Fund Request Issue"],
+    description: ["Comment Issue"],
+    icon: { SmsFailedIcon },
   },
   {
     description: ["Report Spam"],
+    icon: { ReportIcon },
   },
   {
     description: ["Authentication Issues"],
+    icon: { PermIdentityIcon },
   },
   {
     description: ["Account info problem"],
+    icon: { AccountCircleIcon },
   },
   {
     description: ["Nidhi sanchar Extensions"],
+    icon: { ExtensionIcon },
   },
 ];
 
@@ -179,35 +197,17 @@ export default function Support() {
             <Grid container spacing={3} alignItems="flex-end">
               {tiers.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
-                <Grid
-                  item
-                  key={tier.title}
-                  xs={12}
-                  sm={tier.title === "Enterprise" ? 12 : 6}
-                  md={4}
-                >
+
+                <Grid item xs={12} md={4}>
                   <Card
                     className={classes.my_card}
                     onClick={() => handleRoute(tier.description)}
                   >
                     <CardContent className="classes.my_card_">
-                      <div className={classes.cardPricing}>
-                        <Typography variant="h6" color="textSecondary">
-                          <LiveHelpIcon />
-                        </Typography>
+                      <div style={{ paddingBottom: "1rem", fontSize: "17px" }}>
+                        {tier.description}
                       </div>
-                      <ul>
-                        {tier.description.map((line) => (
-                          <Typography
-                            component="li"
-                            variant="subtitle1"
-                            align="center"
-                            key={line}
-                          >
-                            {line}
-                          </Typography>
-                        ))}
-                      </ul>
+                      <LiveHelpIcon />
                     </CardContent>
                   </Card>
                 </Grid>
@@ -254,9 +254,7 @@ export default function Support() {
             </Container>
           </div>
         </div>
-        <div className="bot">
-
-        </div>
+        <div className="bot"></div>
       </section>
     </React.Fragment>
   );

@@ -111,3 +111,76 @@ class FundRequest(TimeStampedModel):
         verbose_name = _("Fund Request")
         verbose_name_plural = _("Fund Requests")
         unique_together = ["scheme", "created_by"]
+
+
+# Schemes Created by State and Asks for Fund Request
+
+
+class SchemeFundRequest(TimeStampedModel):
+    """
+    Scheme Fund Request by State Dept
+
+    Notes
+    -----
+    - This will be created by State and status will be updated by Centre
+    """
+
+    NEW = "N"
+    IN_PROCESS = "IP"
+    DISBURSED = "D"
+    REJECTED = "R"
+    REQUEST_STATUS = [
+        (NEW, "New"),
+        (IN_PROCESS, "In Process"),
+        (REJECTED, "Rejected"),
+        (DISBURSED, "Disbursed"),
+    ]
+
+    created_by = models.ForeignKey(
+        to=StateDepartment,
+        on_delete=models.PROTECT,
+        verbose_name=_("Which department created this scheme"),
+    )
+    name = models.CharField(
+        help_text=_("Name of the Scheme"), verbose_name=_("Scheme Name"), max_length=255
+    )
+    date_of_launching = models.DateField(
+        help_text=_("When the scheme will be launched"),
+        verbose_name=_("Date of Launching"),
+    )
+    description = models.TextField(verbose_name=_("Scheme Description"))
+    document = models.FileField(
+        verbose_name=_("Proposal Document"),
+        upload_to="proposals/",
+        validators=[validate_file_extension, file_size],
+        blank=True,
+        null=True,
+    )
+    funds_required = models.DecimalField(
+        verbose_name=_("Total Funds required for the Scheme(in cr.)"),
+        max_digits=25,
+        decimal_places=2,
+        validators=[MinValueValidator(0.00)],
+    )
+    status = models.CharField(
+        verbose_name=_("Status of the Request"),
+        choices=REQUEST_STATUS,
+        default=NEW,
+        max_length=15,
+        blank=True,
+        null=True,
+    )
+    comments = models.TextField(
+        verbose_name=_(
+            "Comments will be added by centre/state officials regarding this scheme."
+        ),
+        null=True,
+        blank=True,
+    )
+
+    def __str__(self):
+        return self.created_by.dept_name.name + "|" + self.name
+
+    class Meta:
+        verbose_name = _("Scheme Fund Request By State")
+        verbose_name_plural = _("Scheme Fund Requests By State")
