@@ -71,8 +71,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowRight />
         ) : (
-          <KeyboardArrowLeft />
-        )}
+            <KeyboardArrowLeft />
+          )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
@@ -82,8 +82,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowLeft />
         ) : (
-          <KeyboardArrowRight />
-        )}
+            <KeyboardArrowRight />
+          )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
@@ -213,6 +213,22 @@ const SchemeTable = (props) => {
         All Schemes
       </Typography>
 
+      <Container
+        style={{ paddingTop: "1rem" }}
+        maxWidth="lg"
+        component="main"
+        className={classes.heroContent}
+      >
+        <Typography
+          style={{ color: "#24292e" }}
+          component="h6"
+          variant="h5"
+          align="center"
+        >
+          Select a scheme to see all details
+      </Typography>
+      </Container>
+
       <div style={{}}>
         <div
           className="scheme-search"
@@ -273,14 +289,14 @@ const SchemeTable = (props) => {
 
             <TableBody>
               {(rowsPerPage > 0
-                ? sortedData.slice(
-                    page * rowsPerPage,
-                    page * rowsPerPage + rowsPerPage
-                  )
-                : sortedData
+                ? schemes.slice(
+                  page * rowsPerPage,
+                  page * rowsPerPage + rowsPerPage
+                )
+                : schemes
               ).map(
                 (scheme) =>
-                  schemes[scheme.id - 1].name
+                  scheme.name
                     .toLowerCase()
                     .includes(search.toLowerCase()) && (
                     <TableRow key={scheme.name}>

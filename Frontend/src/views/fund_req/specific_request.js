@@ -243,19 +243,14 @@ const SchemeTable = (props) => {
               </TableHead>
               {fundRequests &&
                 <TableBody>
-                  {(rowsPerPage > 0
-                    ? sortedData.slice(
-                      page * rowsPerPage,
-                      page * rowsPerPage + rowsPerPage
-                    )
-                    : sortedData
+                  {(fundRequests
                   ).map(
                     (request) => {
                       //console.log("REQUEST: ", request);
                       //console.log("sortedData: ", sortedData);
-                      console.log("request.id: ", request.id);
-                      console.log("sortedData[request.id -1].created_by.state: ", sortedData[request.id - 1].created_by.state);
-                      return sortedData[request.id - 1].created_by.state
+                      // console.log("request.id: ", request.id);
+                      // console.log("sortedData[request.id -1].created_by.state: ", sortedData[request.id - 1].created_by.state);
+                      return request.created_by.state
                         .toLowerCase()
                         .includes(search.toLowerCase()) && (
                           <TableRow key={request.id}>
@@ -272,6 +267,7 @@ const SchemeTable = (props) => {
                             </TableCell>
                           </TableRow>
                         )
+
                     }
 
                   )}
