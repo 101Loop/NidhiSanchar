@@ -10,6 +10,7 @@ import SchemeCentral from "./views/Schemes/Scheme";
 import SchemeView from "./views/Schemes/SchemeView";
 import Contact from "./views/contact";
 import Help from "./views/community";
+import RequestView from "./views/fund_req/RequestView";
 import SpecificHelp from "./views/help";
 
 const history = createBrowserHistory();
@@ -22,6 +23,7 @@ const Main = () => {
                 <PrivateRoute path="/contact" component={Contact} />{" "}
                 <PrivateRoute path="/help" component={Help} />{" "}
                 <PrivateRoute path="/dashboard" component={Dashboard} />{" "}
+                <PrivateRoute path="/request-list" component={RequestView} />{" "}
                 <Route path="/schemes" component={SchemeView} />
                 <Route path="/shelp/" component={SpecificHelp} />
                 <Route path="/scheme-details/:slug" component={SchemeCentral} />{" "}
