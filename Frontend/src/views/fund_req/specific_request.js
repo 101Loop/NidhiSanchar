@@ -75,8 +75,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowRight />
         ) : (
-          <KeyboardArrowLeft />
-        )}
+            <KeyboardArrowLeft />
+          )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
@@ -86,8 +86,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowLeft />
         ) : (
-          <KeyboardArrowRight />
-        )}
+            <KeyboardArrowRight />
+          )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
@@ -123,13 +123,11 @@ const useStylesButton = makeStyles((theme) => ({
 }));
 
 const SchemeTable = (props) => {
+  console.log("props: ", props);
   const { fundRequests } = props;
-  console.log("fundRequests: ", fundRequests);
+  //console.log("props: ", props);
+  //console.log("fundRequests: ", fundRequests);
   //const classes = useStyles();
-  const [title, setTitle] = useState("title");
-  const [date, setDate] = useState("title");
-  const [updated, setUpdated] = useState("title");
-  const [temp, setTemp] = useState("title");
   const classes = useStyles2();
   const buttonStyleClass = useStylesButton();
   const [page, setPage] = React.useState(0);
@@ -163,11 +161,18 @@ const SchemeTable = (props) => {
     setSortColumn({ path, order: "asc" });
   };
 
-  const sortedData = _.orderBy(
-    fundRequests,
-    [sortColumn.path],
-    [sortColumn.order]
-  );
+  var sortedData = null;
+  if (fundRequests) {
+    console.log("INside if");
+    sortedData = _.orderBy(
+      fundRequests,
+      [sortColumn.path],
+      [sortColumn.order]
+    );
+  }
+
+
+
 
   return (
     <Fragment>
@@ -236,39 +241,44 @@ const SchemeTable = (props) => {
                   </TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
-                {(rowsPerPage > 0
-                  ? sortedData.slice(
-                      page * rowsPerPage,
-                      page * rowsPerPage + rowsPerPage
-                    )
-                  : sortedData
-                ).map(
-                  (request) =>
-                    sortedData[request.id - 1].created_by.state
-                      .toLowerCase()
-                      .includes(search.toLowerCase()) && (
-                      <TableRow key={request.id}>
-                        <TableCell align="left">{request.id}</TableCell>
-                        <TableCell align="left" component="th" scope="row">
-                          <div>{request.created_by.state}</div>
-                        </TableCell>
-                        <TableCell align="center">
-                          {moment(request.date_created).format("YYYY-MM-DD")}
-                        </TableCell>
+              {fundRequests &&
+                <TableBody>
+                  {(fundRequests
+                  ).map(
+                    (request) => {
+                      //console.log("REQUEST: ", request);
+                      //console.log("sortedData: ", sortedData);
+                      // console.log("request.id: ", request.id);
+                      // console.log("sortedData[request.id -1].created_by.state: ", sortedData[request.id - 1].created_by.state);
+                      return request.created_by.state
+                        .toLowerCase()
+                        .includes(search.toLowerCase()) && (
+                          <TableRow key={request.id}>
+                            <TableCell align="left">{request.id}</TableCell>
+                            <TableCell align="left" component="th" scope="row">
+                              <div>{request.created_by.state}</div>
+                            </TableCell>
+                            <TableCell align="center">
+                              {moment(request.date_created).format("YYYY-MM-DD")}
+                            </TableCell>
 
-                        <TableCell align="center">
-                          <div style={{ color: "green" }}>active</div>
-                        </TableCell>
-                      </TableRow>
-                    )
-                )}
-                {emptyRows > 0 && (
-                  <TableRow style={{ height: 53 * emptyRows }}>
-                    <TableCell colSpan={6} />
-                  </TableRow>
-                )}
-              </TableBody>
+                            <TableCell align="center">
+                              <div style={{ color: "green" }}>active</div>
+                            </TableCell>
+                          </TableRow>
+                        )
+
+                    }
+
+                  )}
+                  {emptyRows > 0 && (
+                    <TableRow style={{ height: 53 * emptyRows }}>
+                      <TableCell colSpan={6} />
+                    </TableRow>
+                  )}
+                </TableBody>
+              }
+
               <TableFooter>
                 <TableRow>
                   <TablePagination

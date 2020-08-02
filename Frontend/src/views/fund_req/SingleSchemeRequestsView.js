@@ -19,31 +19,36 @@ class SingleSchemeRequestView extends Component {
     this.preload();
   }
 
-  preload = () => {
-    getFundRequests()
-      .then((response) => {
-        if (response.status > 300) {
-          throw new Error("An error occured");
-        } else {
-          this.setState({
-            fundRequests: response.data,
-          });
-        }
-      })
-      .catch((err) => {
-        console.log("error: ", err);
-      });
+  async preload() {
+    const response = await getFundRequests();
+    this.setState({
+      fundRequests: response.data,
+    });
+
+    // .then((response) => {
+    //   if (response.status > 300) {
+    //     throw new Error("An error occured");
+    //   } else {
+    //     this.setState({
+    //       fundRequests: response.data,
+    //     });
+    //   }
+    // })
+    // .catch((err) => {
+    //   console.log("error: ", err);
+    // });
   };
 
   render() {
     const { fundRequests } = this.state;
+    console.log("FUND REQUESTS: ", fundRequests);
     return (
       <div>
-        {fundRequests ? (
+        {fundRequests.length !== 0 ? (
           <SpecificRequest fundRequests={fundRequests} />
         ) : (
-          <div>Loading</div>
-        )}
+            <div>Loading</div>
+          )}
       </div>
     );
   }

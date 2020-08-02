@@ -38,11 +38,11 @@ class SchemeView extends Component {
     const { schemes } = this.state;
     return (
       <div style={{ paddingLeft: "5rem", paddingRight: "5rem" }}>
-        {schemes ? (
+        {schemes.length !== 0 ? (
           <DiscussionSchemeTable schemes={schemes} />
         ) : (
-          <div>Loading</div>
-        )}
+            <div>Loading</div>
+          )}
       </div>
     );
   }

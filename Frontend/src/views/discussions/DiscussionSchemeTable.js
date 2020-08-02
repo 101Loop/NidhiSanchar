@@ -71,8 +71,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowRight />
         ) : (
-          <KeyboardArrowLeft />
-        )}
+            <KeyboardArrowLeft />
+          )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
@@ -82,8 +82,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowLeft />
         ) : (
-          <KeyboardArrowRight />
-        )}
+            <KeyboardArrowRight />
+          )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
@@ -120,6 +120,7 @@ const useStylesButton = makeStyles((theme) => ({
 }));
 
 const SchemeTable = (props) => {
+  console.log("props: ", props);
   const { schemes } = props;
   const [title, setTitle] = useState("title");
   const classes = useStyles2();
@@ -286,38 +287,39 @@ const SchemeTable = (props) => {
             </TableHead>
             <TableBody>
               {(rowsPerPage > 0
-                ? sortedData.slice(
-                    page * rowsPerPage,
-                    page * rowsPerPage + rowsPerPage
-                  )
-                : sortedData
+                ? schemes.slice(
+                  page * rowsPerPage,
+                  page * rowsPerPage + rowsPerPage
+                )
+                : schemes
               ).map(
-                (scheme) =>
-                  schemes[scheme.id - 1].name
+                (scheme) => {
+                  return scheme.name
                     .toLowerCase()
                     .includes(search.toLowerCase()) && (
-                    <TableRow key={scheme.name}>
-                      <TableCell>{scheme.id}</TableCell>
-                      <TableCell align="left" component="th" scope="row">
-                        <div
-                          style={{ cursor: "pointer" }}
-                          onClick={() => handleSelectScheme(scheme)}
-                        >
-                          {scheme.name}
-                        </div>
-                      </TableCell>
-                      <TableCell align="right">
-                        {scheme.scheme_budget}
-                      </TableCell>
-                      <TableCell align="right">
-                        {scheme.date_of_launching}
-                      </TableCell>
-                      <TableCell align="right">
-                        {moment(scheme.date_updated).format("YYYY-MM-DD")}
-                      </TableCell>
-                      <TableCell align="right">{scheme.scheme_code}</TableCell>
-                    </TableRow>
-                  )
+                      <TableRow key={scheme.name}>
+                        <TableCell>{scheme.id}</TableCell>
+                        <TableCell align="left" component="th" scope="row">
+                          <div
+                            style={{ cursor: "pointer" }}
+                            onClick={() => handleSelectScheme(scheme)}
+                          >
+                            {scheme.name}
+                          </div>
+                        </TableCell>
+                        <TableCell align="right">
+                          {scheme.scheme_budget}
+                        </TableCell>
+                        <TableCell align="right">
+                          {scheme.date_of_launching}
+                        </TableCell>
+                        <TableCell align="right">
+                          {moment(scheme.date_updated).format("YYYY-MM-DD")}
+                        </TableCell>
+                        <TableCell align="right">{scheme.id}</TableCell>
+                      </TableRow>
+                    )
+                }
               )}
 
               {emptyRows > 0 && (
