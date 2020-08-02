@@ -22,7 +22,7 @@ export const login = (e, data) => {
             console.log("key: ", key);
 
             if (isAuthenticated()) {
-                history.push("/schemes");
+                history.push("/dashboard");
             }
             return response;
         })

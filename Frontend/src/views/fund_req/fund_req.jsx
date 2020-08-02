@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -8,6 +8,8 @@ import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import MyEditor from "../add_scheme/editor";
 import { green } from "@material-ui/core/colors";
+import { createFundRequest } from "../../core_api_calls/requests"
+import { getSchemeBySlug } from "../../core_api_calls/schemes"
 
 const theme = createMuiTheme({
   palette: {
@@ -69,13 +71,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RaiseRequest(props) {
+  console.log("props: ", props);
   const classes = useStyles();
-  const [currency, setCurrency] = React.useState("EUR");
-  const [value, setValue] = React.useState("Controlled");
-
-  const handleChange = (event) => {
-    setCurrency(event.target.value);
+  const [scheme, setScheme] = useState();
+  console.log("scheme: ", scheme);
+  const preload = (slug) => {
+    getSchemeBySlug(slug).then((response) => {
+      if (response > 300) {
+        throw new Error("An error");
+      } else {
+        setScheme(response.data);
+      }
+    });
   };
+
+  useEffect(() => {
+    preload(props.match.params.slug);
+  }, []);
 
   return (
     <React.Fragment>
@@ -104,12 +116,7 @@ export default function RaiseRequest(props) {
             </Typography>
 
             <form>
-              <div style={{ display: "flex" }}>
-                <h4 className={classes.heading}>Scheme : </h4>
-                <div style={{ paddingTop: "1.3%", paddingLeft: "1%" }}>
-                  <h4>{props.location.customNameData}</h4>
-                </div>
-              </div>
+
 
               <h5 className={classes.heading}>Fund Amount(in Cr):</h5>
               <div className={classes.my_form}>
@@ -125,7 +132,7 @@ export default function RaiseRequest(props) {
                 />
               </div>
 
-              <h5 className={classes.heading}>Add Description :</h5>
+              <h5 className={classes.heading}>Add Description </h5>
 
               <div>
                 <MyEditor />

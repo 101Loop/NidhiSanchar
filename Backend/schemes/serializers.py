@@ -62,10 +62,7 @@ class FundRequestCreateSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         user = self.context["request"].user
-        try:
-            dept = StateDepartment.objects.get(dept_poc=user)
-        except StateDepartment.DoesNotExist:
-            pass
+        dept = StateDepartment.objects.get(dept_poc=user)
         try:
             FundRequest.objects.get(scheme=attrs["scheme"], created_by=dept)
         except FundRequest.DoesNotExist:

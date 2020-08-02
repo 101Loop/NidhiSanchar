@@ -37,13 +37,7 @@ class RequestView extends Component {
   render() {
     const { schemes } = this.state;
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            {schemes ? <RequestList schemes={schemes} /> : <div>Loading</div>}
-          </div>
-        </div>
-      </div>
+      <>{schemes ? <RequestList schemes={schemes} /> : <div>Loading</div>}</>
     );
   }
 }

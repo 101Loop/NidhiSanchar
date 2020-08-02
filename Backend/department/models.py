@@ -82,6 +82,38 @@ class CentreDepartment(TimeStampedModel):
                 }
             )
 
+    @property
+    def total_schemes_created(self):
+        return self.scheme_set.count()
+
+    @property
+    def total_fund_requests(self):
+        from schemes.models import FundRequest
+
+        fund_request = FundRequest.objects.filter(
+            scheme__created_by__dept_name=self.dept_name
+        ).count()
+        return fund_request
+
+    @property
+    def total_scheme_discussions(self):
+        from discussions.models import SchemeDiscussion
+
+        scheme_discussion = SchemeDiscussion.objects.filter(
+            parent_scheme__created_by__dept_name=self.dept_name
+        ).count()
+        return scheme_discussion
+
+    @property
+    def total_requests_processed(self):
+        from schemes.models import FundRequest
+
+        requests = FundRequest.objects.filter(
+            scheme__created_by__dept_name=self.dept_name
+        )
+        total_requests = requests.exclude(status="N").count()
+        return total_requests
+
     class Meta:
         verbose_name = _("Centre Department")
         verbose_name_plural = _("Centre Departments")
@@ -136,6 +168,38 @@ class StateDepartment(TimeStampedModel):
                     ),
                 }
             )
+
+    @property
+    def total_fund_requests_created(self):
+        from schemes.models import FundRequest
+
+        request = FundRequest.objects.filter(created_by=self).count()
+        return request
+
+    @property
+    def total_request_processed(self):
+        from schemes.models import FundRequest
+
+        total_request = FundRequest.objects.filter(created_by=self)
+        processed = total_request.filter(status__in=["D", "R"]).count()
+        return processed
+
+    @property
+    def total_requests_pending(self):
+        from schemes.models import FundRequest
+
+        total_request = FundRequest.objects.filter(created_by=self)
+        pending = total_request.filter(status__in=["N", "IP"]).count()
+        return pending
+
+    @property
+    def total_scheme_discussions(self):
+        from discussions.models import SchemeDiscussion
+
+        scheme_discussion = SchemeDiscussion.objects.filter(
+            parent_scheme__created_by__dept_name=self.dept_name
+        ).count()
+        return scheme_discussion
 
     class Meta:
         verbose_name = _("State Department")

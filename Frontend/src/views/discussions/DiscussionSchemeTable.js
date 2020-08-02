@@ -209,10 +209,25 @@ const SchemeTable = (props) => {
         variant="h3"
         align="center"
       >
-        All Schemes
+        Discussions
       </Typography>
+      <Container
+        style={{ paddingTop: "1rem" }}
+        maxWidth="lg"
+        component="main"
+        className={classes.heroContent}
+      >
+        <Typography
+          style={{ color: "#24292e" }}
+          component="h6"
+          variant="h5"
+          align="center"
+        >
+          Select a scheme to see all the Discussions
+        </Typography>
+      </Container>
 
-      <div style={{ padding: "0rem 5rem 1rem 5rem" }}>
+      <div style={{}}>
         <div
           className="scheme-search"
           style={{

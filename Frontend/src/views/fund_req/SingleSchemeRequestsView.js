@@ -38,16 +38,12 @@ class SingleSchemeRequestView extends Component {
   render() {
     const { fundRequests } = this.state;
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            {fundRequests ? (
-              <SpecificRequest fundRequests={fundRequests} />
-            ) : (
-              <div>Loading</div>
-            )}
-          </div>
-        </div>
+      <div>
+        {fundRequests ? (
+          <SpecificRequest fundRequests={fundRequests} />
+        ) : (
+          <div>Loading</div>
+        )}
       </div>
     );
   }
