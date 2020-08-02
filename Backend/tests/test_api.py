@@ -148,7 +148,9 @@ class TestSchemes(TestCase):
         response = self.client.post(CREATE_SCHEME_URL, DUMMY_SCHEME, HTTP_AUTHORIZATION=auth)
 
         self.assertEqual(response.status_code, 201)
+    
     #To check schemes can be created simuntanously by same department
+    #For now reponse is bad request
 '''
         DUMMY_SCHEME['name'] = "Happy Scheme"
         response = self.client.post(CREATE_SCHEME_URL, DUMMY_SCHEME, HTTP_AUTHORIZATION=auth)
