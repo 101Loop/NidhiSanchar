@@ -19,7 +19,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
         read_only_fields = (
             "id",
             "is_state_user",
-            "is_center_user",
+            "is_centre_user",
             "dept_name",
             "date_created",
             "date_updated",
