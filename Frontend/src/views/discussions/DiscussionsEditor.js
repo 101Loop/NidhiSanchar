@@ -20,8 +20,8 @@ class DEditor extends React.Component {
       <ReactQuill
         theme="snow"
         className="d-editor__editor mb-1"
-        value={this.state.text}
-        onChange={this.handleChange}
+        defaultValue=""
+        onChange={this.props.onDescriptionChange}
         onBlur="true"
       />
     );

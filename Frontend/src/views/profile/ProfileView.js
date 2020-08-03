@@ -18,9 +18,12 @@ class ProfileView extends Component {
   async preload() {
     const response = await getProfileInfo();
     console.log("response: ", response);
-    this.setState({
-      profileDetails: response.data
-    })
+    if (response) {
+      this.setState({
+        profileDetails: response.data
+      })
+    }
+
   }
 
 

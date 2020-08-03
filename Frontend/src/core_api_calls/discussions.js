@@ -38,15 +38,16 @@ export const getSchemeDiscussion = (id) => {
 };
 
 // Create scheme discussion messages by discussion ID
-export const createSchemeDiscussionMessages = (discussionId) => {
+export const createSchemeDiscussionMessages = (data, discussionId) => {
   const URL =
     API.BASE_PATH +
-    API.GET_SCHEME_DISCUSSION_MESSAGE +
-    `${discussionId}/messages`;
+    API.CREATE_SCHEME_DISCUSSION_MESSAGE +
+    `${discussionId}/messages/`;
   const key = localStorage.getItem("jwt");
   const headers = { Authorization: `Bearer ${key}` };
-  return axios(`${URL}`, { method: "GET", headers: headers })
+  return axios(`${URL}`, { method: "POST", headers: headers, data: data })
     .then((response) => {
+      console.log("response: ", response);
       if (response.status > 300) {
         throw new Error("An error occured");
       }

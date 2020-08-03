@@ -12,13 +12,16 @@ import {
   getSchemeDiscussionMessages,
 } from "../../core_api_calls/discussions";
 import { getSchemeBySlug } from "../../core_api_calls/schemes";
+import createHistory from 'history/createBrowserHistory'
 
 class Discussions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       scheme: {},
-      messages: []
+      messages: [],
+      discussionId: null,
+      description: ""
     };
   }
 
@@ -71,13 +74,19 @@ class Discussions extends React.Component {
 
   preloadGetSchemeDiscussion = (schemeId) => {
     const id = schemeId.scheme;
-    getSchemeDiscussion(id).then((response) => {
-      console.log("response in getSchemeDiscussion: ", response);
-      // if (response.status > 300) {
-      //   throw new Error("An error occured");
-      // }
-      //this.preloadGetDiscussionMessages(discussionId)
-    });
+    getSchemeDiscussion(id)
+      .then((response) => {
+        console.log("response in getSchemeDiscussion: ", response);
+        const discussionId = response.data[0].id
+        this.setState({
+          discussionId: discussionId
+        })
+        this.preloadGetDiscussionMessages(discussionId)
+      })
+      .catch((error) => {
+        console.log("ERROR: ", error);
+        console.log("ERROR STATUS", error.response.status)
+      })
   };
 
   preloadGetDiscussionMessages = (discussionId) => {
@@ -85,58 +94,47 @@ class Discussions extends React.Component {
       console.log("response in getSchemeDiscussionMessages: ", response);
       if (response.status > 300) {
         throw new Error("An error occured");
+      } else {
+        this.setState({
+          messages: response.data
+        })
       }
     });
   };
 
-  preloadCreateDiscussionMessage = (discussionId) => {
-    createSchemeDiscussionMessages(discussionId).then((response) => {
+  preloadCreateDiscussionMessage = (data, discussionId) => {
+    createSchemeDiscussionMessages(data, discussionId).then((response) => {
+      console.log("RESPONSE: ", response);
       if (response.status > 300) {
         throw new Error("An error occured");
       } else {
+        const history = createHistory();
+        history.go(0)
         console.log("response of create scheme message ", response);
       }
     });
   };
 
+  onDescriptionChange = (e) => {
+    console.log("e: ", e);
+    this.setState({
+      description: e,
+    });
+  };
+
+  onComment = () => {
+    const data = {
+      message: this.state.description
+    }
+    this.preloadCreateDiscussionMessage(data, this.state.discussionId);
+    this.setState({
+      description: ""
+    })
+
+  }
+
   render() {
     var isClosed = false;
-    const messageItems = [
-      {
-        msg: `We can make an extension of this scheme to a different version just for people Below Poverty line to benifit the needy on priority basis `,
-        date: "28/6/2020",
-        subject: "Extension for people BPL",
-        isMainUser: true,
-      },
-      {
-        msg: `A provision of a digital system can be implemented to ensure stability and fast adoptaion of this plan`,
-        date: "28/6/2020",
-        subject: "Digital Implementation",
-
-        isMainUser: true,
-      },
-      {
-        msg: `In addition to the extension aspect as mentioned above i would like to add that the extension can be made available for differently abled people as well  `,
-        date: "28/6/2020",
-        subject: "Suggestion for extension",
-
-        isMainUser: false,
-      },
-      {
-        msg: `In addition to the extension aspect as mentioned above i would like to add that the extension can be made available for differently abled people as well  `,
-        date: "28/6/2020",
-        subject: "Suggestion for extension",
-
-        isMainUser: false,
-      },
-      {
-        msg: `In addition to the extension aspect as mentioned above i would like to add that the extension can be made available for differently abled people as well  `,
-        date: "28/6/2020",
-        subject: "Suggestion for extension",
-
-        isMainUser: false,
-      },
-    ];
 
     return (
       <section className="discussion-div">
@@ -202,7 +200,7 @@ class Discussions extends React.Component {
 
         <div className="container m-0">
           <div className="col-12 col-md-10 p-0 ">
-            <MessagesBox messages={messageItems} />
+            <MessagesBox messages={this.state.messages} />
           </div>
           <div className="discussion-editor-box col-12 col-md-10 pl-0 pr-0 pt-4 ">
             <div className="container">
@@ -214,7 +212,11 @@ class Discussions extends React.Component {
                 </div>
                 <div className="col-md-11 m-0 p-0">
                   <div className="comment-box">
-                    <DEditor />
+                    <DEditor
+                      onDescriptionChange={this.onDescriptionChange}
+                      description={this.state.description}
+
+                    />
                     <Button
                       variant="success"
                       style={{
@@ -223,6 +225,7 @@ class Discussions extends React.Component {
                         display: "flex",
                       }}
                       id="btn"
+                      onClick={this.onComment}
                     >
                       comment
                     </Button>
