@@ -16,5 +16,6 @@ export const API = {
     GET_SCHEME_DISCUSSION: "/discussions/v1/discussion-per-scheme/",
     GET_CENTRE_DASHBOARD_BOX_INFO: "/department/v1/center-department/",
     GET_STATE_DASHBOARD_BOX_INFO: "/department/v1/state-department/",
-    GET_LANDING_PAGE_BOX_INFO: "/department/v1/stats/"
+    GET_LANDING_PAGE_BOX_INFO: "/department/v1/stats/",
+    GET_PROFILE_INFO: "/userprofile/v1/userinfo/"
 };

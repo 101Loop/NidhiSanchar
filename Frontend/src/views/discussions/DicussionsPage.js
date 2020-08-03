@@ -76,7 +76,7 @@ class Discussions extends React.Component {
       // if (response.status > 300) {
       //   throw new Error("An error occured");
       // }
-      // this.preloadGetDiscussionMessages(discussionId)
+      //this.preloadGetDiscussionMessages(discussionId)
     });
   };
 
