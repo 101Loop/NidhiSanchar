@@ -10,7 +10,29 @@ import ChatBot from "./chat";
 import { green } from "@material-ui/core/colors";
 import SchemeByState from "./scheme_by_state/scheme_by_state";
 import { Redirect, useHistory } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+import { css } from "glamor";
+
+toast.configure({
+  autoClose: 2000,
+  draggable: true,
+  hideProgressBar: true,
+
+  position: toast.POSITION.TOP_CENTER,
+  toastClassName: css({
+    fontSize: "20px !important",
+
+    backgroundColor: "#da1c36 !important",
+    padding: "15px !important",
+  }),
+});
+const notify = () => {
+  toast("Your message has been sent", {
+    position: toast.POSITION.TOP_CENTER,
+  });
+};
 const theme = createMuiTheme({
   palette: {
     primary: green,
@@ -158,7 +180,7 @@ export default function SpecificHelp(props) {
                     className="form-box"
                     label=""
                     placeholder="Subject"
-                    value={props.location.customNameData}
+                    value={props.location.state.customNameData}
                     id="outlined-size-small"
                     defaultValue=""
                     variant="outlined"
@@ -235,6 +257,7 @@ export default function SpecificHelp(props) {
                     }}
                     variant="contained"
                     className={classes.button}
+                    onClick={notify}
                   >
                     Send Request
                   </Button>
