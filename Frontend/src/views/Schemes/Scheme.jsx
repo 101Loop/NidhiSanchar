@@ -109,7 +109,8 @@ const SchemeCentral = (props) => {
           <Grid container>
             <Grid item xs={null} sm={3}></Grid>
             <Grid item xs={12} sm={3}>
-
+              {localStorage.getItem("userOf") == "centre" && 
+            
               <Button
                 variant="contained"
                 color="primary"
@@ -123,20 +124,25 @@ const SchemeCentral = (props) => {
               >
                 Modify
                 </Button>
+            }
+              
 
+            {localStorage.getItem("userOf") == "state" &&  
+          
+            <Button
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              history.push({
+                pathname: `/raise-request/${scheme.slug}`,
+              });
+            }}
+          >
+            Raise a request
+            </Button>
+          }
 
-
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                  history.push({
-                    pathname: `/raise-request/${scheme.slug}`,
-                  });
-                }}
-              >
-                Raise a request
-                </Button>
+              
               )
             </Grid>
             <Grid item xs={12} sm={3}>

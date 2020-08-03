@@ -14,4 +14,6 @@ export const API = {
     CREATE_SCHEME_DISCUSSION_MESSAGE: "/discussions/v1/scheme-discussion/",
     GET_SCHEME_DISCUSSION_MESSAGE: "/discussions/v1/scheme-discussion/",
     GET_SCHEME_DISCUSSION: "/discussions/v1/discussion-per-scheme/",
+    GET_CENTRE_DASHBOARD_BOX_INFO: "/department/v1/center-department/",
+    GET_STATE_DASHBOARD_BOX_INFO: "/department/v1/state-department/"
 };

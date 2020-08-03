@@ -52,6 +52,7 @@ export const getUserInfo = () => {
                     localStorage.setItem("userOf", "state");
                 }
             }
+            return response;
         })
         .catch((err) => {
             console.log("error: ", err);
