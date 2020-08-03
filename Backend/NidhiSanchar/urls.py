@@ -20,10 +20,12 @@ from django.urls import path, re_path, include
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import gettext_lazy as _
 
-admin.site.site_title = "Applications | NidhiSanchar"  # default: "Django site admin"
-admin.site.site_header = "NidhiSanchar"  # default: "Django Administration"
-admin.site.index_title = "NidhiSanchar"  # default: "Site administration"
+admin.site.site_title = _("Applications | NidhiSanchar")  # default: "Django site admin"
+admin.site.site_header = _("NidhiSanchar")  # default: "Django Administration"
+admin.site.index_title = _("NidhiSanchar")  # default: "Site administration"
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -38,13 +40,14 @@ schema_view = get_schema_view(
     permission_classes=(permissions.IsAuthenticated,),
 )
 
-urlpatterns = [
+urlpatterns = i18n_patterns(
     path("admin/", admin.site.urls),
     path("api/user/", include("drf_user.urls")),
     path("api/userprofile/", include("userprofile.urls")),
     path("api/department/", include("department.urls")),
     path("api/schemes/", include("schemes.urls")),
     path("api/discussions/", include("discussions.urls")),
+    path("api/help/", include("help.urls")),
     re_path(
         r"^swagger(?P<format>\.json|\.yaml)$",
         schema_view.without_ui(cache_timeout=0),
@@ -58,7 +61,8 @@ urlpatterns = [
     re_path(
         r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
     ),
-]
+    prefix_default_language=False,
+)
 
 if settings.DEBUG:
     import debug_toolbar
@@ -70,3 +74,6 @@ if settings.DEBUG:
     ] + urlpatterns
 
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if "rosetta" in settings.INSTALLED_APPS:
+    urlpatterns += [re_path(r"^rosetta/", include("rosetta.urls"))]

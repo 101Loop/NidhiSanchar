@@ -18,6 +18,24 @@ import { createScheme } from "../../core_api_calls/schemes";
 import MyEditor from "../add_scheme/editor";
 
 import CalenderDatePicker from "../Schemes/DatePicker";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { css } from "glamor";
+
+toast.configure({
+  autoClose: 2000,
+  draggable: true,
+  hideProgressBar: true,
+
+  position: toast.POSITION.TOP_CENTER,
+  toastClassName: css({
+    fontSize: "20px !important",
+
+    backgroundColor: "#da1c36 !important",
+    padding: "15px !important",
+  }),
+});
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -125,6 +143,9 @@ const SchemeByState = () => {
       schemeBudget: "",
       launchDate: moment().format("YYYY-MM-DD"),
       description: "",
+    });
+    toast("Your proposal has been sent", {
+      position: toast.POSITION.TOP_CENTER,
     });
   };
   return (

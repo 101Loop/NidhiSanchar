@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils.text import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from localflavor.in_.in_states import STATE_CHOICES
 
 from userprofile.models import TimeStampedModel

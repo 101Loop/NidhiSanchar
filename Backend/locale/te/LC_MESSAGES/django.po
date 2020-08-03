@@ -1,0 +1,503 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-03 11:04+0530\n"
+"PO-Revision-Date: 2020-08-03 13:10+0553\n"
+"Last-Translator: b'Anonymous User <me@sumitsingh.tech>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.4\n"
+
+#: NidhiSanchar/settings.py:101
+msgid "English"
+msgstr "ఆంగ్ల"
+
+#: NidhiSanchar/settings.py:102
+msgid "Hindi"
+msgstr "హిందీ"
+
+#: NidhiSanchar/settings.py:103
+msgid "Telugu"
+msgstr "తెలుగు"
+
+#: NidhiSanchar/urls.py:26
+msgid "Applications | NidhiSanchar"
+msgstr "అప్లికేషన్స్ | ఫండింగ్"
+
+#: NidhiSanchar/urls.py:27 NidhiSanchar/urls.py:28
+msgid "NidhiSanchar"
+msgstr "ఫండింగ్"
+
+#: department/models.py:22 department/models.py:84 department/models.py:171
+msgid "Name of the Department"
+msgstr "విభాగం పేరు"
+
+#: department/models.py:23 department/models.py:66 department/models.py:85
+#: department/models.py:172
+msgid "Department Name"
+msgstr "శాఖ పేరు"
+
+#: department/models.py:67
+msgid "Department Names"
+msgstr "విభాగం పేర్లు"
+
+#: department/models.py:90 department/models.py:177
+msgid "Description of the Department"
+msgstr "విభాగం యొక్క వివరణ"
+
+#: department/models.py:93 department/models.py:180
+msgid "Point of Contact"
+msgstr "పాయింట్ ఆఫ్ కాంటాక్ట్"
+
+#: department/models.py:94 department/models.py:181
+msgid "Point of Contact from the Department"
+msgstr ""
+
+#: department/models.py:112
+#, python-brace-format
+msgid "{self.dept_poc} is already a POC in State Department."
+msgstr ""
+
+#: department/models.py:151
+msgid "Centre Department"
+msgstr ""
+
+#: department/models.py:152
+msgid "Centre Departments"
+msgstr ""
+
+#: department/models.py:199
+#, python-brace-format
+msgid "{self.dept_poc} is already a POC in Centre Department."
+msgstr ""
+
+#: department/models.py:238
+msgid "State Department"
+msgstr ""
+
+#: department/models.py:239
+msgid "State Departments"
+msgstr ""
+
+#: discussions/models.py:16 discussions/models.py:71
+msgid "Is Discussion Active?"
+msgstr ""
+
+#: discussions/models.py:18 discussions/models.py:73
+msgid "Discussion Started By"
+msgstr ""
+
+#: discussions/models.py:32
+msgid "Request Discussion"
+msgstr ""
+
+#: discussions/models.py:33
+msgid "Request Discussions"
+msgstr ""
+
+#: discussions/models.py:49 discussions/models.py:108
+msgid "Document"
+msgstr ""
+
+#: discussions/models.py:61
+msgid "Message"
+msgstr ""
+
+#: discussions/models.py:62
+msgid "Messages"
+msgstr ""
+
+#: discussions/models.py:89
+msgid "Scheme Discussion"
+msgstr ""
+
+#: discussions/models.py:90
+msgid "Scheme Discussions"
+msgstr ""
+
+#: discussions/models.py:120
+msgid "Scheme Message"
+msgstr ""
+
+#: discussions/models.py:121
+msgid "Scheme Messages"
+msgstr ""
+
+#: discussions/views.py:63
+msgid "Discussion for this Fund Request Already Exists."
+msgstr ""
+
+#: discussions/views.py:111 discussions/views.py:260
+#, python-brace-format
+msgid "Discussions with {discussion_id} does not exists. Please create one."
+msgstr ""
+
+#: discussions/views.py:212
+msgid "Discussion for this Scheme Already Exists."
+msgstr ""
+
+#: discussions/views.py:343
+#, python-brace-format
+msgid "Discussions with {scheme_id} does not exists. Please create one."
+msgstr ""
+
+#: drf_user/admin.py:25
+msgid "Personal info"
+msgstr ""
+
+#: drf_user/admin.py:27
+msgid "Permissions"
+msgstr ""
+
+#: drf_user/admin.py:30
+msgid "Important dates"
+msgstr ""
+
+#: drf_user/models.py:23
+msgid "Role"
+msgstr ""
+
+#: drf_user/models.py:24 drf_user/models.py:59
+msgid "Roles"
+msgstr ""
+
+#: drf_user/models.py:41
+msgid "Unique UserName"
+msgstr ""
+
+#: drf_user/models.py:43
+msgid "EMail Address"
+msgstr ""
+
+#: drf_user/models.py:45
+msgid "Mobile Number"
+msgstr ""
+
+#: drf_user/models.py:50
+msgid "Full Name"
+msgstr ""
+
+#: drf_user/models.py:51
+msgid "Date Joined"
+msgstr ""
+
+#: drf_user/models.py:52 drf_user/models.py:131 userprofile/models.py:15
+msgid "Date Modified"
+msgstr ""
+
+#: drf_user/models.py:53
+msgid "Activated"
+msgstr ""
+
+#: drf_user/models.py:54
+msgid "Staff Status"
+msgstr ""
+
+#: drf_user/models.py:62
+msgid ""
+"The roles this user belongs to. A user will get all permissions granted to "
+"each of their roles."
+msgstr ""
+
+#: drf_user/models.py:75 userprofile/models.py:37
+msgid "User"
+msgstr ""
+
+#: drf_user/models.py:76
+msgid "Users"
+msgstr ""
+
+#: drf_user/models.py:95
+msgid "JWT Token passed"
+msgstr ""
+
+#: drf_user/models.py:97
+msgid "Session Passed"
+msgstr ""
+
+#: drf_user/models.py:99
+msgid "Create Date/Time"
+msgstr ""
+
+#: drf_user/models.py:102
+msgid "Date/Time Modified"
+msgstr ""
+
+#: drf_user/models.py:105
+msgid "Is Active?"
+msgstr ""
+
+#: drf_user/models.py:111
+msgid "Authentication Transaction"
+msgstr ""
+
+#: drf_user/models.py:112
+msgid "Authentication Transactions"
+msgstr ""
+
+#: drf_user/models.py:124
+msgid "OTP Code"
+msgstr ""
+
+#: drf_user/models.py:126
+msgid "Destination Address (Mobile/EMail)"
+msgstr ""
+
+#: drf_user/models.py:130
+msgid "Create Date"
+msgstr ""
+
+#: drf_user/models.py:132
+msgid "Is Validated"
+msgstr ""
+
+#: drf_user/models.py:134
+msgid "Attempted Validation"
+msgstr ""
+
+#: drf_user/models.py:137
+msgid "Destination Property"
+msgstr ""
+
+#: drf_user/models.py:142
+msgid "OTP Sent Counter"
+msgstr ""
+
+#: drf_user/models.py:144
+msgid "SMS ID"
+msgstr ""
+
+#: drf_user/models.py:146
+msgid "ReActivate Sending OTP"
+msgstr ""
+
+#: drf_user/models.py:152
+msgid "OTP Validation"
+msgstr ""
+
+#: drf_user/models.py:153
+msgid "OTP Validations"
+msgstr ""
+
+#: drf_user/serializers.py:207
+msgid "No user exists with provided details"
+msgstr ""
+
+#: drf_user/serializers.py:211
+msgid "email field is compulsory while verifying a non-existing user's OTP."
+msgstr ""
+
+#: drf_user/serializers.py:266
+#, python-brace-format
+msgid ""
+"Your account is registered with {mobile} does not has {email} as registered "
+"email. Please login directly via OTP with your mobile."
+msgstr ""
+
+#: drf_user/serializers.py:274
+#, python-brace-format
+msgid ""
+"Your account is registered with {email} does not has {mobile} as registered "
+"mobile. Please login directly via OTP with your email."
+msgstr ""
+
+#: drf_user/utils.py:171
+msgid "OTP sending not allowed until: "
+msgstr ""
+
+#: drf_user/utils.py:187
+#, python-format
+msgid "Server configuration error occured: %s"
+msgstr ""
+
+#: drf_user/utils.py:301
+msgid "Incorrect OTP. Attempt exceeded! OTP has been reset."
+msgstr ""
+
+#: drf_user/utils.py:308
+msgid "OTP Validation failed! "
+msgstr ""
+
+#: drf_user/utils.py:317
+msgid ""
+"No pending OTP validation request found for provideddestination. Kindly send"
+" an OTP first"
+msgstr ""
+
+#: drf_user/views.py:226 drf_user/views.py:348
+msgid "OTP Validated successfully!"
+msgstr ""
+
+#: drf_user/views.py:240 drf_user/views.py:386
+msgid "A Server Error occurred: "
+msgstr ""
+
+#: drf_user/views.py:367 drf_user/views.py:376
+msgid "OTP has been sent successfully."
+msgstr ""
+
+#: drf_user/views.py:370 drf_user/views.py:379
+msgid "OTP sending failed {}"
+msgstr ""
+
+#: drf_user/views.py:416
+msgid "Logout successfully."
+msgstr ""
+
+#: schemes/models.py:19
+msgid "Which Department Created this Scheme"
+msgstr ""
+
+#: schemes/models.py:20
+msgid "Scheme Created By"
+msgstr ""
+
+#: schemes/models.py:25 schemes/models.py:145
+msgid "Name of the Scheme"
+msgstr ""
+
+#: schemes/models.py:25 schemes/models.py:145
+msgid "Scheme Name"
+msgstr ""
+
+#: schemes/models.py:28 schemes/models.py:148
+msgid "When the scheme will be launched"
+msgstr ""
+
+#: schemes/models.py:29 schemes/models.py:149
+msgid "Date of Launching"
+msgstr ""
+
+#: schemes/models.py:31 schemes/models.py:151
+msgid "Scheme Description"
+msgstr ""
+
+#: schemes/models.py:33
+msgid "To create unique urls for the schemes"
+msgstr ""
+
+#: schemes/models.py:40
+msgid "Total Budget of the Scheme(in cr.)"
+msgstr ""
+
+#: schemes/models.py:45
+msgid "Is Scheme Active?"
+msgstr ""
+
+#: schemes/models.py:58 schemes/models.py:79
+msgid "Scheme"
+msgstr ""
+
+#: schemes/models.py:59
+msgid "Schemes"
+msgstr ""
+
+#: schemes/models.py:81
+msgid "Proposal Brief"
+msgstr ""
+
+#: schemes/models.py:83 schemes/models.py:153
+msgid "Proposal Document"
+msgstr ""
+
+#: schemes/models.py:90
+msgid "Total Funds Required(in cr.)"
+msgstr ""
+
+#: schemes/models.py:96 schemes/models.py:166
+msgid "Status of the Request"
+msgstr ""
+
+#: schemes/models.py:104
+msgid "Requested By"
+msgstr ""
+
+#: schemes/models.py:111
+msgid "Fund Request"
+msgstr ""
+
+#: schemes/models.py:112
+msgid "Fund Requests"
+msgstr ""
+
+#: schemes/models.py:142
+msgid "Which department created this scheme"
+msgstr ""
+
+#: schemes/models.py:160
+msgid "Total Funds required for the Scheme(in cr.)"
+msgstr ""
+
+#: schemes/models.py:175
+msgid ""
+"Comments will be added by centre/state officials regarding this scheme."
+msgstr ""
+
+#: schemes/models.py:185
+msgid "Scheme Fund Request By State"
+msgstr ""
+
+#: schemes/models.py:186
+msgid "Scheme Fund Requests By State"
+msgstr ""
+
+#: schemes/serializers.py:68
+msgid "You are not authorised to perform this action."
+msgstr ""
+
+#: schemes/serializers.py:77
+msgid ""
+"Fund request for the scheme {attrs['scheme']} is already created by you."
+msgstr ""
+
+#: schemes/views.py:38 schemes/views.py:52
+msgid "Schemes Does Not Exists Yet."
+msgstr ""
+
+#: schemes/views.py:59
+msgid "Schemes Does not Exist Yet."
+msgstr ""
+
+#: schemes/views.py:148 schemes/views.py:190
+msgid "You are not authorized to perform this action."
+msgstr ""
+
+#: schemes/views.py:222
+#, python-brace-format
+msgid "Requests with {scheme_id} does not exists. Please create one."
+msgstr ""
+
+#: userprofile/models.py:13
+msgid "Date Created"
+msgstr ""
+
+#: userprofile/models.py:39
+msgid "Date of Birth"
+msgstr ""
+
+#: userprofile/models.py:41
+msgid "Gender"
+msgstr ""
+
+#: userprofile/models.py:44
+msgid "Profile Image"
+msgstr ""
+
+#: userprofile/models.py:82
+msgid "User Profile"
+msgstr ""
+
+#: userprofile/models.py:83
+msgid "User Profiles"
+msgstr ""

@@ -1,28 +1,41 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import BelowBanner from "../components/BelowBanner.js";
 import HomeCarousel from "../components/homecarousel";
 import MajorInitiatives from "../components/MajorInitiatives.js";
 import Footer from "../components/footer";
 import CustomCard from "../components/CustomCard";
+import { getLandingPageBoxInfo } from "../core_api_calls/landingPageBoxesInfo"
 import "../App.css";
 
 const LandingPage = () => {
+  const [boxDetails, setboxDetails] = useState({})
+
+  const preload = async () => {
+    const response = await getLandingPageBoxInfo()
+    setboxDetails(response.data)
+    console.log("response: ", response);
+  }
+
+  useEffect(() => {
+    preload();
+  }, [])
+
   const CardInfoItems = [
     {
       name: "Total Schemes",
-      num: "256",
+      num: boxDetails.total_schemes,
     },
     {
       name: "Total Requests",
-      num: "1020",
+      num: boxDetails.total_requests,
     },
     {
       name: "Total discussions",
-      num: "1100",
+      num: boxDetails.total_discussions,
     },
     {
       name: "Requests Pending",
-      num: "546",
+      num: boxDetails.pending_requests,
     },
   ];
   return (
