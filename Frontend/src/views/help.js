@@ -129,50 +129,17 @@ export default function SpecificHelp(props) {
               </Typography>
 
               <form>
-                <h6 className={classes.heading}>From</h6>
+                <h6 className={classes.heading}>E-mail</h6>
                 <div className={classes.my_form}>
                   <TextField
                     className="form-box"
-                    id="outlined-select-currency-native-size-small"
-                    select
                     label=""
-                    value={currency}
-                    onChange={handleChange}
-                    size="small"
-                    SelectProps={{
-                      native: true,
-                    }}
-                    align="left"
+                    placeholder="Subject"
+                    id="outlined-size-small"
+                    defaultValue=""
                     variant="outlined"
-                  >
-                    {currencies.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </TextField>
-                </div>
-                <h6 className={classes.heading}>Department</h6>
-                <div className={classes.my_form}>
-                  <TextField
-                    className="form-box"
-                    id="outlined-select-currency-native-size-small"
-                    select
-                    label=""
                     size="small"
-                    value={currency}
-                    onChange={handleChange}
-                    SelectProps={{
-                      native: true,
-                    }}
-                    variant="outlined"
-                  >
-                    {currencies.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </TextField>
+                  />
                 </div>
                 <h6 className={classes.heading}>Subject</h6>
                 <div className={classes.my_form}>

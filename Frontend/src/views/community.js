@@ -6,8 +6,31 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
-
+import { useHistory } from "react-router-dom";
 import { green } from "@material-ui/core/colors";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { css } from "glamor";
+
+toast.configure({
+  autoClose: 2000,
+  draggable: true,
+  hideProgressBar: true,
+
+  position: toast.POSITION.TOP_CENTER,
+  toastClassName: css({
+    fontSize: "20px !important",
+
+    backgroundColor: "#da1c36 !important",
+    padding: "15px !important",
+  }),
+});
+const notify = () => {
+  toast("Your message has been sent", {
+    position: toast.POSITION.TOP_CENTER,
+  });
+};
 
 const theme = createMuiTheme({
   palette: {
@@ -65,6 +88,7 @@ export default function Support() {
   const classes = useStyles();
   const [currency, setCurrency] = React.useState("EUR");
   const [value, setValue] = React.useState("Controlled");
+  let history = useHistory();
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
@@ -102,62 +126,24 @@ export default function Support() {
             </Typography>
 
             <form>
-              <h6 className={classes.heading}>From</h6>
+              <h6 className={classes.heading}>E-mail</h6>
               <div className={classes.my_form}>
                 <TextField
-                  style={{
-                    width: "40%",
-                  }}
-                  id="outlined-select-currency-native-size-small"
-                  select
+                  className="form-box"
                   label=""
-                  value={currency}
-                  onChange={handleChange}
-                  size="small"
-                  SelectProps={{
-                    native: true,
-                  }}
-                  align="left"
+                  placeholder="Subject"
+                  id="outlined-size-small"
+                  defaultValue=""
                   variant="outlined"
-                >
-                  {currencies.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </TextField>
-              </div>
-              <h6 className={classes.heading}>Account or Organization</h6>
-              <div className={classes.my_form}>
-                <TextField
-                  style={{
-                    width: "40%",
-                  }}
-                  id="outlined-select-currency-native-size-small"
-                  select
-                  label=""
                   size="small"
-                  value={currency}
-                  onChange={handleChange}
-                  SelectProps={{
-                    native: true,
-                  }}
-                  variant="outlined"
-                >
-                  {currencies.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </TextField>
+                />
               </div>
               <h6 className={classes.heading}>Subject</h6>
               <div className={classes.my_form}>
                 <TextField
-                  style={{
-                    width: "40%",
-                  }}
+                  className="form-box"
                   label=""
+                  placeholder="Subject"
                   id="outlined-size-small"
                   defaultValue=""
                   variant="outlined"
@@ -169,6 +155,7 @@ export default function Support() {
 
               <div className={classes.my_form}>
                 <TextField
+                  className="form-box"
                   style={{
                     width: "70%",
                   }}
@@ -189,22 +176,9 @@ export default function Support() {
                 }}
               >
                 <div style={{ paddingRight: "20px" }}>
-                  <label htmlFor="contained-button-file">
-                    <Button
-                      variant="contained"
-                      color="default"
-                      component="span"
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyItems: "left",
-                      }}
-                    >
-                      Upload a screenshot or Doc
-                    </Button>
-                  </label>
-                </div>
-                <div>
+                  <h6 className={classes.heading}>
+                    Upload a ScreenShot or Doc
+                  </h6>
                   <input
                     style={{
                       display: "flex",
@@ -214,12 +188,15 @@ export default function Support() {
                     id="contained-button-file"
                     multiple
                     type="file"
+                    placeholder="Upload a screenshot or Doc"
                   />
                 </div>
+                <div></div>
               </div>
               <div
                 style={{
                   paddingTop: "25px",
+                  display: "flex",
                 }}
               >
                 <Button
@@ -232,8 +209,24 @@ export default function Support() {
                   }}
                   variant="contained"
                   className={classes.button}
+                  onClick={notify}
                 >
                   Send Request
+                </Button>
+                <Button
+                  style={{
+                    color: "#E76829",
+                    marginLeft: "5rem",
+                  }}
+                  variant="outlined"
+                  className={classes.button}
+                  onClick={() => {
+                    history.push({
+                      pathname: "/contact",
+                    });
+                  }}
+                >
+                  <b>BACK TO Help Desk</b>
                 </Button>
               </div>
             </form>
