@@ -13,6 +13,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
         fields = (
             "dob",
             "gender",
+            "name",
+            "email",
+            "mobile",
             "is_state_user",
             "is_centre_user",
             "dept_name",
