@@ -13,11 +13,27 @@ import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
 import moment from "moment";
 import React, { useState } from "react";
+import { css } from "glamor";
 
 import { createScheme } from "../../core_api_calls/schemes";
 import MyEditor from "../add_scheme/editor";
 
 import CalenderDatePicker from "./DatePicker";
+import { toast } from "react-toastify";
+
+toast.configure({
+  autoClose: 2000,
+  draggable: true,
+  hideProgressBar: true,
+
+  position: toast.POSITION.TOP_CENTER,
+  toastClassName: css({
+    fontSize: "18px !important",
+
+    backgroundColor: "#da1c36 !important",
+    padding: "15px !important",
+  }),
+});
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -165,6 +181,9 @@ export default function FullScreenDialog() {
       schemeBudget: "",
       launchDate: moment().format("YYYY-MM-DD"),
       description: "",
+    });
+    toast("Scheme Added ", {
+      position: toast.POSITION.TOP_CENTER,
     });
   };
 

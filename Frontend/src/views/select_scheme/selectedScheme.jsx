@@ -11,7 +11,25 @@ import { green } from "@material-ui/core/colors";
 import CalenderDatePicker from "../Schemes/DatePicker";
 import moment from "moment";
 import { getSchemeBySlug, updateScheme } from "../../core_api_calls/schemes";
-import ReactQuill from 'react-quill';
+import ReactQuill from "react-quill";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { css } from "glamor";
+
+toast.configure({
+  autoClose: 2000,
+  draggable: true,
+  hideProgressBar: true,
+
+  position: toast.POSITION.TOP_CENTER,
+  toastClassName: css({
+    fontSize: "18px !important",
+    color: "black !important",
+    backgroundColor: "green !important",
+    padding: "15px !important",
+  }),
+});
 
 const theme = createMuiTheme({
   palette: {
@@ -60,7 +78,6 @@ const theme = createMuiTheme({
 // }));
 
 export class SelectScheme extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -71,8 +88,8 @@ export class SelectScheme extends Component {
       schemeBudget: "",
       launchDate: moment().format("YYYY-MM-DD"),
       description: "",
-      scheme: {}
-    }
+      scheme: {},
+    };
   }
 
   componentDidMount() {
@@ -92,9 +109,8 @@ export class SelectScheme extends Component {
       schemeBudget: data.scheme_budget,
       launchDate: data.date_of_launching,
       description: data.description,
-    })
+    });
     console.log("this.state.scheme: ", this.state.scheme);
-
   }
 
   onValueChange = (e) => {
@@ -124,9 +140,6 @@ export class SelectScheme extends Component {
     }
   };
 
-
-
-
   onSubmitData = () => {
     const { slug } = this.state.scheme;
     const requiredData = {
@@ -145,6 +158,9 @@ export class SelectScheme extends Component {
       launchDate: moment().format("YYYY-MM-DD"),
       description: "",
     });
+    toast("Scheme Updated", {
+      position: toast.POSITION.TOP_CENTER,
+    });
   };
 
   theme = createMuiTheme({
@@ -153,7 +169,6 @@ export class SelectScheme extends Component {
     },
   });
   //const classes = useStyles();
-
 
   render() {
     console.log("this.state: ", this.state);
@@ -184,25 +199,33 @@ export class SelectScheme extends Component {
                 </Typography>
 
                 <form>
-                  <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyItems: "left",
-                    paddingBottom: "10px",
-                  }}></div>
-                  <h6 style={{
-                    color: "#E76829",
-                    fontWeight: "600",
-                    display: "flex",
-                    justifyItems: "left",
-                    paddingTop: "1rem",
-                  }}>Scheme Name</h6>
-                  <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyItems: "left",
-                    paddingBottom: "10px",
-                  }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyItems: "left",
+                      paddingBottom: "10px",
+                    }}
+                  ></div>
+                  <h6
+                    style={{
+                      color: "#E76829",
+                      fontWeight: "600",
+                      display: "flex",
+                      justifyItems: "left",
+                      paddingTop: "1rem",
+                    }}
+                  >
+                    Scheme Name
+                  </h6>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyItems: "left",
+                      paddingBottom: "10px",
+                    }}
+                  >
                     <TextField
                       className="form-box"
                       label=""
@@ -218,21 +241,25 @@ export class SelectScheme extends Component {
                     />
                   </div>
 
-
-
-                  <h6 style={{
-                    color: "#E76829",
-                    fontWeight: "600",
-                    display: "flex",
-                    justifyItems: "left",
-                    paddingTop: "1rem",
-                  }}>Scheme Budget (Cr)</h6>
-                  <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyItems: "left",
-                    paddingBottom: "10px",
-                  }}>
+                  <h6
+                    style={{
+                      color: "#E76829",
+                      fontWeight: "600",
+                      display: "flex",
+                      justifyItems: "left",
+                      paddingTop: "1rem",
+                    }}
+                  >
+                    Scheme Budget (Cr)
+                  </h6>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyItems: "left",
+                      paddingBottom: "10px",
+                    }}
+                  >
                     <TextField
                       className="form-box"
                       label=""
@@ -247,13 +274,17 @@ export class SelectScheme extends Component {
                     />
                   </div>
 
-                  <h6 style={{
-                    color: "#E76829",
-                    fontWeight: "600",
-                    display: "flex",
-                    justifyItems: "left",
-                    paddingTop: "1rem",
-                  }}>Launch Date</h6>
+                  <h6
+                    style={{
+                      color: "#E76829",
+                      fontWeight: "600",
+                      display: "flex",
+                      justifyItems: "left",
+                      paddingTop: "1rem",
+                    }}
+                  >
+                    Launch Date
+                  </h6>
                   <div>
                     <CalenderDatePicker
                       handleDateChange={this.handleDateChange}
@@ -268,11 +299,14 @@ export class SelectScheme extends Component {
                       display: "flex",
                       justifyItems: "left",
                       paddingTop: "1rem",
-                    }}>Description</h6>
+                    }}
+                  >
+                    Description
+                  </h6>
 
                   <div>
-
-                    <ReactQuill value={this.state.description}
+                    <ReactQuill
+                      value={this.state.description}
                       onChange={this.onDescriptionChange}
                     />
                   </div>
@@ -291,11 +325,10 @@ export class SelectScheme extends Component {
                         color: "white",
                       }}
                       variant="contained"
-
                       onClick={this.onSubmitData}
                     >
                       Modify
-                      </Button>
+                    </Button>
                   </div>
                 </form>
               </div>
@@ -305,7 +338,6 @@ export class SelectScheme extends Component {
       </React.Fragment>
     );
   }
-
 }
 
 export default SelectScheme;
