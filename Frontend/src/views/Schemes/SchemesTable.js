@@ -251,14 +251,6 @@ const SchemeTable = (props) => {
           <Table className={classes.table} aria-label="caption table">
             <TableHead style={{ backgroundColor: "#F1F8FF" }}>
               <TableRow>
-                <TableCell
-                  align="center"
-                  onClick={() => {
-                    handleSort("id");
-                  }}
-                >
-                  <div style={{ cursor: "pointer" }}>Serial Number</div>
-                </TableCell>
                 <TableCell align="center">Scheme Name</TableCell>
                 <TableCell
                   onClick={() => {
@@ -284,7 +276,6 @@ const SchemeTable = (props) => {
                 >
                   <div style={{ cursor: "pointer" }}>Updated On</div>
                 </TableCell>
-                <TableCell align="center">Scheme ID</TableCell>
               </TableRow>
             </TableHead>
 
@@ -299,7 +290,6 @@ const SchemeTable = (props) => {
                 (scheme) =>
                   scheme.name.toLowerCase().includes(search.toLowerCase()) && (
                     <TableRow key={scheme.name}>
-                      <TableCell align="center">{scheme.id}</TableCell>
                       <TableCell align="center" component="th" scope="row">
                         <div
                           style={{ cursor: "pointer" }}
@@ -317,7 +307,6 @@ const SchemeTable = (props) => {
                       <TableCell align="center">
                         {moment(scheme.date_updated).format("YYYY-MM-DD")}
                       </TableCell>
-                      <TableCell align="center">{scheme.id}</TableCell>
                     </TableRow>
                   )
               )}

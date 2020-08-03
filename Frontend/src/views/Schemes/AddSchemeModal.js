@@ -182,9 +182,6 @@ export default function FullScreenDialog() {
       launchDate: moment().format("YYYY-MM-DD"),
       description: "",
     });
-    toast("Scheme Added ", {
-      position: toast.POSITION.TOP_CENTER,
-    });
   };
 
   return (

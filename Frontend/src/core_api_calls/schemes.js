@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { toast } from "react-toastify";
 import { API } from "../utils/consts";
 
 export const getSchemes = (pageNo) => {
@@ -49,6 +49,10 @@ export const createScheme = (data) => {
     .then((response) => {
       if (response.status > 300) {
         throw new Error("An error occured");
+      } else {
+        toast("Scheme Added ", {
+          position: toast.POSITION.TOP_CENTER,
+        });
       }
       return response.json();
     })
@@ -68,6 +72,11 @@ export const updateScheme = (slug, data) => {
       if (response.status > 300) {
         throw new Error("An error occured");
       }
+      /*else {
+        toast("Scheme Updated", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }*/
       return response;
     })
     .catch((err) => {
