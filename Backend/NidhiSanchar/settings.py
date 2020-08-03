@@ -1,6 +1,6 @@
 import os
 import datetime
-
+from django.utils.translation import gettext_lazy as _
 from NidhiSanchar.custom_settings import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "django_filters",
     "django_extensions",  # https://django-extensions.readthedocs.io/en/latest/
     "localflavor",
+    "rosetta",
     # local
     "drf_user",
     "userprofile",
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -75,7 +77,6 @@ TEMPLATES = [
     },
 ]
 
-
 # PASSWORDS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
@@ -93,6 +94,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = "en-us"
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
+
+LANGUAGES = [
+    ("en", _("English")),
+    ("hi", _("Hindi")),
+    ("te", _("Telugu")),
+]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
 TIME_ZONE = "Asia/Kolkata"
