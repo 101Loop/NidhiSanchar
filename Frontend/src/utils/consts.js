@@ -17,5 +17,6 @@ export const API = {
     GET_CENTRE_DASHBOARD_BOX_INFO: "/department/v1/center-department/",
     GET_STATE_DASHBOARD_BOX_INFO: "/department/v1/state-department/",
     GET_LANDING_PAGE_BOX_INFO: "/department/v1/stats/",
-    GET_PROFILE_INFO: "/userprofile/v1/userinfo/"
+    GET_PROFILE_INFO: "/userprofile/v1/userinfo/",
+    HELP: "/help/v1/help/"
 };

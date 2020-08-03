@@ -12,7 +12,7 @@ import SchemeByState from "./scheme_by_state/scheme_by_state";
 import { Redirect, useHistory } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { createHelpRequest } from "../core_api_calls/help"
 import { css } from "glamor";
 
 toast.configure({
@@ -38,20 +38,7 @@ const theme = createMuiTheme({
     primary: green,
   },
 });
-const currencies = [
-  {
-    value: "USD",
-    label: "Agriculture",
-  },
-  {
-    value: "EUR",
-    label: "Education",
-  },
-  {
-    value: "BTC",
-    label: "Construction",
-  },
-];
+
 const useStyles = makeStyles((theme) => ({
   "@global": {
     ul: {
@@ -86,14 +73,44 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SpecificHelp(props) {
+  console.log("props: ", props);
   const classes = useStyles();
   const [currency, setCurrency] = React.useState("EUR");
-  const [value, setValue] = React.useState("Controlled");
+  const [values, setValues] = React.useState({
+    email: "",
+    subject: "",
+    description: ""
+  });
+  const { email, subject, description } = values
   console.log("daata", props.location.state.customNameData);
   let history = useHistory();
   const handleChange = (event) => {
     setCurrency(event.target.value);
   };
+
+  const onValueChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const requiredData = {
+    email: email,
+    subject: subject,
+    text: description
+  }
+  const onSubmitData = () => {
+    createHelpRequest(requiredData);
+    setValues({
+      email: "",
+      subject: "",
+      description: ""
+    })
+    toast("Your message has been sent", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
 
   if (props.location.state.customNameData[0] !== "Propose a Scheme") {
     return (
@@ -139,6 +156,9 @@ export default function SpecificHelp(props) {
                     defaultValue=""
                     variant="outlined"
                     size="small"
+                    name="email"
+                    value={email}
+                    onChange={onValueChange}
                   />
                 </div>
                 <h6 className={classes.heading}>Subject</h6>
@@ -147,11 +167,13 @@ export default function SpecificHelp(props) {
                     className="form-box"
                     label=""
                     placeholder="Subject"
-                    value={props.location.state.customNameData}
+                    value={subject}
                     id="outlined-size-small"
                     defaultValue=""
                     variant="outlined"
                     size="small"
+                    name="subject"
+                    onChange={onValueChange}
                   />
                 </div>
 
@@ -168,6 +190,9 @@ export default function SpecificHelp(props) {
                     rows={8}
                     placeholder="Please tell us what exactly you want to accomplish"
                     variant="outlined"
+                    name="description"
+                    value={description}
+                    onChange={onValueChange}
                   />
                 </div>
 
@@ -195,7 +220,7 @@ export default function SpecificHelp(props) {
                     }}
                     variant="contained"
                     className={classes.button}
-                    onClick={notify}
+                    onClick={onSubmitData}
                   >
                     Send Request
                   </Button>
