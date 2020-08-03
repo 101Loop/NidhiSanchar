@@ -6,9 +6,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
-
+import ChatBot from "./chat";
 import { green } from "@material-ui/core/colors";
 import SchemeByState from "./scheme_by_state/scheme_by_state";
+import { Redirect, useHistory } from "react-router-dom";
 
 const theme = createMuiTheme({
   palette: {
@@ -67,7 +68,7 @@ export default function SpecificHelp(props) {
   const [currency, setCurrency] = React.useState("EUR");
   const [value, setValue] = React.useState("Controlled");
   console.log("daata", props.location.state.customNameData);
-
+  let history = useHistory();
   const handleChange = (event) => {
     setCurrency(event.target.value);
   };
@@ -221,6 +222,7 @@ export default function SpecificHelp(props) {
                 <div
                   style={{
                     paddingTop: "25px",
+                    display: "flex",
                   }}
                 >
                   <Button
@@ -236,11 +238,27 @@ export default function SpecificHelp(props) {
                   >
                     Send Request
                   </Button>
+                  <Button
+                    style={{
+                      color: "#E76829",
+                      marginLeft: "5rem",
+                    }}
+                    variant="outlined"
+                    className={classes.button}
+                    onClick={() => {
+                      history.push({
+                        pathname: "/contact",
+                      });
+                    }}
+                  >
+                    <b>BACK TO Help Desk</b>
+                  </Button>
                 </div>
               </form>
             </div>
           </Container>
         </section>
+        <ChatBot />
       </React.Fragment>
     );
   } else {
