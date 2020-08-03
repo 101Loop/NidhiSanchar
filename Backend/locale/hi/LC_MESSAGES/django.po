@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-03 11:09+0530\n"
+"POT-Creation-Date: 2020-08-03 12:14+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,228 +70,229 @@ msgstr "विभाग से संपर्क का बिंदु"
 #: department/models.py:112
 #, python-brace-format
 msgid "{self.dept_poc} is already a POC in State Department."
-msgstr ""
+msgstr "{self.dept_poc} राज्य विभाग में पहले से ही एक POC है।"
 
 #: department/models.py:151
 msgid "Centre Department"
-msgstr ""
+msgstr "केंद्र विभाग"
 
 #: department/models.py:152
 msgid "Centre Departments"
-msgstr ""
+msgstr "केंद्र विभाग"
 
 #: department/models.py:199
 #, python-brace-format
 msgid "{self.dept_poc} is already a POC in Centre Department."
-msgstr ""
+msgstr "{self.dept_poc} केंद्र विभाग में पहले से ही एक POC है।"
 
 #: department/models.py:238
 msgid "State Department"
-msgstr ""
+msgstr "राज्य विभाग"
 
 #: department/models.py:239
 msgid "State Departments"
-msgstr ""
+msgstr "राज्य विभाग"
 
 #: discussions/models.py:16 discussions/models.py:71
 msgid "Is Discussion Active?"
-msgstr ""
+msgstr "चर्चा सक्रिय है?"
 
 #: discussions/models.py:18 discussions/models.py:73
 msgid "Discussion Started By"
-msgstr ""
+msgstr "चर्चा शुरू हुई"
 
 #: discussions/models.py:32
 msgid "Request Discussion"
-msgstr ""
+msgstr "चर्चा का अनुरोध"
 
 #: discussions/models.py:33
 msgid "Request Discussions"
-msgstr ""
+msgstr "चर्चा का अनुरोध"
 
 #: discussions/models.py:49 discussions/models.py:108
 msgid "Document"
-msgstr ""
+msgstr "दस्तावेज़"
 
 #: discussions/models.py:61
 msgid "Message"
-msgstr ""
+msgstr "संदेश"
 
 #: discussions/models.py:62
 msgid "Messages"
-msgstr ""
+msgstr "संदेश"
 
 #: discussions/models.py:89
 msgid "Scheme Discussion"
-msgstr ""
+msgstr "योजना चर्चा"
 
 #: discussions/models.py:90
 msgid "Scheme Discussions"
-msgstr ""
+msgstr "योजना चर्चा"
 
 #: discussions/models.py:120
 msgid "Scheme Message"
-msgstr ""
+msgstr "योजना संदेश"
 
 #: discussions/models.py:121
 msgid "Scheme Messages"
-msgstr ""
+msgstr "योजना संदेश"
 
 #: discussions/views.py:63
 msgid "Discussion for this Fund Request Already Exists."
-msgstr ""
+msgstr "इस फंड अनुरोध के लिए चर्चा पहले से मौजूद है।"
 
 #: discussions/views.py:111 discussions/views.py:260
 #, python-brace-format
 msgid "Discussions with {discussion_id} does not exists. Please create one."
-msgstr ""
+msgstr "{चर्चा_ड} के साथ चर्चा मौजूद नहीं है।कृपया एक बनाएं।"
 
 #: discussions/views.py:212
 msgid "Discussion for this Scheme Already Exists."
-msgstr ""
+msgstr "इस योजना के लिए चर्चा पहले से ही मौजूद है।"
 
 #: discussions/views.py:343
 #, python-brace-format
 msgid "Discussions with {scheme_id} does not exists. Please create one."
-msgstr ""
+msgstr "{scheme_id} के साथ चर्चा मौजूद नहीं है। कृपया एक बनाएं।"
 
 #: drf_user/admin.py:25
 msgid "Personal info"
-msgstr ""
+msgstr "व्यक्तिगत जानकारी"
 
 #: drf_user/admin.py:27
 msgid "Permissions"
-msgstr ""
+msgstr "अनुमतियां"
 
 #: drf_user/admin.py:30
 msgid "Important dates"
-msgstr ""
+msgstr "महत्वपूर्ण तिथियाँ"
 
 #: drf_user/models.py:23
 msgid "Role"
-msgstr ""
+msgstr "भूमिका"
 
 #: drf_user/models.py:24 drf_user/models.py:59
 msgid "Roles"
-msgstr ""
+msgstr "भूमिकाएँ"
 
 #: drf_user/models.py:41
 msgid "Unique UserName"
-msgstr ""
+msgstr "अद्वितीय उपयोगकर्ता नाम"
 
 #: drf_user/models.py:43
 msgid "EMail Address"
-msgstr ""
+msgstr "ईमेल पता"
 
 #: drf_user/models.py:45
 msgid "Mobile Number"
-msgstr ""
+msgstr "मोबाइल नंबर"
 
 #: drf_user/models.py:50
 msgid "Full Name"
-msgstr ""
+msgstr "पूरा नाम"
 
 #: drf_user/models.py:51
 msgid "Date Joined"
-msgstr ""
+msgstr "शामिल होने का दिनांक"
 
 #: drf_user/models.py:52 drf_user/models.py:131 userprofile/models.py:15
 msgid "Date Modified"
-msgstr ""
+msgstr "तिथि संशोधित"
 
 #: drf_user/models.py:53
 msgid "Activated"
-msgstr ""
+msgstr "सक्रिय"
 
 #: drf_user/models.py:54
 msgid "Staff Status"
-msgstr ""
+msgstr "स्टाफ की स्थिति"
 
 #: drf_user/models.py:62
 msgid ""
 "The roles this user belongs to. A user will get all permissions granted to "
 "each of their roles."
 msgstr ""
+"इस उपयोगकर्ता की भूमिकाएँ हैं। एक उपयोगकर्ता को सभी अनुमतियाँ मिलेंगी उनकी प्रत्येक भूमिका।"
 
 #: drf_user/models.py:75 userprofile/models.py:37
 msgid "User"
-msgstr ""
+msgstr "उपयोगकर्ता"
 
 #: drf_user/models.py:76
 msgid "Users"
-msgstr ""
+msgstr "उपयोगकर्ता"
 
 #: drf_user/models.py:95
 msgid "JWT Token passed"
-msgstr ""
+msgstr "JWT टोकन पास हुआ"
 
 #: drf_user/models.py:97
 msgid "Session Passed"
-msgstr ""
+msgstr "सत्र बीत गया"
 
 #: drf_user/models.py:99
 msgid "Create Date/Time"
-msgstr ""
+msgstr "दिनांक / समय बनाएँ"
 
 #: drf_user/models.py:102
 msgid "Date/Time Modified"
-msgstr ""
+msgstr "दिनांक / समय संशोधित"
 
 #: drf_user/models.py:105
 msgid "Is Active?"
-msgstr ""
+msgstr "सक्रिय है?"
 
 #: drf_user/models.py:111
 msgid "Authentication Transaction"
-msgstr ""
+msgstr "प्रमाणीकरण लेनदेन"
 
 #: drf_user/models.py:112
 msgid "Authentication Transactions"
-msgstr ""
+msgstr "प्रमाणीकरण लेनदेन"
 
 #: drf_user/models.py:124
 msgid "OTP Code"
-msgstr ""
+msgstr "OTP कोड"
 
 #: drf_user/models.py:126
 msgid "Destination Address (Mobile/EMail)"
-msgstr ""
+msgstr "गंतव्य का पता (मोबाइल / ईएमआईएल)"
 
 #: drf_user/models.py:130
 msgid "Create Date"
-msgstr ""
+msgstr "तारीख बनाना"
 
 #: drf_user/models.py:132
 msgid "Is Validated"
-msgstr ""
+msgstr "मान्य है"
 
 #: drf_user/models.py:134
 msgid "Attempted Validation"
-msgstr ""
+msgstr "मान्य किया गया प्रयास"
 
 #: drf_user/models.py:137
 msgid "Destination Property"
-msgstr ""
+msgstr "गंतव्य संपत्ति"
 
 #: drf_user/models.py:142
 msgid "OTP Sent Counter"
-msgstr ""
+msgstr "OTP भेजा गया काउंटर"
 
 #: drf_user/models.py:144
 msgid "SMS ID"
-msgstr ""
+msgstr "एसएमएस आईडी"
 
 #: drf_user/models.py:146
 msgid "ReActivate Sending OTP"
-msgstr ""
+msgstr "OTP को फिर से सक्रिय करें"
 
 #: drf_user/models.py:152
 msgid "OTP Validation"
-msgstr ""
+msgstr "OTP मान्यता"
 
 #: drf_user/models.py:153
 msgid "OTP Validations"
-msgstr ""
+msgstr "OTP मान्यता"
 
 #: drf_user/serializers.py:207
 msgid "No user exists with provided details"
@@ -360,99 +361,99 @@ msgstr ""
 
 #: schemes/models.py:19
 msgid "Which Department Created this Scheme"
-msgstr ""
+msgstr "इस योजना को किस विभाग ने बनाया"
 
 #: schemes/models.py:20
 msgid "Scheme Created By"
-msgstr ""
+msgstr "द्वारा बनाई गई योजना"
 
 #: schemes/models.py:25 schemes/models.py:145
 msgid "Name of the Scheme"
-msgstr ""
+msgstr "योजना का नाम"
 
 #: schemes/models.py:25 schemes/models.py:145
 msgid "Scheme Name"
-msgstr ""
+msgstr "योजना का नाम"
 
 #: schemes/models.py:28 schemes/models.py:148
 msgid "When the scheme will be launched"
-msgstr ""
+msgstr "स्कीम कब लॉन्च होगी"
 
 #: schemes/models.py:29 schemes/models.py:149
 msgid "Date of Launching"
-msgstr ""
+msgstr "लॉन्चिंग की तारीख"
 
 #: schemes/models.py:31 schemes/models.py:151
 msgid "Scheme Description"
-msgstr ""
+msgstr "योजना का विवरण"
 
 #: schemes/models.py:33
 msgid "To create unique urls for the schemes"
-msgstr ""
+msgstr "योजनाओं के लिए अद्वितीय उड्डयन बनाना"
 
 #: schemes/models.py:40
 msgid "Total Budget of the Scheme(in cr.)"
-msgstr ""
+msgstr "योजना का कुल बजट (करोड़ में)"
 
 #: schemes/models.py:45
 msgid "Is Scheme Active?"
-msgstr ""
+msgstr "क्या स्कीम एक्टिव है?"
 
 #: schemes/models.py:58 schemes/models.py:79
 msgid "Scheme"
-msgstr ""
+msgstr "योजना"
 
 #: schemes/models.py:59
 msgid "Schemes"
-msgstr ""
+msgstr "योजना"
 
 #: schemes/models.py:81
 msgid "Proposal Brief"
-msgstr ""
+msgstr "प्रस्ताव संक्षिप्त"
 
 #: schemes/models.py:83 schemes/models.py:153
 msgid "Proposal Document"
-msgstr ""
+msgstr "प्रस्ताव दस्तावेज"
 
 #: schemes/models.py:90
 msgid "Total Funds Required(in cr.)"
-msgstr ""
+msgstr "आवश्यक कुल धन (करोड़ में)"
 
 #: schemes/models.py:96 schemes/models.py:166
 msgid "Status of the Request"
-msgstr ""
+msgstr "अनुरोध की स्थिति"
 
 #: schemes/models.py:104
 msgid "Requested By"
-msgstr ""
+msgstr "द्वारा अनुरोध किया गया"
 
 #: schemes/models.py:111
 msgid "Fund Request"
-msgstr ""
+msgstr "फंड का अनुरोध"
 
 #: schemes/models.py:112
 msgid "Fund Requests"
-msgstr ""
+msgstr "फंड अनुरोध"
 
 #: schemes/models.py:142
 msgid "Which department created this scheme"
-msgstr ""
+msgstr "किस विभाग ने यह योजना बनाई"
 
 #: schemes/models.py:160
 msgid "Total Funds required for the Scheme(in cr.)"
-msgstr ""
+msgstr "योजना के लिए आवश्यक कुल निधि (करोड में)"
 
 #: schemes/models.py:175
 msgid "Comments will be added by centre/state officials regarding this scheme."
-msgstr ""
+msgstr "इस योजना के बारे में केंद्र / राज्य के अधिकारियों द्वारा टिप्पणियां जोड़ी जाएंगी।"
 
 #: schemes/models.py:185
 msgid "Scheme Fund Request By State"
-msgstr ""
+msgstr "राज्य द्वारा योजना निधि अनुरोध"
 
 #: schemes/models.py:186
 msgid "Scheme Fund Requests By State"
-msgstr ""
+msgstr "राज्य द्वारा योजना निधि अनुरोध"
 
 #: schemes/serializers.py:68
 msgid "You are not authorised to perform this action."
@@ -482,24 +483,24 @@ msgstr ""
 
 #: userprofile/models.py:13
 msgid "Date Created"
-msgstr ""
+msgstr "निर्माण की तिथिनिर्माण की तिथि"
 
 #: userprofile/models.py:39
 msgid "Date of Birth"
-msgstr ""
+msgstr "जन्म की तारीख"
 
 #: userprofile/models.py:41
 msgid "Gender"
-msgstr ""
+msgstr "लिंग"
 
 #: userprofile/models.py:44
 msgid "Profile Image"
-msgstr ""
+msgstr "प्रोफ़ाइल छवि"
 
 #: userprofile/models.py:82
 msgid "User Profile"
-msgstr ""
+msgstr "प्रोफ़ाइल छवि"
 
 #: userprofile/models.py:83
 msgid "User Profiles"
-msgstr ""
+msgstr "प्रोफ़ाइल छवि"
