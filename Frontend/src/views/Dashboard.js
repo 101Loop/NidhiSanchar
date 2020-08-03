@@ -27,10 +27,12 @@ class Dashboard extends Component {
       } else {
         boxDetails = await getStateDashboardBoxInfo()
       }
-      console.log("boxDetails: ", boxDetails);
-      this.setState({
-        boxDetails: boxDetails.data[0]
-      })
+      if (boxDetails) {
+        this.setState({
+          boxDetails: boxDetails.data[0]
+        })
+      }
+
     }
     //console.log("response: ", response);
   }
@@ -79,25 +81,7 @@ class Dashboard extends Component {
         name: "Green revolution",
       },
     ];
-    const CardInfoItems = [
-      {
-        name: "Schemes created",
-        num: "15",
-      },
-      {
-        name: "Requests Pending",
-        num: "24",
-      },
-      {
-        name: "Requests Closed",
-        num: "5",
-      },
-      {
-        name: "Discussions Open",
-        num: "50",
-      },
-    ];
-    //var boxInfoItems = null;
+
     if (localStorage.getItem("userOf") == "centre") {
       var boxInfoItems = [
         {
