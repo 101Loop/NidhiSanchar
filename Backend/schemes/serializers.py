@@ -4,7 +4,7 @@ from rest_framework.exceptions import ValidationError
 
 from department.models import StateDepartment
 from department.serializers import CentreDepartmentSerializer, StateDepartmentSerializer
-from .models import Scheme, FundRequest
+from .models import Scheme, FundRequest, SchemeFundRequest
 
 
 class SchemeSerializer(serializers.ModelSerializer):
@@ -125,6 +125,7 @@ class SchemeFundRequestSerializer(serializers.ModelSerializer):
     """
 
     class Meta:
+        model = SchemeFundRequest
         fields = (
             "created_by",
             "name",
