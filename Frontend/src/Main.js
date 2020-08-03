@@ -15,7 +15,7 @@ import SpecificHelp from "./views/help";
 import SingleSchemeRequestsView from "./views/fund_req/SingleSchemeRequestsView";
 import DiscussionSchemeTableContainer from "./views/discussions/DiscussionSchemeTableContainer.js";
 import Discussions from "./views/discussions/DicussionsPage";
-import ProfilePage from "./views/ProfilePage";
+import ProfilePage from "./views/profile/ProfileView";
 
 const history = createBrowserHistory();
 

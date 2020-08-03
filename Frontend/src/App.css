@@ -379,6 +379,38 @@ ul > li > a > i {
 
 /* Profile Page  */
 
-.profile-page {
-  margin: 4rem 0;
+.profile {
+  padding: 5rem 0;
+  background-color: #f7f8f9;
+}
+
+.personal {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-img {
+  margin-top: 1rem;
+  height: 120px;
+  min-height: initial;
+  width: 120px;
+  position: cover;
+  /* margin-left: 4px; */
+  border-radius: 50%;
+}
+
+.profile-pic {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.profile-section {
+  padding: 2rem 0;
+  border-bottom: 1px solid #eaecef;
+}
+
+.profile-heading {
+  color: #202124;
 }
