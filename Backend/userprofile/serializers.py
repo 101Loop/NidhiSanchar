@@ -6,6 +6,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
     UserProfileSerializer is a model serializer that includes the attributes of the user profile.
     """
 
+    name = serializers.CharField(source="created_by.name")
+    email = serializers.CharField(source="created_by.email")
+    mobile = serializers.CharField(source="created_by.mobile")
+
     class Meta:
         from .models import UserProfile
 

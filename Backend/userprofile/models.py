@@ -75,18 +75,6 @@ class UserProfile(TimeStampedModel):
             )
             return dept
 
-    @property
-    def name(self):
-        return self.name
-
-    @property
-    def email(self):
-        return self.email
-
-    @property
-    def mobile(self):
-        return self.mobile
-
     def __str__(self) -> str:
         return self.created_by.name
 
