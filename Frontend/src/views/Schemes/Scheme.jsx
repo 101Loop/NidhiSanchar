@@ -97,7 +97,12 @@ const SchemeCentral = (props) => {
               <Paper classes={{ root: classes.myroot }} elevation={10}>
                 <div style={{ padding: "0.5rem" }}>
                   <Typography variant="h6" align="left">
-                    <h5>{scheme.description}</h5>
+                    <div>
+                      <div
+                        dangerouslySetInnerHTML={{ __html: scheme.description }}
+                      />
+                      {scheme.description}
+                    </div>
                   </Typography>
                 </div>
               </Paper>
@@ -109,41 +114,35 @@ const SchemeCentral = (props) => {
           <Grid container>
             <Grid item xs={null} sm={3}></Grid>
             <Grid item xs={12} sm={3}>
-              {localStorage.getItem("userOf") == "centre" && 
-            
-              <Button
-                variant="contained"
-                color="primary"
-                startIcon={<EditIcon />}
-                onClick={() => {
-                  history.push({
-                    pathname: `/edit-scheme/${scheme.slug}`,
-                    customNameData: data,
-                  });
-                }}
-              >
-                Modify
+              {localStorage.getItem("userOf") == "centre" && (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  startIcon={<EditIcon />}
+                  onClick={() => {
+                    history.push({
+                      pathname: `/edit-scheme/${scheme.slug}`,
+                      customNameData: data,
+                    });
+                  }}
+                >
+                  Modify
                 </Button>
-            }
-              
+              )}
 
-            {localStorage.getItem("userOf") == "state" &&  
-          
-            <Button
-            variant="contained"
-            color="primary"
-            onClick={() => {
-              history.push({
-                pathname: `/raise-request/${scheme.slug}`,
-              });
-            }}
-          >
-            Raise a request
-            </Button>
-          }
-
-              
-              )
+              {localStorage.getItem("userOf") == "state" && (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    history.push({
+                      pathname: `/raise-request/${scheme.slug}`,
+                    });
+                  }}
+                >
+                  Raise a request
+                </Button>
+              )}
             </Grid>
             <Grid item xs={12} sm={3}>
               <Button
