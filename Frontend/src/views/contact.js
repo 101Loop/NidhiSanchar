@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
 
 const tiers = [
   {
-    description: ["Create Scheme Issue"],
+    description: ["Propose a Scheme"],
     icon: <CreateIcon />,
   },
   {
@@ -112,8 +112,8 @@ const tiers = [
     icon: <SmsFailedIcon />,
   },
   {
-    description: ["Report Spam"],
-    icon: <ReportIcon />,
+    description: ["Create Scheme Issue"],
+    icon: <CreateIcon />,
   },
   {
     description: ["Authentication Issues"],
@@ -137,8 +137,14 @@ export default function Support() {
     const pname = name;
     history.push({
       pathname: `/shelp/${name}`,
-      customNameData: pname,
+      state: {
+        customNameData: pname,
+      },
     });
+  };
+
+  const handleNewscheme = () => {
+    console.log("specific");
   };
 
   let [showChat, setShowChat] = useState(true);
