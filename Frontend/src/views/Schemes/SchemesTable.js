@@ -71,8 +71,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowRight />
         ) : (
-            <KeyboardArrowLeft />
-          )}
+          <KeyboardArrowLeft />
+        )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
@@ -82,8 +82,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowLeft />
         ) : (
-            <KeyboardArrowRight />
-          )}
+          <KeyboardArrowRight />
+        )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
@@ -226,7 +226,7 @@ const SchemeTable = (props) => {
           align="center"
         >
           Select a scheme to see all details
-      </Typography>
+        </Typography>
       </Container>
 
       <div style={{}}>
@@ -252,18 +252,19 @@ const SchemeTable = (props) => {
             <TableHead style={{ backgroundColor: "#F1F8FF" }}>
               <TableRow>
                 <TableCell
+                  align="center"
                   onClick={() => {
                     handleSort("id");
                   }}
                 >
                   <div style={{ cursor: "pointer" }}>Serial Number</div>
                 </TableCell>
-                <TableCell align="left">Scheme Name</TableCell>
+                <TableCell align="center">Scheme Name</TableCell>
                 <TableCell
                   onClick={() => {
                     handleSort("scheme_budget");
                   }}
-                  align="right"
+                  align="center"
                 >
                   <div style={{ cursor: "pointer" }}>Budget (Cr.)</div>
                 </TableCell>
@@ -271,7 +272,7 @@ const SchemeTable = (props) => {
                   onClick={() => {
                     handleSort("date_of_launching");
                   }}
-                  align="right"
+                  align="center"
                 >
                   <div style={{ cursor: "pointer" }}>Launched On</div>
                 </TableCell>
@@ -279,29 +280,27 @@ const SchemeTable = (props) => {
                   onClick={() => {
                     handleSort("date_updated");
                   }}
-                  align="right"
+                  align="center"
                 >
                   <div style={{ cursor: "pointer" }}>Updated On</div>
                 </TableCell>
-                <TableCell align="right">Scheme ID</TableCell>
+                <TableCell align="center">Scheme ID</TableCell>
               </TableRow>
             </TableHead>
 
             <TableBody>
               {(rowsPerPage > 0
                 ? schemes.slice(
-                  page * rowsPerPage,
-                  page * rowsPerPage + rowsPerPage
-                )
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
                 : schemes
               ).map(
                 (scheme) =>
-                  scheme.name
-                    .toLowerCase()
-                    .includes(search.toLowerCase()) && (
+                  scheme.name.toLowerCase().includes(search.toLowerCase()) && (
                     <TableRow key={scheme.name}>
-                      <TableCell>{scheme.id}</TableCell>
-                      <TableCell align="left" component="th" scope="row">
+                      <TableCell align="center">{scheme.id}</TableCell>
+                      <TableCell align="center" component="th" scope="row">
                         <div
                           style={{ cursor: "pointer" }}
                           onClick={() => handleSelectScheme(scheme)}
@@ -309,16 +308,16 @@ const SchemeTable = (props) => {
                           {scheme.name}
                         </div>
                       </TableCell>
-                      <TableCell align="right">
+                      <TableCell align="center">
                         {scheme.scheme_budget}
                       </TableCell>
-                      <TableCell align="right">
+                      <TableCell align="center">
                         {scheme.date_of_launching}
                       </TableCell>
-                      <TableCell align="right">
+                      <TableCell align="center">
                         {moment(scheme.date_updated).format("YYYY-MM-DD")}
                       </TableCell>
-                      <TableCell align="right">{scheme.id}</TableCell>
+                      <TableCell align="center">{scheme.id}</TableCell>
                     </TableRow>
                   )
               )}
