@@ -123,13 +123,8 @@ const useStylesButton = makeStyles((theme) => ({
 }));
 
 const SchemeTable = (props) => {
-  console.log("props: ", props);
   const { fundRequests } = props;
-  //console.log("props: ", props);
-  //console.log("fundRequests: ", fundRequests);
-  //const classes = useStyles();
   const classes = useStyles2();
-  const buttonStyleClass = useStylesButton();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [search, setSearch] = useState("");
@@ -163,7 +158,6 @@ const SchemeTable = (props) => {
 
   var sortedData = null;
   if (fundRequests) {
-    console.log("INside if");
     sortedData = _.orderBy(
       fundRequests,
       [sortColumn.path],
@@ -241,15 +235,22 @@ const SchemeTable = (props) => {
                   </TableCell>
                 </TableRow>
               </TableHead>
+              {
+                fundRequests.length == 0 &&
+                <h4>
+                  <TableCell align="center">
+                    <div>
+                      No request has been created on this scheme yet.
+                    </div>
+                  </TableCell>
+                </h4>
+              }
               {fundRequests &&
                 <TableBody>
                   {(fundRequests
                   ).map(
                     (request) => {
-                      //console.log("REQUEST: ", request);
-                      //console.log("sortedData: ", sortedData);
-                      // console.log("request.id: ", request.id);
-                      // console.log("sortedData[request.id -1].created_by.state: ", sortedData[request.id - 1].created_by.state);
+
                       return request.created_by.state
                         .toLowerCase()
                         .includes(search.toLowerCase()) && (
@@ -270,6 +271,8 @@ const SchemeTable = (props) => {
 
                     }
 
+
+
                   )}
                   {emptyRows > 0 && (
                     <TableRow style={{ height: 53 * emptyRows }}>
@@ -278,7 +281,6 @@ const SchemeTable = (props) => {
                   )}
                 </TableBody>
               }
-
               <TableFooter>
                 <TableRow>
                   <TablePagination

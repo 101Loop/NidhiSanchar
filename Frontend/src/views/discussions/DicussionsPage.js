@@ -18,6 +18,7 @@ class Discussions extends React.Component {
     super(props);
     this.state = {
       scheme: {},
+      messages: []
     };
   }
 
@@ -35,6 +36,9 @@ class Discussions extends React.Component {
         // if (response.status > 300) {
         //   throw new Error("An error");
         // } else {
+        this.setState({
+          scheme: response.data
+        })
         const discussionData = {
           scheme: response.data.id,
         };
@@ -155,7 +159,7 @@ class Discussions extends React.Component {
             variant="h4"
             align="left"
           >
-            Sukanya Samriddhi Yojana (SSY)
+            {this.state.scheme.name}
             <span style={{ color: "grey" }}>#21</span>
           </Typography>
           <div className="container p-0 m-0">

@@ -1,10 +1,8 @@
 import "../../App.css";
-import Fab from "@material-ui/core/Fab";
-import { makeStyles } from "@material-ui/core/styles";
-import AddIcon from "@material-ui/icons/Add";
-import React, { Component, useEffect, useState } from "react";
+import React, { Component } from "react";
 import RequestList from "./requestsList";
-import { getFundRequests } from "../../core_api_calls/requests";
+import { getFundRequestsBySchemeId } from "../../core_api_calls/requests";
+import { getSchemeBySlug } from "../../core_api_calls/schemes";
 import SpecificRequest from "./specific_request";
 
 class SingleSchemeRequestView extends Component {
@@ -16,38 +14,36 @@ class SingleSchemeRequestView extends Component {
   }
 
   componentDidMount() {
-    this.preload();
+    this.preloadGetSchemeBySlug(this.props.match.params.slug);
   }
 
-  async preload() {
-    const response = await getFundRequests();
-    this.setState({
-      fundRequests: response.data,
-    });
+  async preload(schemeId) {
+    const response = await getFundRequestsBySchemeId(schemeId);
+    if (response) {
+      this.setState({
+        fundRequests: response.data,
+      });
+    }
 
-    // .then((response) => {
-    //   if (response.status > 300) {
-    //     throw new Error("An error occured");
-    //   } else {
-    //     this.setState({
-    //       fundRequests: response.data,
-    //     });
-    //   }
-    // })
-    // .catch((err) => {
-    //   console.log("error: ", err);
-    // });
+
+  };
+
+  async preloadGetSchemeBySlug(slug) {
+    const response = await getSchemeBySlug(slug)
+    this.setState({
+      scheme: response.data
+    })
+    this.preload(response.data.id);
   };
 
   render() {
     const { fundRequests } = this.state;
-    console.log("FUND REQUESTS: ", fundRequests);
     return (
       <div>
-        {fundRequests.length !== 0 ? (
+        {fundRequests ? (
           <SpecificRequest fundRequests={fundRequests} />
         ) : (
-            <div>Loading</div>
+            <h2>Loading</h2>
           )}
       </div>
     );
