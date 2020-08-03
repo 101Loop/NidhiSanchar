@@ -75,8 +75,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowRight />
         ) : (
-            <KeyboardArrowLeft />
-          )}
+          <KeyboardArrowLeft />
+        )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
@@ -86,8 +86,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowLeft />
         ) : (
-            <KeyboardArrowRight />
-          )}
+          <KeyboardArrowRight />
+        )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
@@ -158,15 +158,8 @@ const SchemeTable = (props) => {
 
   var sortedData = null;
   if (fundRequests) {
-    sortedData = _.orderBy(
-      fundRequests,
-      [sortColumn.path],
-      [sortColumn.order]
-    );
+    sortedData = _.orderBy(fundRequests, [sortColumn.path], [sortColumn.order]);
   }
-
-
-
 
   return (
     <Fragment>
@@ -219,12 +212,12 @@ const SchemeTable = (props) => {
               <TableHead style={{ backgroundColor: "#F1F8FF" }}>
                 <TableRow>
                   <TableCell
-                    align="left"
+                    align="center"
                     onClick={() => handleSort("serialNo")}
                   >
                     Request ID
                   </TableCell>
-                  <TableCell align="left">State Government</TableCell>
+                  <TableCell align="center">State Government</TableCell>
                   <TableCell align="center">Requested On</TableCell>
 
                   <TableCell
@@ -235,52 +228,43 @@ const SchemeTable = (props) => {
                   </TableCell>
                 </TableRow>
               </TableHead>
-              {
-                fundRequests.length == 0 &&
+              {fundRequests.length == 0 && (
                 <h4>
                   <TableCell align="center">
-                    <div>
-                      No request has been created on this scheme yet.
-                    </div>
+                    <div>No request has been created on this scheme yet.</div>
                   </TableCell>
                 </h4>
-              }
-              {fundRequests &&
+              )}
+              {fundRequests && (
                 <TableBody>
-                  {(fundRequests
-                  ).map(
-                    (request) => {
-
-                      return request.created_by.state
+                  {fundRequests.map((request) => {
+                    return (
+                      request.created_by.state
                         .toLowerCase()
                         .includes(search.toLowerCase()) && (
-                          <TableRow key={request.id}>
-                            <TableCell align="left">{request.id}</TableCell>
-                            <TableCell align="left" component="th" scope="row">
-                              <div>{request.created_by.state}</div>
-                            </TableCell>
-                            <TableCell align="center">
-                              {moment(request.date_created).format("YYYY-MM-DD")}
-                            </TableCell>
+                        <TableRow key={request.id}>
+                          <TableCell align="center">{request.id}</TableCell>
+                          <TableCell align="center" component="th" scope="row">
+                            <div>{request.created_by.state}</div>
+                          </TableCell>
+                          <TableCell align="center">
+                            {moment(request.date_created).format("YYYY-MM-DD")}
+                          </TableCell>
 
-                            <TableCell align="center">
-                              <div style={{ color: "green" }}>active</div>
-                            </TableCell>
-                          </TableRow>
-                        )
-
-                    }
-
-
-
-                  )}
+                          <TableCell align="center">
+                            <div style={{ color: "green" }}>active</div>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    );
+                  })}
                   {emptyRows > 0 && (
                     <TableRow style={{ height: 53 * emptyRows }}>
                       <TableCell colSpan={6} />
                     </TableRow>
                   )}
                 </TableBody>
-              }
+              )}
               <TableFooter>
                 <TableRow>
                   <TablePagination
