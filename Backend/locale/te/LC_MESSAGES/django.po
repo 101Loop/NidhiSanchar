@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-03 11:04+0530\n"
-"PO-Revision-Date: 2020-08-03 13:10+0553\n"
+"POT-Creation-Date: 2020-08-03 13:40+0530\n"
+"PO-Revision-Date: 2020-08-03 13:44+0553\n"
 "Last-Translator: b'Anonymous User <me@sumitsingh.tech>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,15 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.4\n"
 
-#: NidhiSanchar/settings.py:101
+#: NidhiSanchar/settings.py:102
 msgid "English"
 msgstr "ఆంగ్ల"
 
-#: NidhiSanchar/settings.py:102
+#: NidhiSanchar/settings.py:103
 msgid "Hindi"
 msgstr "హిందీ"
 
-#: NidhiSanchar/settings.py:103
+#: NidhiSanchar/settings.py:104
 msgid "Telugu"
 msgstr "తెలుగు"
 
@@ -38,6 +38,11 @@ msgstr "అప్లికేషన్స్ | ఫండింగ్"
 #: NidhiSanchar/urls.py:27 NidhiSanchar/urls.py:28
 msgid "NidhiSanchar"
 msgstr "ఫండింగ్"
+
+#: department/apps.py:7
+#| msgid "Department Name"
+msgid "Department"
+msgstr "శాఖ"
 
 #: department/models.py:22 department/models.py:84 department/models.py:171
 msgid "Name of the Department"
@@ -62,77 +67,77 @@ msgstr "పాయింట్ ఆఫ్ కాంటాక్ట్"
 
 #: department/models.py:94 department/models.py:181
 msgid "Point of Contact from the Department"
-msgstr ""
+msgstr "విభాగం నుండి సంప్రదింపు స్థానం"
 
 #: department/models.py:112
 #, python-brace-format
 msgid "{self.dept_poc} is already a POC in State Department."
-msgstr ""
+msgstr "{self.dept_poc} ఇప్పటికే  ఇప్పటికే స్టేట్ డిపార్ట్‌మెంట్‌లో POC."
 
 #: department/models.py:151
 msgid "Centre Department"
-msgstr ""
+msgstr "కేంద్రం విభాగం"
 
 #: department/models.py:152
 msgid "Centre Departments"
-msgstr ""
+msgstr "కేంద్రం విభాగం"
 
 #: department/models.py:199
 #, python-brace-format
 msgid "{self.dept_poc} is already a POC in Centre Department."
-msgstr ""
+msgstr "{self.dept_poc} ఇప్పటికే కేంద్ర విభాగంలో POC."
 
 #: department/models.py:238
 msgid "State Department"
-msgstr ""
+msgstr "రాష్ట్ర శాఖ"
 
 #: department/models.py:239
 msgid "State Departments"
-msgstr ""
+msgstr "రాష్ట్ర శాఖ"
 
 #: discussions/models.py:16 discussions/models.py:71
 msgid "Is Discussion Active?"
-msgstr ""
+msgstr "చర్చ చురుకుగా ఉందా?"
 
 #: discussions/models.py:18 discussions/models.py:73
 msgid "Discussion Started By"
-msgstr ""
+msgstr "చర్చ ప్రారంభమైంది"
 
 #: discussions/models.py:32
 msgid "Request Discussion"
-msgstr ""
+msgstr "చర్చను అభ్యర్థించండి"
 
 #: discussions/models.py:33
 msgid "Request Discussions"
-msgstr ""
+msgstr "చర్చలను అభ్యర్థించండి"
 
-#: discussions/models.py:49 discussions/models.py:108
+#: discussions/models.py:49 discussions/models.py:108 help/models.py:17
 msgid "Document"
-msgstr ""
+msgstr "డాక్యుమెంట్"
 
 #: discussions/models.py:61
 msgid "Message"
-msgstr ""
+msgstr "సందేశం"
 
 #: discussions/models.py:62
 msgid "Messages"
-msgstr ""
+msgstr "సందేశాలు"
 
 #: discussions/models.py:89
 msgid "Scheme Discussion"
-msgstr ""
+msgstr "పథకం చర్చ"
 
 #: discussions/models.py:90
 msgid "Scheme Discussions"
-msgstr ""
+msgstr "పథకం చర్చలు"
 
 #: discussions/models.py:120
 msgid "Scheme Message"
-msgstr ""
+msgstr "స్కీమ్ సందేశం"
 
 #: discussions/models.py:121
 msgid "Scheme Messages"
-msgstr ""
+msgstr "స్కీమ్ సందేశం"
 
 #: discussions/views.py:63
 msgid "Discussion for this Fund Request Already Exists."
@@ -154,141 +159,143 @@ msgstr ""
 
 #: drf_user/admin.py:25
 msgid "Personal info"
-msgstr ""
+msgstr "వ్యక్తిగత సమాచారం"
 
 #: drf_user/admin.py:27
 msgid "Permissions"
-msgstr ""
+msgstr "అనుమతులు"
 
 #: drf_user/admin.py:30
 msgid "Important dates"
-msgstr ""
+msgstr "ముఖ్యమైన తేదీలు"
 
 #: drf_user/models.py:23
 msgid "Role"
-msgstr ""
+msgstr "పాత్ర"
 
 #: drf_user/models.py:24 drf_user/models.py:59
 msgid "Roles"
-msgstr ""
+msgstr "పాత్ర"
 
 #: drf_user/models.py:41
 msgid "Unique UserName"
-msgstr ""
+msgstr "ప్రత్యేక వాడుకరిపేరు"
 
 #: drf_user/models.py:43
 msgid "EMail Address"
-msgstr ""
+msgstr "ఇమెయిల్ చిరునామా"
 
 #: drf_user/models.py:45
 msgid "Mobile Number"
-msgstr ""
+msgstr "మొబైల్ సంఖ్య"
 
 #: drf_user/models.py:50
 msgid "Full Name"
-msgstr ""
+msgstr "పూర్తి పేరు"
 
 #: drf_user/models.py:51
 msgid "Date Joined"
-msgstr ""
+msgstr "చేరిన తేదీ"
 
 #: drf_user/models.py:52 drf_user/models.py:131 userprofile/models.py:15
 msgid "Date Modified"
-msgstr ""
+msgstr "తేదీ సవరించబడింది"
 
 #: drf_user/models.py:53
 msgid "Activated"
-msgstr ""
+msgstr "ఉత్తేజిత"
 
 #: drf_user/models.py:54
 msgid "Staff Status"
-msgstr ""
+msgstr "సిబ్బంది స్థితి"
 
 #: drf_user/models.py:62
 msgid ""
 "The roles this user belongs to. A user will get all permissions granted to "
 "each of their roles."
 msgstr ""
+"ఈ యూజర్ చెందిన పాత్రలు. వినియోగదారు వారి ప్రతి పాత్రకు అన్ని అనుమతులు మంజూరు"
+" చేస్తారు."
 
 #: drf_user/models.py:75 userprofile/models.py:37
 msgid "User"
-msgstr ""
+msgstr "వాడుకరి"
 
 #: drf_user/models.py:76
 msgid "Users"
-msgstr ""
+msgstr "వినియోగదారులు"
 
 #: drf_user/models.py:95
 msgid "JWT Token passed"
-msgstr ""
+msgstr "జెడబ్ల్యుటి టోకెన్ ఉత్తీర్ణత"
 
 #: drf_user/models.py:97
 msgid "Session Passed"
-msgstr ""
+msgstr "సెషన్ పాస్ అయింది"
 
 #: drf_user/models.py:99
 msgid "Create Date/Time"
-msgstr ""
+msgstr "తేదీ / సమయాన్ని సృష్టించండి"
 
 #: drf_user/models.py:102
 msgid "Date/Time Modified"
-msgstr ""
+msgstr "తేదీ / సమయం సవరించబడింది"
 
 #: drf_user/models.py:105
 msgid "Is Active?"
-msgstr ""
+msgstr "యాక్టివ్‌గా ఉందా?"
 
 #: drf_user/models.py:111
 msgid "Authentication Transaction"
-msgstr ""
+msgstr "ప్రామాణీకరణ లావాదేవీ"
 
 #: drf_user/models.py:112
 msgid "Authentication Transactions"
-msgstr ""
+msgstr "ప్రామాణీకరణ లావాదేవీలు"
 
 #: drf_user/models.py:124
 msgid "OTP Code"
-msgstr ""
+msgstr "OTP కోడ్"
 
 #: drf_user/models.py:126
 msgid "Destination Address (Mobile/EMail)"
-msgstr ""
+msgstr "గమ్యం చిరునామా (మొబైల్ / ఇమెయిల్)"
 
 #: drf_user/models.py:130
 msgid "Create Date"
-msgstr ""
+msgstr "తేదీని సృష్టించండి"
 
 #: drf_user/models.py:132
 msgid "Is Validated"
-msgstr ""
+msgstr "ధృవీకరించబడింది"
 
 #: drf_user/models.py:134
 msgid "Attempted Validation"
-msgstr ""
+msgstr "ధ్రువీకరణకు ప్రయత్నించారు"
 
 #: drf_user/models.py:137
 msgid "Destination Property"
-msgstr ""
+msgstr "గమ్యం ఆస్తి"
 
 #: drf_user/models.py:142
 msgid "OTP Sent Counter"
-msgstr ""
+msgstr "OTP పంపిన కౌంటర్"
 
 #: drf_user/models.py:144
 msgid "SMS ID"
-msgstr ""
+msgstr "SMS ID"
 
 #: drf_user/models.py:146
 msgid "ReActivate Sending OTP"
-msgstr ""
+msgstr "OTP పంపడాన్ని తిరిగి సక్రియం చేయండి"
 
 #: drf_user/models.py:152
 msgid "OTP Validation"
-msgstr ""
+msgstr "OTP ధ్రువీకరణ"
 
 #: drf_user/models.py:153
 msgid "OTP Validations"
-msgstr ""
+msgstr "OTP ధ్రువీకరణలు"
 
 #: drf_user/serializers.py:207
 msgid "No user exists with provided details"
@@ -355,149 +362,167 @@ msgstr ""
 msgid "Logout successfully."
 msgstr ""
 
+#: help/apps.py:7 help/models.py:28 help/models.py:29
+msgid "Help"
+msgstr "సహాయం"
+
+#: help/models.py:13
+msgid "Email"
+msgstr "ఇమెయిల్"
+
+#: help/models.py:14
+msgid "Subject"
+msgstr "పాఠ్యాంశము"
+
+#: help/models.py:15
+#| msgid "Scheme Description"
+msgid "Description"
+msgstr "వివరణ"
+
 #: schemes/models.py:19
 msgid "Which Department Created this Scheme"
-msgstr ""
+msgstr "ఈ పథకాన్ని ఏ విభాగం సృష్టించింది"
 
 #: schemes/models.py:20
 msgid "Scheme Created By"
-msgstr ""
+msgstr "రూపొందించిన పథకం"
 
 #: schemes/models.py:25 schemes/models.py:145
 msgid "Name of the Scheme"
-msgstr ""
+msgstr "పథకం పేరు"
 
 #: schemes/models.py:25 schemes/models.py:145
 msgid "Scheme Name"
-msgstr ""
+msgstr "పథకం పేరు"
 
 #: schemes/models.py:28 schemes/models.py:148
 msgid "When the scheme will be launched"
-msgstr ""
+msgstr "పథకం ఎప్పుడు ప్రారంభించబడుతుంది"
 
 #: schemes/models.py:29 schemes/models.py:149
 msgid "Date of Launching"
-msgstr ""
+msgstr "ప్రారంభించిన తేదీ"
 
 #: schemes/models.py:31 schemes/models.py:151
 msgid "Scheme Description"
-msgstr ""
+msgstr "పథకం వివరణ"
 
 #: schemes/models.py:33
 msgid "To create unique urls for the schemes"
-msgstr ""
+msgstr "పథకాల కోసం ప్రత్యేకమైన url లను సృష్టించడం"
 
 #: schemes/models.py:40
 msgid "Total Budget of the Scheme(in cr.)"
-msgstr ""
+msgstr "పథకం యొక్క మొత్తం బడ్జెట్ (cr.)"
 
 #: schemes/models.py:45
 msgid "Is Scheme Active?"
-msgstr ""
+msgstr "స్కీమ్ యాక్టివ్‌గా ఉందా?"
 
 #: schemes/models.py:58 schemes/models.py:79
 msgid "Scheme"
-msgstr ""
+msgstr "పథకం"
 
 #: schemes/models.py:59
 msgid "Schemes"
-msgstr ""
+msgstr "పథకాలు"
 
 #: schemes/models.py:81
 msgid "Proposal Brief"
-msgstr ""
+msgstr "ప్రతిపాదన సంక్షిప్త"
 
 #: schemes/models.py:83 schemes/models.py:153
 msgid "Proposal Document"
-msgstr ""
+msgstr "ప్రతిపాదన పత్రం"
 
 #: schemes/models.py:90
 msgid "Total Funds Required(in cr.)"
-msgstr ""
+msgstr "మొత్తం నిధులు అవసరం (cr.)"
 
 #: schemes/models.py:96 schemes/models.py:166
 msgid "Status of the Request"
-msgstr ""
+msgstr "అభ్యర్థన యొక్క స్థితి"
 
 #: schemes/models.py:104
 msgid "Requested By"
-msgstr ""
+msgstr "ద్వారా అభ్యర్థించబడింది"
 
 #: schemes/models.py:111
 msgid "Fund Request"
-msgstr ""
+msgstr "ఫండ్ అభ్యర్థన"
 
 #: schemes/models.py:112
 msgid "Fund Requests"
-msgstr ""
+msgstr "ఫండ్ అభ్యర్థనలు"
 
 #: schemes/models.py:142
 msgid "Which department created this scheme"
-msgstr ""
+msgstr "ఈ పథకాన్ని ఏ విభాగం సృష్టించింది"
 
 #: schemes/models.py:160
 msgid "Total Funds required for the Scheme(in cr.)"
-msgstr ""
+msgstr "పథకానికి అవసరమైన మొత్తం నిధులు (cr.)"
 
 #: schemes/models.py:175
 msgid ""
 "Comments will be added by centre/state officials regarding this scheme."
 msgstr ""
+"ఈ పథకానికి సంబంధించి కేంద్రం / రాష్ట్ర అధికారులు వ్యాఖ్యలు చేర్చబడతారు."
 
 #: schemes/models.py:185
 msgid "Scheme Fund Request By State"
-msgstr ""
+msgstr "రాష్ట్రాల వారీగా స్కీమ్ ఫండ్ అభ్యర్థన"
 
 #: schemes/models.py:186
 msgid "Scheme Fund Requests By State"
-msgstr ""
+msgstr "రాష్ట్రాల వారీగా స్కీమ్ ఫండ్ అభ్యర్థనలు"
 
 #: schemes/serializers.py:68
 msgid "You are not authorised to perform this action."
-msgstr ""
+msgstr "ఈ చర్య చేయడానికి మీకు అధికారం లేదు."
 
 #: schemes/serializers.py:77
 msgid ""
 "Fund request for the scheme {attrs['scheme']} is already created by you."
 msgstr ""
 
-#: schemes/views.py:38 schemes/views.py:52
+#: schemes/views.py:39 schemes/views.py:53
 msgid "Schemes Does Not Exists Yet."
 msgstr ""
 
-#: schemes/views.py:59
+#: schemes/views.py:60
 msgid "Schemes Does not Exist Yet."
 msgstr ""
 
-#: schemes/views.py:148 schemes/views.py:190
+#: schemes/views.py:149 schemes/views.py:191
 msgid "You are not authorized to perform this action."
 msgstr ""
 
-#: schemes/views.py:222
+#: schemes/views.py:223
 #, python-brace-format
 msgid "Requests with {scheme_id} does not exists. Please create one."
 msgstr ""
 
 #: userprofile/models.py:13
 msgid "Date Created"
-msgstr ""
+msgstr "సృష్టించబడిన తేదీ"
 
 #: userprofile/models.py:39
 msgid "Date of Birth"
-msgstr ""
+msgstr "పుట్టిన తేది"
 
 #: userprofile/models.py:41
 msgid "Gender"
-msgstr ""
+msgstr "జెండర్"
 
 #: userprofile/models.py:44
 msgid "Profile Image"
-msgstr ""
+msgstr "ప్రొఫైల్ చిత్రం"
 
-#: userprofile/models.py:82
+#: userprofile/models.py:94
 msgid "User Profile"
-msgstr ""
+msgstr "వినియోగదారు వివరాలు"
 
-#: userprofile/models.py:83
+#: userprofile/models.py:95
 msgid "User Profiles"
-msgstr ""
+msgstr "వినియోగదారు ప్రొఫైల్స్"
