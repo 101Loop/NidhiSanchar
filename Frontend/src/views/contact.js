@@ -22,6 +22,7 @@ import CancelScheduleSendIcon from "@material-ui/icons/CancelScheduleSend";
 import SmsFailedIcon from "@material-ui/icons/SmsFailed";
 import ExtensionIcon from "@material-ui/icons/Extension";
 import { Icon } from "@material-ui/core";
+import ChatBot from "./chat";
 
 const ColorButton = withStyles((theme) => ({
   root: {
@@ -269,7 +270,9 @@ export default function Support() {
             </Container>
           </div>
         </div>
-        <div className="bot"></div>
+        <div className="bot">
+          <ChatBot />
+        </div>
       </section>
     </React.Fragment>
   );

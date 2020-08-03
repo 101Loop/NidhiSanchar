@@ -29,6 +29,39 @@ class DepartmentName(TimeStampedModel):
     def __str__(self):
         return self.name
 
+    @property
+    def total_schemes(self):
+        from schemes.models import Scheme
+
+        qs = Scheme.objects.all().count()
+        return qs
+
+    @property
+    def total_requests(self):
+        from schemes.models import FundRequest
+
+        qs = FundRequest.objects.all().count()
+        return qs
+
+    @property
+    def total_discussions(self):
+        from discussions.models import SchemeDiscussion, RequestDiscussion
+
+        scheme_discussion = SchemeDiscussion.objects.all().count()
+        request_discussion = RequestDiscussion.objects.all().count()
+
+        qs = scheme_discussion + request_discussion
+
+        return qs
+
+    @property
+    def pending_requests(self):
+        from schemes.models import FundRequest
+
+        qs = FundRequest.objects.filter(status__in=["N", "IP"]).count()
+
+        return qs
+
     class Meta:
         verbose_name = _("Department Name")
         verbose_name_plural = _("Department Names")

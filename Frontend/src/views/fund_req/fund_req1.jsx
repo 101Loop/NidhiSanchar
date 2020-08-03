@@ -70,11 +70,6 @@ class RaiseRequest extends Component {
     }
 
 
-
-    //   console.log("props: ", props);
-    //   const classes = useStyles();
-    //   const [scheme, setScheme] = useState();
-    //   console.log("scheme: ", scheme);
     async preload(slug) {
         const response = await getSchemeBySlug(slug);
         console.log("response: ", response);

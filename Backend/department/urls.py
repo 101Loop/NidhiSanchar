@@ -14,4 +14,9 @@ urlpatterns = [
         views.StateDepartmentView.as_view(),
         name="show-state-department",
     ),
+    path(
+        "v1/stats/<int:pk>/",
+        views.LandingPageStatsAPIView.as_view(),
+        name="show-landing-page-stats",
+    ),
 ]
