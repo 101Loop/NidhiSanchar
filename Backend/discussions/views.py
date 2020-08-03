@@ -344,4 +344,4 @@ class DiscussionPerSchemeListView(generics.ListAPIView):
             )
         else:
             self.check_object_permissions(request=self.request, obj=scheme)
-            return qs.filter(scheme=scheme)
+            return qs.filter(parent_scheme=scheme)
