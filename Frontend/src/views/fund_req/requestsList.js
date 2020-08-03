@@ -72,8 +72,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowRight />
         ) : (
-            <KeyboardArrowLeft />
-          )}
+          <KeyboardArrowLeft />
+        )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
@@ -83,8 +83,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowLeft />
         ) : (
-            <KeyboardArrowRight />
-          )}
+          <KeyboardArrowRight />
+        )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
@@ -258,25 +258,25 @@ const SchemeRequestTable = (props) => {
                 }}
               >
                 <TableRow>
-                  <TableCell align="left" onClick={() => handleSort("id")}>
+                  <TableCell align="center" onClick={() => handleSort("id")}>
                     <div style={{ cursor: "pointer" }}>Serial Number</div>
                   </TableCell>
-                  <TableCell align="left">Scheme Name</TableCell>
+                  <TableCell align="center">Scheme Name</TableCell>
                   <TableCell
                     onClick={() => handleSort("scheme_budget")}
-                    align="left"
+                    align="center"
                   >
                     <div style={{ cursor: "pointer" }}>Budget (Rs.)</div>
                   </TableCell>
                   <TableCell
                     onClick={() => handleSort("date_of_launching")}
-                    align="right"
+                    align="center"
                   >
                     <div style={{ cursor: "pointer" }}>Created On</div>
                   </TableCell>
                   <TableCell
                     onClick={() => handleSort("date_updated")}
-                    align="right"
+                    align="center"
                   >
                     <div style={{ cursor: "pointer" }}>Updated on</div>
                   </TableCell>
@@ -291,41 +291,41 @@ const SchemeRequestTable = (props) => {
               <TableBody>
                 {(rowsPerPage > 0
                   ? schemes.slice(
-                    page * rowsPerPage,
-                    page * rowsPerPage + rowsPerPage
-                  )
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
                   : schemes
-                ).map(
-                  (scheme) => {
-                    return scheme.name
+                ).map((scheme) => {
+                  return (
+                    scheme.name
                       .toLowerCase()
                       .includes(search.toLowerCase()) && (
-                        <TableRow key={scheme.name}>
-                          <TableCell align="left">{scheme.id}</TableCell>
-                          <TableCell align="left" component="th" scope="row">
-                            <div
-                              style={{ cursor: "pointer" }}
-                              onClick={() => handleSelectScheme(scheme)}
-                            >
-                              {scheme.name}
-                            </div>
-                          </TableCell>
-                          <TableCell align="left">
-                            {scheme.scheme_budget}
-                          </TableCell>
-                          <TableCell align="right">
-                            {scheme.date_of_launching}
-                          </TableCell>
-                          <TableCell align="right">
-                            {moment(scheme.date_updated).format("YYYY-MM-DD")}
-                          </TableCell>
-                          <TableCell align="center">
-                            <b>{scheme.id}</b>
-                          </TableCell>
-                        </TableRow>
-                      )
-                  }
-                )}
+                      <TableRow key={scheme.name}>
+                        <TableCell align="center">{scheme.id}</TableCell>
+                        <TableCell align="center" component="th" scope="row">
+                          <div
+                            style={{ cursor: "pointer" }}
+                            onClick={() => handleSelectScheme(scheme)}
+                          >
+                            {scheme.name}
+                          </div>
+                        </TableCell>
+                        <TableCell align="center">
+                          {scheme.scheme_budget}
+                        </TableCell>
+                        <TableCell align="center">
+                          {scheme.date_of_launching}
+                        </TableCell>
+                        <TableCell align="center">
+                          {moment(scheme.date_updated).format("YYYY-MM-DD")}
+                        </TableCell>
+                        <TableCell align="center">
+                          <b>{scheme.id}</b>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  );
+                })}
                 {emptyRows > 0 && (
                   <TableRow style={{ height: 53 * emptyRows }}>
                     <TableCell colSpan={6} />

@@ -19,6 +19,25 @@ export const getFundRequests = () => {
     });
 };
 
+export const getFundRequestsBySchemeId = (schemeId) => {
+  console.log("schemeId: ", schemeId);
+  const key = localStorage.getItem("jwt");
+  const headers = { Authorization: `Bearer ${key}` };
+  let URL = API.BASE_PATH + API.GET_FUND_REQUEST_BY_SCHEME_ID + `${schemeId}/`
+  console.log("URL: ", URL);
+  return axios(`${URL}`, { method: "GET", headers: headers })
+    .then((response) => {
+      console.log("RESPONSE: ", response);
+      if (response.status > 300) {
+        throw new Error("An error occured");
+      }
+      return response;
+    })
+    .catch((err) => {
+      console.log("error: ", err);
+    });
+};
+
 export const createFundRequest = (data) => {
   console.log("data: ", data);
   const key = localStorage.getItem("jwt");

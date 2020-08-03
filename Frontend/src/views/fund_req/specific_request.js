@@ -75,8 +75,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowRight />
         ) : (
-            <KeyboardArrowLeft />
-          )}
+          <KeyboardArrowLeft />
+        )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
@@ -86,8 +86,8 @@ function TablePaginationActions(props) {
         {theme.direction === "rtl" ? (
           <KeyboardArrowLeft />
         ) : (
-            <KeyboardArrowRight />
-          )}
+          <KeyboardArrowRight />
+        )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
@@ -123,13 +123,8 @@ const useStylesButton = makeStyles((theme) => ({
 }));
 
 const SchemeTable = (props) => {
-  console.log("props: ", props);
   const { fundRequests } = props;
-  //console.log("props: ", props);
-  //console.log("fundRequests: ", fundRequests);
-  //const classes = useStyles();
   const classes = useStyles2();
-  const buttonStyleClass = useStylesButton();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [search, setSearch] = useState("");
@@ -163,16 +158,8 @@ const SchemeTable = (props) => {
 
   var sortedData = null;
   if (fundRequests) {
-    console.log("INside if");
-    sortedData = _.orderBy(
-      fundRequests,
-      [sortColumn.path],
-      [sortColumn.order]
-    );
+    sortedData = _.orderBy(fundRequests, [sortColumn.path], [sortColumn.order]);
   }
-
-
-
 
   return (
     <Fragment>
@@ -225,12 +212,12 @@ const SchemeTable = (props) => {
               <TableHead style={{ backgroundColor: "#F1F8FF" }}>
                 <TableRow>
                   <TableCell
-                    align="left"
+                    align="center"
                     onClick={() => handleSort("serialNo")}
                   >
                     Request ID
                   </TableCell>
-                  <TableCell align="left">State Government</TableCell>
+                  <TableCell align="center">State Government</TableCell>
                   <TableCell align="center">Requested On</TableCell>
 
                   <TableCell
@@ -241,44 +228,43 @@ const SchemeTable = (props) => {
                   </TableCell>
                 </TableRow>
               </TableHead>
-              {fundRequests &&
+              {fundRequests.length == 0 && (
+                <h4>
+                  <TableCell align="center">
+                    <div>No request has been created on this scheme yet.</div>
+                  </TableCell>
+                </h4>
+              )}
+              {fundRequests && (
                 <TableBody>
-                  {(fundRequests
-                  ).map(
-                    (request) => {
-                      //console.log("REQUEST: ", request);
-                      //console.log("sortedData: ", sortedData);
-                      // console.log("request.id: ", request.id);
-                      // console.log("sortedData[request.id -1].created_by.state: ", sortedData[request.id - 1].created_by.state);
-                      return request.created_by.state
+                  {fundRequests.map((request) => {
+                    return (
+                      request.created_by.state
                         .toLowerCase()
                         .includes(search.toLowerCase()) && (
-                          <TableRow key={request.id}>
-                            <TableCell align="left">{request.id}</TableCell>
-                            <TableCell align="left" component="th" scope="row">
-                              <div>{request.created_by.state}</div>
-                            </TableCell>
-                            <TableCell align="center">
-                              {moment(request.date_created).format("YYYY-MM-DD")}
-                            </TableCell>
+                        <TableRow key={request.id}>
+                          <TableCell align="center">{request.id}</TableCell>
+                          <TableCell align="center" component="th" scope="row">
+                            <div>{request.created_by.state}</div>
+                          </TableCell>
+                          <TableCell align="center">
+                            {moment(request.date_created).format("YYYY-MM-DD")}
+                          </TableCell>
 
-                            <TableCell align="center">
-                              <div style={{ color: "green" }}>active</div>
-                            </TableCell>
-                          </TableRow>
-                        )
-
-                    }
-
-                  )}
+                          <TableCell align="center">
+                            <div style={{ color: "green" }}>active</div>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    );
+                  })}
                   {emptyRows > 0 && (
                     <TableRow style={{ height: 53 * emptyRows }}>
                       <TableCell colSpan={6} />
                     </TableRow>
                   )}
                 </TableBody>
-              }
-
+              )}
               <TableFooter>
                 <TableRow>
                   <TablePagination
