@@ -4,12 +4,13 @@ from rest_framework.exceptions import ValidationError, NotFound
 
 from department.models import CentreDepartment, StateDepartment
 from department.permissions import is_centre_user, is_state_user
-from .models import Scheme, FundRequest
+from .models import Scheme, FundRequest, SchemeFundRequest
 from .serializers import (
     SchemeSerializer,
     FundRequestSerializer,
     FundRequestCreateSerializer,
     FundRequestUpdateSerializer,
+    SchemeFundRequestSerializer,
 )
 
 
@@ -224,3 +225,25 @@ class FundRequestPerSchemeListView(generics.ListAPIView):
         else:
             self.check_object_permissions(request=self.request, obj=scheme)
             return qs.filter(scheme=scheme)
+
+
+class SchemeFundRequestByStateAPIView(generics.CreateAPIView):
+    """
+    Scheme Fund Request By State API View
+    """
+
+    serializer_class = SchemeFundRequestSerializer
+    queryset = SchemeFundRequest.objects.all()
+
+    def perform_create(self, serializer):
+        user = self.request.user
+
+        if is_state_user(user):
+            try:
+                dept = StateDepartment.objects.get(dept_poc=user)
+            except StateDepartment.DoesNotExist:
+                raise ValidationError("You are not authorized to perform this action.")
+            else:
+                serializer.save(created_by=dept)
+        else:
+            raise ValidationError("You are not authorized to perform this action.")

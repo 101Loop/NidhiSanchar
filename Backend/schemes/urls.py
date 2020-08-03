@@ -31,4 +31,9 @@ urlpatterns = [
         views.FundRequestPerSchemeListView.as_view(),
         name="request-per-scheme",
     ),
+    path(
+        "v1/create-scheme-state/",
+        views.SchemeFundRequestByStateAPIView.as_view(),
+        name="create-scheme-fund-request",
+    ),
 ]
