@@ -174,25 +174,7 @@ export default function Support() {
                   justifyItems: "left",
                   paddingTop: "20px",
                 }}
-              >
-                <div style={{ paddingRight: "20px" }}>
-                  <h6 className={classes.heading}>
-                    Upload a ScreenShot or Doc
-                  </h6>
-                  <input
-                    style={{
-                      display: "flex",
-                      height: "5vh",
-                    }}
-                    accept="image/file*"
-                    id="contained-button-file"
-                    multiple
-                    type="file"
-                    placeholder="Upload a screenshot or Doc"
-                  />
-                </div>
-                <div></div>
-              </div>
+              ></div>
               <div
                 style={{
                   paddingTop: "25px",
