@@ -144,6 +144,7 @@ export default function Support() {
     });
   };
 
+
   const handleNewscheme = () => {
     console.log("specific");
   };
