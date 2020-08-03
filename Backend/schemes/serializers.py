@@ -117,3 +117,25 @@ class FundRequestUpdateSerializer(serializers.ModelSerializer):
             "date_updated",
         )
         read_only_fields = ["date_created", "date_updated"]
+
+
+class SchemeFundRequestSerializer(serializers.ModelSerializer):
+    """
+    Serializer SchemeFundRequest
+    """
+
+    class Meta:
+        fields = (
+            "created_by",
+            "name",
+            "date_of_launching",
+            "description",
+            "document",
+            "funds_required",
+            "status",
+            "comments",
+            "date_created",
+            "date_updated",
+        )
+
+        read_only_fields = ("date_updated", "date_created")

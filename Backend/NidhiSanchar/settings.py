@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "department",
     "schemes",
     "discussions",
+    "help",
 ]
 
 # MIDDLEWARE
