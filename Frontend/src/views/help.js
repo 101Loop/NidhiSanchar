@@ -41,15 +41,15 @@ const theme = createMuiTheme({
 const currencies = [
   {
     value: "USD",
-    label: "option 1",
+    label: "Agriculture",
   },
   {
     value: "EUR",
-    label: "option 2",
+    label: "Education",
   },
   {
     value: "BTC",
-    label: "option 3",
+    label: "Construction",
   },
 ];
 const useStyles = makeStyles((theme) => ({
@@ -129,50 +129,17 @@ export default function SpecificHelp(props) {
               </Typography>
 
               <form>
-                <h6 className={classes.heading}>From</h6>
+                <h6 className={classes.heading}>E-mail</h6>
                 <div className={classes.my_form}>
                   <TextField
                     className="form-box"
-                    id="outlined-select-currency-native-size-small"
-                    select
                     label=""
-                    value={currency}
-                    onChange={handleChange}
-                    size="small"
-                    SelectProps={{
-                      native: true,
-                    }}
-                    align="left"
+                    placeholder="Subject"
+                    id="outlined-size-small"
+                    defaultValue=""
                     variant="outlined"
-                  >
-                    {currencies.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </TextField>
-                </div>
-                <h6 className={classes.heading}>Account or Organization</h6>
-                <div className={classes.my_form}>
-                  <TextField
-                    className="form-box"
-                    id="outlined-select-currency-native-size-small"
-                    select
-                    label=""
                     size="small"
-                    value={currency}
-                    onChange={handleChange}
-                    SelectProps={{
-                      native: true,
-                    }}
-                    variant="outlined"
-                  >
-                    {currencies.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </TextField>
+                  />
                 </div>
                 <h6 className={classes.heading}>Subject</h6>
                 <div className={classes.my_form}>
@@ -213,22 +180,9 @@ export default function SpecificHelp(props) {
                   }}
                 >
                   <div style={{ paddingRight: "20px" }}>
-                    <label htmlFor="contained-button-file">
-                      <Button
-                        variant="contained"
-                        color="default"
-                        component="span"
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          justifyItems: "left",
-                        }}
-                      >
-                        Upload a screenshot or Doc
-                      </Button>
-                    </label>
-                  </div>
-                  <div>
+                    <h6 className={classes.heading}>
+                      Upload a ScreenShot or Doc
+                    </h6>
                     <input
                       style={{
                         display: "flex",
@@ -238,8 +192,10 @@ export default function SpecificHelp(props) {
                       id="contained-button-file"
                       multiple
                       type="file"
+                      placeholder="Upload a screenshot or Doc"
                     />
                   </div>
+                  <div></div>
                 </div>
                 <div
                   style={{
