@@ -41,7 +41,8 @@ class SchemeView extends Component {
       <div style={{ paddingLeft: "5rem", paddingRight: "5rem" }}>
         {schemes.length !== 0 ? <SchemeTable schemes={schemes} /> : <div>Loading...</div>}
 
-        <AddSchemeModal />
+        {localStorage.getItem("userOf") == "centre" && <AddSchemeModal />}
+
       </div>
     );
   }
