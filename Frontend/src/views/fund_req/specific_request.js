@@ -178,7 +178,7 @@ const SchemeTable = (props) => {
         variant="h4"
         align="center"
       >
-        {}
+        Fund Requests
       </Typography>
 
       <Container maxWidth="lg" component="main" className={classes.heroContent}>
