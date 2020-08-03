@@ -8,27 +8,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-03 12:14+0530\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-08-03 12:45+0530\n"
+"PO-Revision-Date: 2020-08-03 12:50+0553\n"
+"Last-Translator: b'Anonymous User <me@sumitsingh.tech>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: NidhiSanchar/settings.py:101
-msgid "English"
-msgstr ""
+"X-Translated-Using: django-rosetta 0.9.4\n"
 
 #: NidhiSanchar/settings.py:102
-msgid "Hindi"
-msgstr ""
+msgid "English"
+msgstr "अंग्रेज़ी"
 
 #: NidhiSanchar/settings.py:103
+msgid "Hindi"
+msgstr "हिन्दी"
+
+#: NidhiSanchar/settings.py:104
 msgid "Telugu"
-msgstr ""
+msgstr "तेलुगू"
 
 #: NidhiSanchar/urls.py:26
 msgid "Applications | NidhiSanchar"
@@ -109,7 +110,7 @@ msgstr "चर्चा का अनुरोध"
 msgid "Request Discussions"
 msgstr "चर्चा का अनुरोध"
 
-#: discussions/models.py:49 discussions/models.py:108
+#: discussions/models.py:49 discussions/models.py:108 help/models.py:17
 msgid "Document"
 msgstr "दस्तावेज़"
 
@@ -212,7 +213,8 @@ msgid ""
 "The roles this user belongs to. A user will get all permissions granted to "
 "each of their roles."
 msgstr ""
-"इस उपयोगकर्ता की भूमिकाएँ हैं। एक उपयोगकर्ता को सभी अनुमतियाँ मिलेंगी उनकी प्रत्येक भूमिका।"
+"इस उपयोगकर्ता की भूमिकाएँ हैं। एक उपयोगकर्ता को सभी अनुमतियाँ मिलेंगी उनकी "
+"प्रत्येक भूमिका।"
 
 #: drf_user/models.py:75 userprofile/models.py:37
 msgid "User"
@@ -335,8 +337,8 @@ msgstr ""
 
 #: drf_user/utils.py:317
 msgid ""
-"No pending OTP validation request found for provideddestination. Kindly send "
-"an OTP first"
+"No pending OTP validation request found for provideddestination. Kindly send"
+" an OTP first"
 msgstr ""
 
 #: drf_user/views.py:226 drf_user/views.py:348
@@ -358,6 +360,23 @@ msgstr ""
 #: drf_user/views.py:416
 msgid "Logout successfully."
 msgstr ""
+
+#: help/apps.py:7 help/models.py:28 help/models.py:29
+msgid "Help"
+msgstr "मदद"
+
+#: help/models.py:13
+msgid "Email"
+msgstr "ईमेल"
+
+#: help/models.py:14
+msgid "Subject"
+msgstr "विषय"
+
+#: help/models.py:15
+#| msgid "Scheme Description"
+msgid "Description"
+msgstr "विवरण"
 
 #: schemes/models.py:19
 msgid "Which Department Created this Scheme"
@@ -444,8 +463,11 @@ msgid "Total Funds required for the Scheme(in cr.)"
 msgstr "योजना के लिए आवश्यक कुल निधि (करोड में)"
 
 #: schemes/models.py:175
-msgid "Comments will be added by centre/state officials regarding this scheme."
-msgstr "इस योजना के बारे में केंद्र / राज्य के अधिकारियों द्वारा टिप्पणियां जोड़ी जाएंगी।"
+msgid ""
+"Comments will be added by centre/state officials regarding this scheme."
+msgstr ""
+"इस योजना के बारे में केंद्र / राज्य के अधिकारियों द्वारा टिप्पणियां जोड़ी "
+"जाएंगी।"
 
 #: schemes/models.py:185
 msgid "Scheme Fund Request By State"
@@ -464,19 +486,19 @@ msgid ""
 "Fund request for the scheme {attrs['scheme']} is already created by you."
 msgstr ""
 
-#: schemes/views.py:38 schemes/views.py:52
+#: schemes/views.py:39 schemes/views.py:53
 msgid "Schemes Does Not Exists Yet."
 msgstr ""
 
-#: schemes/views.py:59
+#: schemes/views.py:60
 msgid "Schemes Does not Exist Yet."
 msgstr ""
 
-#: schemes/views.py:148 schemes/views.py:190
+#: schemes/views.py:149 schemes/views.py:191
 msgid "You are not authorized to perform this action."
 msgstr ""
 
-#: schemes/views.py:222
+#: schemes/views.py:223
 #, python-brace-format
 msgid "Requests with {scheme_id} does not exists. Please create one."
 msgstr ""
