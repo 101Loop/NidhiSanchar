@@ -62,17 +62,21 @@ class FundRequestCreateSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         user = self.context["request"].user
-        dept = StateDepartment.objects.get(dept_poc=user)
         try:
-            FundRequest.objects.get(scheme=attrs["scheme"], created_by=dept)
-        except FundRequest.DoesNotExist:
-            pass
+            dept = StateDepartment.objects.get(dept_poc=user)
+        except StateDepartment.DoesNotExist:
+            raise ValidationError(_("You are not authorised to perform this action."))
         else:
-            raise ValidationError(
-                _(
-                    f"Fund request for the scheme {attrs['scheme']} is already created by you."
+            try:
+                FundRequest.objects.get(scheme=attrs["scheme"], created_by=dept)
+            except FundRequest.DoesNotExist:
+                pass
+            else:
+                raise ValidationError(
+                    _(
+                        f"Fund request for the scheme {attrs['scheme']} is already created by you."
+                    )
                 )
-            )
 
         return attrs
 

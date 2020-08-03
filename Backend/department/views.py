@@ -1,8 +1,12 @@
 from rest_framework.exceptions import ValidationError
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
-from .models import CentreDepartment, StateDepartment
-from .serializers import CentreDepartmentSerializer, StateDepartmentSerializer
+from .models import CentreDepartment, StateDepartment, DepartmentName
+from .serializers import (
+    CentreDepartmentSerializer,
+    StateDepartmentSerializer,
+    DepartmentSerializer,
+)
 
 
 class CentreDepartmentView(ListAPIView):
@@ -39,3 +43,14 @@ class StateDepartmentView(ListAPIView):
             return qs
         else:
             raise ValidationError("You are not authorized to view this page.")
+
+
+class LandingPageStatsAPIView(RetrieveAPIView):
+    """
+    Landing Page Stats API View
+    """
+
+    serializer_class = DepartmentSerializer
+    queryset = DepartmentName.objects.all()
+    authentication_classes = []
+    permission_classes = []

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import CentreDepartment, StateDepartment
+from .models import CentreDepartment, StateDepartment, DepartmentName
 
 
 class CentreDepartmentSerializer(serializers.ModelSerializer):
@@ -90,4 +90,26 @@ class StateDepartmentSerializer(serializers.ModelSerializer):
             "total_scheme_discussions",
             "date_created",
             "date_updated",
+        )
+
+
+class DepartmentSerializer(serializers.ModelSerializer):
+    """
+    This will help to show the stats on landing page
+    """
+
+    class Meta:
+        model = DepartmentName
+        fields = (
+            "total_schemes",
+            "total_requests",
+            "total_discussions",
+            "pending_requests",
+        )
+
+        read_only_fields = (
+            "total_schemes",
+            "total_requests",
+            "total_discussions",
+            "pending_requests",
         )
