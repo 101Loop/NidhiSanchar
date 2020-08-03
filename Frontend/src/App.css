@@ -105,10 +105,11 @@ ul > li > a > i {
   bottom: 10px;
   float: right;
   position: fixed;
-  margin-right: 5%;
-  margin-bottom: 3%;
-  margin-left: 41%;
-  background-color: #e76829;
+  margin-right: 2%;
+  margin-bottom: 5%;
+  margin-left: 44.5%;
+  background-color: white;
+  color: #e76829;
 }
 
 .right-sidebar {
