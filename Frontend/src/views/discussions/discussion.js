@@ -2,6 +2,7 @@ import React from "react";
 import Modi from "../../assets/pmmodi.jpg";
 
 export default function Message({ message }) {
+  console.log("message: ", message)
   return (
     <div className="discussion-container container ml-0 mr-0  ">
       <div className="row">
@@ -13,9 +14,9 @@ export default function Message({ message }) {
         <div className="col-md-11 m-0 p-0">
           <div className="message">
             <div className="header">
-              <span className="date">
+              { /*<span className="date">
                 <b>KS Ramu</b> commented on {message.date.toLocaleString()}
-              </span>
+  </span> */}
             </div>
             <div className="body">
               <div className="heading">
@@ -23,7 +24,8 @@ export default function Message({ message }) {
                   {message.subject}
                 </h5>
               </div>
-              <div className="body-description">{message.msg}</div>
+              <div className="body-description" dangerouslySetInnerHTML={{__html: message.message}} />
+              
             </div>
           </div>
         </div>

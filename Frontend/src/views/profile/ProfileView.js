@@ -1,8 +1,32 @@
 import React, { Component } from "react";
 import Modi from "../../assets/pmmodi.jpg";
+import { getProfileInfo } from "../../core_api_calls/userProfile"
 import MyProfile from "./MyProfile";
 
 class ProfileView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      profileDetails: {}
+    }
+  }
+
+  componentDidMount() {
+    this.preload();
+  }
+
+  async preload() {
+    const response = await getProfileInfo();
+    console.log("response: ", response);
+    if (response) {
+      this.setState({
+        profileDetails: response.data
+      })
+    }
+
+  }
+
+
   details = [
     {
       name: "Harsh",
