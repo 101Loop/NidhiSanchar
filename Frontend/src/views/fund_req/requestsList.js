@@ -258,15 +258,12 @@ const SchemeRequestTable = (props) => {
                 }}
               >
                 <TableRow>
-                  <TableCell align="center" onClick={() => handleSort("id")}>
-                    <div style={{ cursor: "pointer" }}>Serial Number</div>
-                  </TableCell>
                   <TableCell align="center">Scheme Name</TableCell>
                   <TableCell
                     onClick={() => handleSort("scheme_budget")}
                     align="center"
                   >
-                    <div style={{ cursor: "pointer" }}>Budget (Rs.)</div>
+                    <div style={{ cursor: "pointer" }}>Budget (Cr.)</div>
                   </TableCell>
                   <TableCell
                     onClick={() => handleSort("date_of_launching")}
@@ -279,12 +276,6 @@ const SchemeRequestTable = (props) => {
                     align="center"
                   >
                     <div style={{ cursor: "pointer" }}>Updated on</div>
-                  </TableCell>
-                  <TableCell
-                    onClick={() => handleSort("numerOfRequests")}
-                    align="center"
-                  >
-                    Scheme ID
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -301,7 +292,6 @@ const SchemeRequestTable = (props) => {
                       .toLowerCase()
                       .includes(search.toLowerCase()) && (
                       <TableRow key={scheme.name}>
-                        <TableCell align="center">{scheme.id}</TableCell>
                         <TableCell align="center" component="th" scope="row">
                           <div
                             style={{ cursor: "pointer" }}
@@ -318,9 +308,6 @@ const SchemeRequestTable = (props) => {
                         </TableCell>
                         <TableCell align="center">
                           {moment(scheme.date_updated).format("YYYY-MM-DD")}
-                        </TableCell>
-                        <TableCell align="center">
-                          <b>{scheme.id}</b>
                         </TableCell>
                       </TableRow>
                     )

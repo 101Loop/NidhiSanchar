@@ -158,9 +158,6 @@ export class SelectScheme extends Component {
       launchDate: moment().format("YYYY-MM-DD"),
       description: "",
     });
-    toast("Scheme Updated", {
-      position: toast.POSITION.TOP_CENTER,
-    });
   };
 
   theme = createMuiTheme({
