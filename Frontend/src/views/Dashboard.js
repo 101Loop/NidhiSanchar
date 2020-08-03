@@ -3,12 +3,40 @@ import NotificationSideBar from "../components/NotificationSideBar";
 import SchemeCard from "../components/SchemesCard";
 import CustomCard from "../components/CustomCard";
 import { getUserInfo } from "../services/auth";
+import { getCentreDashboardBoxInfo, getStateDashboardBoxInfo } from "../core_api_calls/dashboardBoxInfo"
 
 class Dashboard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      boxDetails: {}
+    }
+  }
   componentDidMount() {
-    getUserInfo();
+    this.preload();
+  }
+
+  async preload() {
+    const response = await getUserInfo();
+    if (response) {
+      const userOf = localStorage.getItem("userOf");
+      console.log("userOf: ", userOf);
+      var boxDetails = null;
+      if (userOf == "centre") {
+        boxDetails = await getCentreDashboardBoxInfo()
+      } else {
+        boxDetails = await getStateDashboardBoxInfo()
+      }
+      console.log("boxDetails: ", boxDetails);
+      this.setState({
+        boxDetails: boxDetails.data[0]
+      })
+    }
+    //console.log("response: ", response);
   }
   render() {
+    console.log("this.state: ", this.state.boxDetails);
+
     const ListItems = [
       {
         department: "Agriculture",
@@ -69,6 +97,49 @@ class Dashboard extends Component {
         num: "50",
       },
     ];
+    //var boxInfoItems = null;
+    if (localStorage.getItem("userOf") == "centre") {
+      var boxInfoItems = [
+        {
+          name: "Scheme created",
+          num: this.state.boxDetails.total_schemes_created
+        },
+        {
+          name: "Requests Processed",
+          num: this.state.boxDetails.total_requests_processed,
+        },
+        {
+          name: "Total Requests",
+          num: this.state.boxDetails.total_fund_requests,
+        },
+        {
+          name: "Total Discussions",
+          num: this.state.boxDetails.total_scheme_discussions,
+        },
+
+      ]
+    } else {
+      var boxInfoItems = [
+        {
+          name: "Requests created",
+          num: this.state.boxDetails.total_fund_requests_created
+        },
+        {
+          name: "Requests Processed",
+          num: this.state.boxDetails.total_request_processed,
+        },
+        {
+          name: "Requests Pending",
+          num: this.state.boxDetails.total_requests_pending,
+        },
+        {
+          name: "Total Discussions",
+          num: this.state.boxDetails.total_scheme_discussions,
+        },
+
+      ]
+    }
+
     return (
       <div
         className="dashboard"
@@ -85,7 +156,7 @@ class Dashboard extends Component {
               <div className="status-card" style={{ margin: "2rem 0" }}>
                 <div className="container">
                   <div className="row">
-                    {CardInfoItems.map((item) => (
+                    {boxInfoItems.map((item) => (
                       <CustomCard name={item.name} num={item.num} />
                     ))}
                   </div>
