@@ -6,6 +6,15 @@
 
 ## Contents :
 
+   * [Contents :](#contents-)
+   * [Demo :](#demo-)
+   * [Overview :](#overview-)
+   * [Motivation and Aim](#motivation-and-aim)
+   * [Installation :](#installation-)
+   * [Features of Nidhi Sanchar :](#features-of-nidhi-sanchar-)
+   * [Tech Stack Used :](#tech-stack-used-)
+
+
 
 ## Demo :
 
