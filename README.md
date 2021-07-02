@@ -43,11 +43,11 @@ To summarise, the complete lifecycle of a government policy can be seamlessly ma
 The motivation of this project comes from the issues present at the root of the system responsible for govt. policies implementation, which is 'poor management' that ultimately invites multiple factors like corruption, unequality and scarcity of provisions which were created with the aim to serve all , but eventually reaches few.
 With efficient and relialbe technologies, we can improve the out-dated systems which lack in multiple aspects, which are listed below :
 
-No or very less transparency
-out dated and inefficient fund request system
-Slow peer to peer connection
-inefficent monitoring of updates
-poor discussion panel for officials
+- No or very less transparency
+- Out dated and inefficient fund request system
+- Slow peer to peer connection
+- Inefficent monitoring of updates
+- Poor discussion panel for officials
 
 The aim of this project is therefore to effectively manage the whole life cycle of a government Policy covering its creation, fund dispersal,status tracking, ground report monitoring, discussion and feedback analysis.
 
